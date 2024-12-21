@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include "util.h"
 
+#define BUFFER_SIZE 1024
+
 int main() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     errif(sockfd == -1, "socket create error");
@@ -22,11 +24,11 @@ int main() {
 
     // message transfer
     while (true) {
-        char buf[1024];
+        char buf[BUFFER_SIZE];
         bzero(&buf, sizeof(buf));
         scanf("%s", buf);
         ssize_t write_bytes = write(sockfd, buf, sizeof(buf));
-        if (write_bytes != 1024) {
+        if (write_bytes == -1) {
             printf("socket already disconnected, can't write any more!\n");
             break;
         }

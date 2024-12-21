@@ -5,6 +5,10 @@
 ## 原项目地址
 [30daysCppWebServer] https://github.com/Wlgls/30daysCppWebServer
 
+## To Learn Sth More
+
+1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket
+
 ## day01 - socket实现
 在Linux服务器上进行实现，gcc/g++ 7.5.0, cmake 3.10.2, VSCode 1.85.2
 
@@ -74,4 +78,56 @@ char buffer[1024];
 // read时返回的是读取的字节数，失败返回-1，返回0表示对端关闭连接
 ssize_t read_bytes = read(int fd, void *buf, size_t count);
 ssize_t write_bytes = write(int fd, const void *buf, size_t count);
+~~~
+
+## day03 - 简单高并发 // IO多路复用
+
+IO复用是指通过单个线程，同时监听多个IO事件，当有IO事件发生时，通知程序进行处理。在Linux中，IO复用的实现有select、poll、epoll等。
+
+~~~cpp
+// select:将文件描述符集合fd_set拷贝到内核空间，内核遍历所有文件描述符，当有IO事件发生时，将文件描述符从内核空间拷贝回用户空间，用户程序进行处理。数量有限制，遍历复杂。
+// nfds: 文件描述符的最大值+1
+int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+
+// poll: 与select类似，但是使用链表存储文件描述符，数据结构灵活，数量无限制。pollfd结构体如下：
+struct pollfd {
+    int fd; // 文件描述符
+    short events; // 关注事件类型，POLLIN, POLLOUT, POLLERR, POLLHUP
+    short revents; // 实际发生事件类型，POLLIN, POLLOUT, POLLERR, POLLHUP
+};
+int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+
+// epoll: 不再进行遍历，而是让内核通知示例变化（水平与边缘触发），使用红黑树存储文件描述符，数据结构灵活，数量无限制。
+// 创建epoll实例，flag为0表示使用水平触发，EPOLL_CLOEXEC表示在fork后自动关闭，EPOLL_NONBLOCK表示非阻塞。
+int epoll_create1(int flag);
+// 注册/修改/删除文件描述符
+// epfd: epoll实例的文件描述符
+// op: EPOLL_CTL_ADD, EPOLL_CTL_MOD, EPOLL_CTL_DEL 增改删
+// fd: 文件描述符
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+struct epoll_event {
+    uint32_t events; // 关注事件类型，EPOLLIN, EPOLLOUT, EPOLLERR, EPOLLHUP
+    epoll_data_t data; // 用户数据
+} __EPOLL_PACHED;
+typedef union epoll_data {
+    void *ptr;
+    int fd;
+    uint32_t u32;
+    uint64_t u64;
+} epoll_data_t;
+// 等待事件发生，获取事件发生的fd
+// epfd: epoll实例的文件描述符
+// events: 事件数组，存储事件发生的fd
+// maxevents: 事件数组的大小
+// timeout: 超时时间，-1表示永久阻塞，0表示非阻塞，>0表示超时时间
+int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout);
+
+// 读写中
+if (ret == -1 && errno == EINTR) { // 客户端正常中断
+    printf("fd %d continue reading\n", event[i].data.fd);
+    continue;
+} else if (ret == -1 && ((errno == EAGAIN) || (errno == EWOULDBLOCK))) {
+    printf("fd %d message all read, errno: %d\n", event[i].data.fd, errno);
+    break;
+}
 ~~~
