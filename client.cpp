@@ -4,7 +4,7 @@
 #include <string.h>
 
 int main() {
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
     struct sockaddr_in serv_addr;
     // 小技巧，清空结构体地址中的存储后再进行定义
@@ -12,7 +12,7 @@ int main() {
 
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(8888);
-    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1")
+    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     connect(sockfd, (sockaddr *)&serv_addr, sizeof(serv_addr));
 

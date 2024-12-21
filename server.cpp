@@ -4,13 +4,13 @@
 #include <string.h>
 
 int main() {
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);;
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);;
     struct sockaddr_in serv_addr;
     bzero(&serv_addr, sizeof(serv_addr));
 
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(8888);
-    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1")
+    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     bind(sockfd, (sockaddr *)&serv_addr, sizeof(serv_addr));
 
@@ -22,6 +22,6 @@ int main() {
 
     int clnt_sockfd = accept(sockfd, (sockaddr *)&clnt_addr, &clnt_addr_len);
 
-    printf("client ip: %s, port: %d\n", inet_ntoa(clnt_addr.sin_addr), ntohs(clnt_addr.sin_port))
+    printf("client ip: %s, port: %d\n", inet_ntoa(clnt_addr.sin_addr), ntohs(clnt_addr.sin_port));
     return 0;
 }
