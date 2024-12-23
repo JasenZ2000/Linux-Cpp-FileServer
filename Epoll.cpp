@@ -1,4 +1,5 @@
 #include "Epoll.h"
+#include "Channel.h"
 #include "util.h"
 #include <string.h>
 #include <unistd.h>
@@ -27,12 +28,28 @@ void Epoll::addFd(int fd, uint32_t op) {
 }
 
 // 注意默认参数值应在头文件中定义，而不是源文件中，并且不得在源文件中重复定义
-std::vector<epoll_event> Epoll::poll(int timeout) {
-    std::vector<epoll_event> activeEvents;
+std::vector<Channel*> Epoll::poll(int timeout) {
+    std::vector<Channel*> activeEvents;
     int nums = epoll_wait(epfd, events, max_events, timeout);
     errif(nums == -1, "epoll wait error");
     for (int i = 0; i < nums; ++i) {
-        activeEvents.push_back(events[i]);
+        Channel* ch = (Channel*)events[i].data.ptr;
+        ch->setRevents(events[i].events);
+        activeEvents.push_back(ch);
     }
     return activeEvents;
+}
+
+void Epoll::updateChannel(Channel* channel) {
+    int fd = channel->getFd();
+    struct epoll_event ev;
+    bzero(&ev, sizeof(ev));
+    ev.data.ptr = channel; // 这句与上面的 poll 函数的 events 数组对应，传回信息更多的Channel，不仅仅fd
+    ev.events = channel->getEvents();
+    if (channel->getInEpoll()) {
+        errif(epoll_ctl(epfd, EPOLL_CTL_MOD, fd, &ev) == -1, "epoll update error");
+    } else {
+        errif(epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &ev) == -1, "epoll add error");
+        channel->setInEpoll();
+    }
 }

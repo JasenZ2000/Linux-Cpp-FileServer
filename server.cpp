@@ -9,6 +9,7 @@
 #include "Epoll.h"
 #include "Socket.h"
 #include "InetAddress.h"
+#include "Channel.h"
 
 #define MAX_EVENTS 1024
 #define READ_BUFFER 1024
@@ -26,16 +27,19 @@ int main()
     serv_sock->listen();
     serv_sock->setnonblocking();
 
-    Epoll *ep = new Epoll();
-    ep->addFd(serv_sock->getFd(), EPOLLIN); // 监听新连接事件
+    // Epoll *ep = new Epoll();
+    std::unique_ptr<Epoll> ep = std::make_unique<Epoll>();
+    std::unique_ptr<Channel> servChannel = std::make_unique<Channel>(ep.get(), serv_sock->getFd());
+    servChannel->enableReading();
 
     while (true)
     {
-        std::vector<epoll_event> activeEvents = ep->poll();
+        std::vector<Channel*> activeEvents = ep->poll();
         int nums = activeEvents.size();
+        printf("activeEvents nums: %d\n", nums);
         for (int i = 0; i < nums; ++i)
         {
-            if (activeEvents[i].data.fd == serv_sock->getFd())
+            if (activeEvents[i]->getFd() == serv_sock->getFd())
             { // 新连接事件
                 InetAddress* clnt_addr = new InetAddress(); // 智能指针是最优方式, 但是这里不使用智能指针，尽管有内存泄漏，但是不会影响程序的运行
                 Socket* clnt_sock = new Socket(serv_sock->accept(clnt_addr)); // 原因是连接的生命周期需要独立管理
@@ -44,11 +48,12 @@ int main()
                 printf("new client fd %d! IP: %s Port: %d\n", clnt_sock->getFd(),
                        inet_ntoa(clnt_addr->addr.sin_addr), ntohs(clnt_addr->addr.sin_port));
                 clnt_sock->setnonblocking();
-                ep->addFd(clnt_sock->getFd(), EPOLLIN | EPOLLET); // 消息事件
+                Channel* clntChannel = new Channel(ep.get(), clnt_sock->getFd());
+                clntChannel->enableReading();
             }
-            else if (activeEvents[i].events & EPOLLIN)
+            else if (activeEvents[i]->getRevents() & EPOLLIN)
             { // 来自客户端socket的消息事件
-                handleReadEvent(activeEvents[i].data.fd);
+                handleReadEvent(activeEvents[i]->getFd());
             }
             else
             {
@@ -56,6 +61,7 @@ int main()
             }
         }
     }
+    return 0;
 }
 
 void handleReadEvent(int fd)

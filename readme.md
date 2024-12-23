@@ -144,10 +144,14 @@ if (ret == -1 && errno == EINTR) { // 客户端正常中断
 
 3、当有客户端发送数据时，Epoll实例分辨出客户端的Socket B，并实现应用；
 
-这个过程中涉及到创建类的实例对象时，可以使用智能指针进行管理。
+这个过程中涉及到创建类的实例对象时，可以使用智能指针进行管理。然而生命周期的管理比你想的复杂。
 
 ~~~Cpp
 #include <memory>
 // 智能指针
 std::unique_ptr<Template T> u_ptr(new Object());
 ~~~
+
+## day05 - epoll与Channel
+
+这里的Channel实际是对epoll的监听的封装。将原本的从epoll描述符去接触事件，通过Channel从事件的角度进行封装，涵盖了开始监听、调整监听事件、关闭等功能，今日不算关键。
