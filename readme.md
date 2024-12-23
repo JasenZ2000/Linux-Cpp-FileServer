@@ -131,3 +131,23 @@ if (ret == -1 && errno == EINTR) { // 客户端正常中断
     break;
 }
 ~~~
+
+## day04 - 包装 - 更加清晰的Socket使用
+
+包装分为Socket, InetAddress, Epoll类，分别实现socket, inet_address, epoll的创建、销毁、注册、等待等函数。
+
+更清晰的epoll服务器Socket工作流程：
+
+1、服务器将Socket A，即监听并等待连接的socket，与ip端口连接，注册到Epoll实例中；
+
+2、当有客户端连接时，Epoll实例将客户端的Socket B（由服务端的socket的accept产生，同时还会获取客户端的ip端口），注册到Epoll实例中；
+
+3、当有客户端发送数据时，Epoll实例分辨出客户端的Socket B，并实现应用；
+
+这个过程中涉及到创建类的实例对象时，可以使用智能指针进行管理。
+
+~~~Cpp
+#include <memory>
+// 智能指针
+std::unique_ptr<Template T> u_ptr(new Object());
+~~~
