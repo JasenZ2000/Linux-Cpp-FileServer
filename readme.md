@@ -172,6 +172,11 @@ Reactor监听事件，通过dispatch分发事件到Acceptor（建立连接）或
 
 多Reactor模式是指有多个Reactor线程，每个Reactor线程处理一个IO事件。在主线程里有一个MainReactor，而在每个子线程里有一个SubReactor。
 
-Day06的代码基本上只是进一步的封装，还在打牢基础。今日实现Server类，先在类中完成Accpector与Handler的任务，核心还是其本身的监听任务，通过EventLoop来实现。
+Day06的代码基本上只是进一步的封装，还在打牢基础。今日实现Server类，先在类中完成Accpector与Handler的任务，核心还是其本身的监听任务，通过EventLoop来实现。(EPOLLRDHUP是连接切断时的事件，想第一时间切掉的话就得监听)
 
 写完之后发现比想象中的改的多：Channel如我所想包圆了事件的初始化与处理的实现，EventLoop是通过epoll实时访问活跃Channel的运行包装，Server类则是初始化的大集合。
+
+## day07 - Acceptor
+
+其实就是把新建连接这一块的内容拆出来独立封装。要说的话，基于functional与bind的函数对象传递是非常实用的写法。
+
