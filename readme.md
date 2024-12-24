@@ -82,7 +82,7 @@ ssize_t write_bytes = write(int fd, const void *buf, size_t count);
 
 ## day03 - 简单高并发 // IO多路复用
 
-IO复用是指通过单个线程，同时监听多个IO事件，当有IO事件发生时，通知程序进行处理。在Linux中，IO复用的实现有select、poll、epoll等。
+IO复用是指通过单个线程，同时监听多个IO事件，当有IO事件发生时，通知程序进行处理。在Linux中，IO复用的实现有select、poll、epoll等。通过epoll的IO复用，也就是通过单一的监控线程，去把握当前有哪些连接是需要处理的。没有epoll时，需要为每个连接创建一个线程，每个线程可能还需要通过堵塞/轮询的方式监控变化，这样会造成线程数量过多，导致线程切换的开销过大。
 
 ~~~cpp
 // select:将文件描述符集合fd_set拷贝到内核空间，内核遍历所有文件描述符，当有IO事件发生时，将文件描述符从内核空间拷贝回用户空间，用户程序进行处理。数量有限制，遍历复杂。
@@ -154,4 +154,24 @@ std::unique_ptr<Template T> u_ptr(new Object());
 
 ## day05 - epoll与Channel
 
-这里的Channel实际是对epoll的监听的封装。将原本的从epoll描述符去接触事件，通过Channel从事件的角度进行封装，涵盖了开始监听、调整监听事件、关闭等功能，今日不算关键。
+这里的Channel实际是对epoll的监听的封装。将原本的从epoll描述符去接触事件，通过Channel从事件的角度进行封装，涵盖了开始监听、调整监听事件、关闭等功能，今日不算关键。这种Channel厉害之处在于可以把处理函数指针也包装上，使得Channel可以处理多种事件，还能与线程池结合，实现多线程处理。
+
+## day06 - 服务器Reactor开发模式
+
+Reactor模式是一种事件驱动的模式，和上面的Channel有着一致的思想，分为单Reactor(单进程/多线程)和多Reactor。单Reactor模式是指只有一个Reactor线程，所有的IO事件都由这个线程处理。多Reactor模式是指有多个Reactor线程，每个Reactor线程处理一个IO事件。
+
+单Reactor单进程/线程：
+
+Reactor监听事件，通过dispatch分发事件到Acceptor（建立连接）或Handler（响应任务），调用相应的处理函数。
+
+单Reactor多线程：
+
+心心念念的线程池技术终于出现了，Handler对象在这里不执行任务，而是将任务与数据放入线程池，由线程池中的Processor进行处理，再返回到Handler，再返回给客户。
+
+多Reactor： 开源项目Netty，Memcache中使用的是多Reactor多线程模式。
+
+多Reactor模式是指有多个Reactor线程，每个Reactor线程处理一个IO事件。在主线程里有一个MainReactor，而在每个子线程里有一个SubReactor。
+
+Day06的代码基本上只是进一步的封装，还在打牢基础。今日实现Server类，先在类中完成Accpector与Handler的任务，核心还是其本身的监听任务，通过EventLoop来实现。
+
+写完之后发现比想象中的改的多：Channel如我所想包圆了事件的初始化与处理的实现，EventLoop是通过epoll实时访问活跃Channel的运行包装，Server类则是初始化的大集合。
