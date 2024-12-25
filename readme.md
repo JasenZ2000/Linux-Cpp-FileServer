@@ -7,7 +7,7 @@
 
 ## To Learn Sth More
 
-1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket
+1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket；4、更好的缓冲区设计
 
 ## day01 - socket实现
 在Linux服务器上进行实现，gcc/g++ 7.5.0, cmake 3.10.2, VSCode 1.85.2
@@ -198,3 +198,7 @@ func = std::bind(&MyClass::MyFunc, &myObj, std::placeholders::_1);
 MD源码有问题，新连接都没有创建对应的Socket和InetAddress，把监听新连接的Socket鱼目混珠到里面了，烂完了。
 
 这个版本标志着服务器的核心功能已经完成，2024.12.20 -> 2024.12.25: 第一阶段。
+
+## day09 - 缓冲区
+
+使用Buffer前，每次读取数据都以相同的大小进行，非常原始，存在大量冗余的内存操作。给每个Connection配了一个最最简单的缓冲区，实现的功能更接近与动态长度输入下的消息汇总，还没涉及到优化内存管理。
