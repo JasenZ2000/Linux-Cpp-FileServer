@@ -2,6 +2,7 @@
 #include "Socket.h"
 #include "InetAddress.h"
 #include "Channel.h"
+#include "Connection.h"
 #include "Acceptor.h"
 #include <functional>
 #include <string.h>
@@ -22,45 +23,18 @@ Server::~Server() {
 
 void Server::newConnection(Socket *serv_sock)
 {
-    InetAddress *clnt_addr = new InetAddress();
+    InetAddress* clnt_addr = new InetAddress();
     Socket *clnt_sock = new Socket(serv_sock->accept(clnt_addr));
-    printf("new client fd %d! IP: %s Port: %d\n", clnt_sock->getFd(),
-           inet_ntoa(clnt_addr->addr.sin_addr), ntohs(clnt_addr->addr.sin_port));
+    printf("new client fd %d! IP: %s Port: %d\n", clnt_sock->getFd(), inet_ntoa(clnt_addr->addr.sin_addr), ntohs(clnt_addr->addr.sin_port));
     clnt_sock->setnonblocking();
-    Channel *clntChannel = new Channel(loop, clnt_sock->getFd());
-    std::function<void()> cb = std::bind(&Server::handleReadEvent, this, clnt_sock->getFd());
-    clntChannel->setCallback(cb);
-    clntChannel->enableReading();
+    Connection *conn = new Connection(loop, clnt_sock);
+    std::function<void(Socket*)> cb = std::bind(&Server::deleteConnection, this, std::placeholders::_1);
+    conn->setDeleteConnectionCallback(cb);
+    connections[clnt_sock->getFd()] = conn;
 }
 
-void Server::handleReadEvent(int fd)
-{
-    char buf[READ_BUFFER];
-
-    while (true)
-    {
-        bzero(&buf, sizeof(buf));
-        ssize_t bytes_read = read(fd, buf, sizeof(buf));
-        if (bytes_read > 0)
-        {
-            printf("message from client fd %d: %s\n", fd, buf);
-            write(fd, buf, sizeof(buf));
-        }
-        else if (bytes_read == -1 && errno == EINTR)
-        {
-            printf("continue reading\n");
-            continue;
-        }
-        else if (bytes_read == -1 && ((errno == EAGAIN) || (errno == EWOULDBLOCK)))
-        {
-            printf("finish reading\n");
-            break;
-        }
-        else if (bytes_read == 0)
-        {
-            printf("EOF, client fd %d disconnected\n", fd);
-            close(fd);
-            break;
-        }
-    }
+void Server::deleteConnection(Socket *clnt_sock){
+    Connection *conn = connections[clnt_sock->getFd()];
+    connections.erase(clnt_sock->getFd());
+    delete conn;
 }
