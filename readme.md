@@ -202,3 +202,27 @@ MD源码有问题，新连接都没有创建对应的Socket和InetAddress，把�
 ## day09 - 缓冲区
 
 使用Buffer前，每次读取数据都以相同的大小进行，非常原始，存在大量冗余的内存操作。给每个Connection配了一个最最简单的缓冲区，实现的功能更接近与动态长度输入下的消息汇总，还没涉及到优化内存管理。
+
+## day10 - 线程池
+
+这里采用固定线程数的线程池，其应当注意两点：1、对任务队列读写的互斥；2、任务队列为空时避免轮询。两个问题分别对应到mutex和condition_variable。
+
+~~~cpp
+#include <mutex>
+std::mutex mtx;
+// 加锁：lock, unlock, try_lock都是基本函数
+// lock_guard是RAII风格的锁，构造时加锁，析构时解锁，作用域结束后自动解锁。
+std::lock_guard<std::mutex> lock(mtx);
+// unique_lock是更灵活的锁，构造时加锁，析构时解锁，作用域结束后自动解锁。支持手动解/加锁，尝试/延迟加锁，条件变量协作等。
+std::unique_lock<std::mutex> lock(mtx);
+
+#include <condition_variable>
+std::condition_variable cv;
+// 等待：wait, wait_for, wait_until 等待到条件成立，wait_for和wait_until可以指定等待时间。
+cv.wait(lock, []{ return !task_queue.empty(); });
+cv.notify_one(); // 唤醒一个等待的线程，与之前的条件判断配合，保证虚假唤醒不影响程序的正常运行。
+~~~
+
+这个版本把所有任务打包成std::function<void()>的方式包装可执行任务，并通过线程池进行调度。缺陷则是没有返回值。
+
+加入了线程池之后回顾我们这一个项目，发现以EventLoop为核心的事件触发与处理，以及基于Acceptor，Connection的Server功能实现，以及有了较为明显的区分。这两个部分之间的交流是基于Channel类来实现的，Channel里面包含了Socket，事件以及处理函数，是服务器工作的最小单元。

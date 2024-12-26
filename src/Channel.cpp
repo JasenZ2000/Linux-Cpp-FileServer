@@ -10,7 +10,9 @@ Channel::Channel(EventLoop* _loop, int _fd)
 
 Channel::~Channel() {}
 
-void Channel::handleEvent() { callback(); }
+void Channel::handleEvent() { 
+    loop->addThread(callback); 
+}
 
 void Channel::enableReading() {
     events = EPOLLIN | EPOLLRDHUP | EPOLLET;
