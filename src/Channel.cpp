@@ -9,7 +9,7 @@ Channel::Channel(EventLoop *_loop, int _fd)
       events(0),
       revents(0),
       inEpoll(false) {
-        printf("Channel created using fd: %d\n", _fd);
+        // printf("Channel created using fd: %d\n", _fd);
       }
 
 Channel::~Channel()
@@ -23,7 +23,7 @@ Channel::~Channel()
 
 void Channel::handleEvent()
 {
-    printf("Channel fd: %d handling event: %d\n", fd, int(revents));
+    // printf("Channel fd: %d handling event: %d\n", fd, int(revents));
     if (revents & (EPOLLIN | EPOLLRDHUP | EPOLLPRI))
     {
         if (useThreadPool)
