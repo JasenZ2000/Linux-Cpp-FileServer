@@ -11,7 +11,7 @@ private:
     Acceptor* acceptor;
     std::map<int, Connection*> connections;
 public:
-    Server(EventLoop* loop);
+    Server(EventLoop*);
     ~Server();
 
     void handleReadEvents(int);

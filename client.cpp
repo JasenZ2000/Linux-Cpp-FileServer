@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
     Socket *sock = new Socket();
-    InetAddress *addr = new InetAddress("127.0.0.1", 8888);
+    InetAddress *addr = new InetAddress("127.0.0.1", 1234);
     sock->connect(addr);
     printf("connected!\n");
     int sockfd = sock->getFd();

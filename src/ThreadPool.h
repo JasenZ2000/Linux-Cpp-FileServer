@@ -19,6 +19,7 @@ public:
     ThreadPool(int num_threads = 4);
     ~ThreadPool();
 
+    // void add(std::function<void()>);
     template <class F, class... Args>
     auto add(F&& f, Args&&... args) 
     -> std::future<typename std::result_of<F(Args...)>::type>;

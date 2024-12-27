@@ -10,12 +10,14 @@ EventLoop::EventLoop()
       tp(new ThreadPool()) {}
 
 EventLoop::~EventLoop() {
+    quit = true;
     delete ep;
 }
 
 void EventLoop::loop() {
     while (!quit) {
         std::vector<Channel*> activeChannels = ep->poll();
+        // printf("activeChannels size: %d\n", int(activeChannels.size()));
         for (Channel* channel : activeChannels) {
             channel->handleEvent();
         }

@@ -4,6 +4,7 @@
 #include "Socket.h"
 #include "util.h"
 #include <fcntl.h>
+#include <string.h>
 
 Socket::Socket() {
     fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -35,12 +36,14 @@ void Socket::setnonblocking() {
     fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK);
 }
 
-int Socket::accept(InetAddress* addr) {
-    struct sockaddr_in _addr = addr->getAddr();
-    socklen_t len = sizeof(_addr);
-    int connfd = ::accept(fd, (sockaddr*)&_addr, &len);
-    errif(connfd == -1, "socket accept error");
-    return connfd;
+int Socket::accept(InetAddress *_addr){
+    struct sockaddr_in addr;
+    bzero(&addr, sizeof(addr)); // 没有这个东西就会读不到正确的地址
+    socklen_t addr_len = sizeof(addr);
+    int clnt_sockfd = ::accept(fd, (sockaddr*)&addr, &addr_len);
+    errif(clnt_sockfd == -1, "socket accept error");
+    _addr->setInetAddr(addr);
+    return clnt_sockfd;
 }
 
 int Socket::getFd() {

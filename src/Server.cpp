@@ -29,7 +29,7 @@ void Server::newConnection(Socket *clnt_sock)
         conn->setDeleteConnectionCallback(cb);
         connections[clnt_sock->getFd()] = conn;
     }
-    }
+}
 
 void Server::deleteConnection(int sockfd){
     if(sockfd != -1){
