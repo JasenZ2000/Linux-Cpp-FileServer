@@ -14,3 +14,11 @@ InetAddress::InetAddress(const char* ip, uint16_t port){
 }
 
 InetAddress::~InetAddress() {}
+
+void InetAddress::setInetAddr(sockaddr_in _addr){
+    addr = _addr;
+}
+
+sockaddr_in InetAddress::getAddr(){
+    return addr;
+}

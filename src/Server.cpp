@@ -21,20 +21,24 @@ Server::~Server() {
     delete acceptor;
 }
 
-void Server::newConnection(Socket *serv_sock)
+void Server::newConnection(Socket *clnt_sock)
 {
-    InetAddress* clnt_addr = new InetAddress();
-    Socket *clnt_sock = new Socket(serv_sock->accept(clnt_addr));
-    printf("new client fd %d! IP: %s Port: %d\n", clnt_sock->getFd(), inet_ntoa(clnt_addr->addr.sin_addr), ntohs(clnt_addr->addr.sin_port));
-    clnt_sock->setnonblocking();
-    Connection *conn = new Connection(loop, clnt_sock);
-    std::function<void(Socket*)> cb = std::bind(&Server::deleteConnection, this, std::placeholders::_1);
-    conn->setDeleteConnectionCallback(cb);
-    connections[clnt_sock->getFd()] = conn;
-}
+    if (clnt_sock->getFd() != -1) {
+        Connection *conn = new Connection(loop, clnt_sock);
+        std::function<void(int)> cb = std::bind(&Server::deleteConnection, this, std::placeholders::_1);
+        conn->setDeleteConnectionCallback(cb);
+        connections[clnt_sock->getFd()] = conn;
+    }
+    }
 
-void Server::deleteConnection(Socket *clnt_sock){
-    Connection *conn = connections[clnt_sock->getFd()];
-    connections.erase(clnt_sock->getFd());
-    delete conn;
+void Server::deleteConnection(int sockfd){
+    if(sockfd != -1){
+        auto it = connections.find(sockfd);
+        if(it != connections.end()){
+            Connection *conn = connections[sockfd];
+            connections.erase(sockfd);
+            // close(sockfd);       //正常
+            delete conn;         //会Segmant fault
+        }
+    }
 }

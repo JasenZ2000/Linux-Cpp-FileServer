@@ -14,4 +14,6 @@ public:
     int accept(InetAddress*);
     void setnonblocking();
     int getFd();
+
+    void connect(InetAddress*);
 };

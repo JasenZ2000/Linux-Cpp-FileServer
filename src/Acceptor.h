@@ -12,10 +12,10 @@ private:
     Socket* listenSock;
     Channel* acceptChannel;
     InetAddress* servAddr;
+    std::function<void(Socket*)> newConnectionCallback;
 public:
     Acceptor(EventLoop* loop);
     ~Acceptor();
     void acceptConnection();
-    std::function<void(Socket*)> newConnectionCallback;
     void setNewConnectionCallback(std::function<void(Socket*)>);
 };

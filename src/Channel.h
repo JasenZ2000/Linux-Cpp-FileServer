@@ -10,7 +10,9 @@ private:
     uint32_t events;
     uint32_t revents;
     bool inEpoll;
-    std::function<void()> callback;
+    bool useThreadPool;
+    std::function<void()> writeCallback;
+    std::function<void()> readCallback;
 public:
     Channel(EventLoop* loop, int fd);
     ~Channel();
@@ -23,7 +25,10 @@ public:
     uint32_t getRevents();
 
     bool getInEpoll();
-    void setInEpoll();
+    void setInEpoll(bool _in = true);
+    void useET();
+
     void setRevents(uint32_t);
-    void setCallback(std::function<void()>);
+    void setReadCallback(std::function<void()>);
+    void setUseThreadPool(bool use = true);
 };

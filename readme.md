@@ -226,3 +226,40 @@ cv.notify_one(); // 唤醒一个等待的线程，与之前的条件判断配合
 这个版本把所有任务打包成std::function<void()>的方式包装可执行任务，并通过线程池进行调度。缺陷则是没有返回值。
 
 加入了线程池之后回顾我们这一个项目，发现以EventLoop为核心的事件触发与处理，以及基于Acceptor，Connection的Server功能实现，以及有了较为明显的区分。这两个部分之间的交流是基于Channel类来实现的，Channel里面包含了Socket，事件以及处理函数，是服务器工作的最小单元。
+
+day11 - 线程池的优化
+
+线程池的优化是一个非常庞大的话题，这里处理两个方面的优化：任务队列避免复制，响应函数的返回值处理。
+
+这里的处理用到了泛型编程，将返回值与函数参数类别作为模板输入。
+
+~~~cpp
+template <class F, class... Args>
+// F:可调用（函数）类型，Args:可调用的参数类型 返回一个future，其利用result_of获取可调用对象的返回类型。
+auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type>
+{
+    using return_type = typename std::result_of<F(Args...)>::type;
+    // 外包智能指针负责传递与调用中的内存管理，内包packaged_task负责后续用get_future()绑定到future
+    // 使用bind绑定函数f与参数，生成一个无参的可调用对象，返回一个future
+    auto task = std::make_shared<std::packaged_task<return_type()>>(
+        std::bind(std::forward<F>(f), std::forward<Args>(args)...));
+
+    std::future<return_type> res = task->get_future();
+    {
+        std::unique_lock<std::mutex> lock(mtx);
+
+        if (stop)
+            throw std::runtime_error("enqueue on stopped ThreadPool");
+        tasks.emplace([task]() { (*task)(); });
+    }
+    cv.notify_one();
+    return res;
+}
+~~~
+
+之前码代码的时候意识到但没有处理的问题零零总总全在这处理了，虽然也没完全处理完，但说实话真挺累人的：
+
+1、Socket与IP中，补上了客户端的connect，IP里也把地址封装到私有了。
+2、线程池这一块泛型编程还不能分离实现与声明
+3、把所有连进新客户端的连接处理从server拆到Acceptor里了
+4、Connection里出了读响应也加了写响应，虽然是空的

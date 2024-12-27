@@ -31,13 +31,3 @@ ThreadPool::~ThreadPool() {
             thread.join();
     }
 }
-
-void ThreadPool::add(std::function<void()> task) {
-    {
-        std::unique_lock<std::mutex> locker(mtx);
-        if (stop)
-            throw std::runtime_error("ThreadPool stopped");
-        tasks.emplace(task);
-    }
-    cv.notify_one();
-}

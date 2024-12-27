@@ -23,7 +23,8 @@ Socket::~Socket() {
 }
 
 void Socket::bind(InetAddress* addr) {
-    errif(::bind(fd, (sockaddr*)&addr->addr, addr->addr_len) == -1, "socket bind error");
+    struct sockaddr_in _addr = addr->getAddr();
+    errif(::bind(fd, (sockaddr*)&_addr, sizeof(_addr)) == -1, "socket bind error");
 }
 
 void Socket::listen() {
@@ -35,11 +36,18 @@ void Socket::setnonblocking() {
 }
 
 int Socket::accept(InetAddress* addr) {
-    int connfd = ::accept(fd, (sockaddr*)&addr->addr, &addr->addr_len);
+    struct sockaddr_in _addr = addr->getAddr();
+    socklen_t len = sizeof(_addr);
+    int connfd = ::accept(fd, (sockaddr*)&_addr, &len);
     errif(connfd == -1, "socket accept error");
     return connfd;
 }
 
 int Socket::getFd() {
     return fd;
+}
+
+void Socket::connect(InetAddress* addr) {
+    struct sockaddr_in _addr = addr->getAddr();
+    errif(::connect(fd, (sockaddr*)&_addr, sizeof(_addr)) == -1, "socket connect error");
 }
