@@ -7,7 +7,7 @@
 
 ## To Learn Sth More
 
-1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket；4、更好的缓冲区设计
+1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket；4、更好的缓冲区设计；5、线程池优化
 
 ## day01 - socket实现
 在Linux服务器上进行实现，gcc/g++ 7.5.0, cmake 3.10.2, VSCode 1.85.2
@@ -271,3 +271,9 @@ auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_
 这个模式不难理解，主Reactor对应主线程，从Reactor对应子线程，主线程负责监听新连接，子线程负责处理连接的事件。但和前面的代码一比较还是有些个说法的，现在每个线程都分到了一个EventLoop，之前是只有主线程有一个EventLoop，来把任务分配给子线程。执行任务的时候都是一锅粥轮流吃，现在是分了份，每个线程都有自己的碗，各自吃各自的，但主线程还得手动分粥到各个子线程，用了个伪随机（fd取余）处理。这个比喻太抽象了，具体的说每个线程与EventLoop连体，也就是独自和一个Epoll与客户端Connection/Channel连体，拆分程度更高。
 
 比较能预见的问题是某些线程中Connection释放与任务数量的不均衡导致的线程饥饿，现在先不考虑移交任务的问题。
+
+## day13 - 服务器业务逻辑
+
+原来的echo业务是在Connection类中的，而从逻辑上二者是分离的。现在修正Connection的业务逻辑，将业务逻辑从Connection中分离出来，通过回调函数的方式进行处理。在Connection类中较为清晰的将读写两个事件写明了。
+
+又是一场苦战，不难看出来。比想象中轻松，只能说debug一次之后就有经验了。今日的Bug是没把回调函数正确地注册到Channel中，以及读写缓冲区的处理。

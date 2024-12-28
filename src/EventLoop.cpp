@@ -17,7 +17,7 @@ EventLoop::~EventLoop() {
 void EventLoop::loop() {
     while (!quit) {
         std::vector<Channel*> activeChannels = ep->poll();
-        // printf("activeChannels size: %d\n", int(activeChannels.size()));
+        printf("activeChannels size: %d\n", int(activeChannels.size()));
         for (Channel* channel : activeChannels) {
             channel->handleEvent();
         }

@@ -1,3 +1,14 @@
+/**
+ * @file Channel.h
+ * @author Zasen (zasen2000@buaa.edu.cn)
+ * @brief 
+ * @version 0.1
+ * @date 2024-12-28
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #pragma once
 #include <sys/epoll.h>
 #include <functional>

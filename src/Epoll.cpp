@@ -32,9 +32,10 @@ std::vector<Channel*> Epoll::poll(int timeout) {
     std::vector<Channel*> activeEvents;
     int nums = epoll_wait(epfd, events, max_events, timeout);
     errif(nums == -1, "epoll wait error");
+    // printf("active events nums: %d\n", nums);
     for (int i = 0; i < nums; ++i) {
         Channel* ch = (Channel*)events[i].data.ptr;
-        // printf("channel fd: %d now get event: %d\n", ch->getFd(), int(events[i].events));
+        printf("channel fd: %d now get event: %d\n", ch->getFd(), int(events[i].events));
         ch->setRevents(events[i].events);
         activeEvents.push_back(ch);
     }
