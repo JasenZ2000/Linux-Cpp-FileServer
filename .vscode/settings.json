@@ -50,5 +50,6 @@
         "mutex": "cpp",
         "thread": "cpp",
         "future": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

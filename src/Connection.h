@@ -10,9 +10,10 @@
  */
 #pragma once
 #include <functional>
+#include <memory>
+#include "common.h"
 
 class EventLoop;
-class Socket;
 class Channel;
 class Buffer;
 
@@ -27,27 +28,31 @@ enum ConnState {
 class Connection {
 private:
     EventLoop* loop;
-    Socket* sock;
-    Channel* channel{nullptr};
-    std::function<void(Socket*)> deleteConnectionCallback;
+    int connid;
+    int clntFd;
+    std::unique_ptr<Channel> channel;
+
+    std::function<void(int)> deleteConnectionCallback;
     std::function<void(Connection*)> onConnectCallback;
     ConnState state{Invalid};
-    Buffer* readBuffer{nullptr};
-    Buffer* sendBuffer{nullptr}; 
+
+    std::unique_ptr<Buffer> readBuffer;
+    std::unique_ptr<Buffer> sendBuffer; 
 
     void readNonBlocking();
     void writeNonBlocking();
-    void readBlocking();
-    void writeBlocking();
 
 public:
-    Connection(EventLoop*, Socket*);
+    DISALLOW_COPY_AND_MOVE(Connection);
+    Connection(EventLoop*, int, int);
     ~Connection();
 
     void connRead();
     void connWrite();
+    void connSend(const std::string &msg); // 输出信息
+    void connSend(const char *msg);
 
-    void setDeleteConnectionCallback(std::function<void(Socket*)> const &callback);
+    void setDeleteConnectionCallback(std::function<void(int)> const &callback);
     void setOnConnectionCallback(std::function<void(Connection*)> const &callback);
     
     ConnState getState() const;
@@ -56,13 +61,15 @@ public:
 
     void setSendBuffer(const char*);
     void getlineSendBuffer();
+
     Buffer* getSendBuffer();
-    const char* SendBuffer(); 
-
     Buffer* getReadBuffer();
-    const char* ReadBuffer();
 
-    Socket* getSocket();
+    int getId();
+    int getClntFd();
 
-    void onConnect(void(Connection*));
+    void onConnect();
+    void deleteConnection();
+
+    EventLoop* getLoop();
 };

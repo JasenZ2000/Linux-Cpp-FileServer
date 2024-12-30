@@ -1,6 +1,7 @@
 #pragma once
 #include <sys/epoll.h>
 #include <vector>
+#include "common.h"
 
 class Channel;
 class Epoll {
@@ -8,10 +9,11 @@ private:
     int epfd;
     struct epoll_event* events; // 事件数组->epoll_wait
 public:
+    DISALLOW_COPY_AND_MOVE(Epoll);
     Epoll();
     ~Epoll();
-    void addFd(int fd, uint32_t op);
-    std::vector<Channel*> poll(int timeout = -1);
-    void updateChannel(Channel* channel);
-    void deleteChannel(Channel *channel);
+
+    std::vector<Channel*> poll(long timeout = -1) const;
+    void updateChannel(Channel* channel) const;
+    void deleteChannel(Channel *channel) const;
 };

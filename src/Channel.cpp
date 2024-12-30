@@ -26,16 +26,12 @@ void Channel::handleEvent()
     printf("Channel fd: %d handling event: %d\n", fd, int(revents));
     if (revents & (EPOLLIN | EPOLLRDHUP | EPOLLPRI))
     {
-        if (useThreadPool)
-            loop->addThread(readCallback);
-        else
+        if (readCallback)
             readCallback();
     }
     if (revents & EPOLLOUT)
     {
-        if (useThreadPool)
-            loop->addThread(writeCallback);
-        else
+        if (writeCallback)
             writeCallback();
     }
 }
@@ -43,6 +39,12 @@ void Channel::handleEvent()
 void Channel::enableReading()
 {
     events |= EPOLLIN | EPOLLRDHUP | EPOLLPRI;
+    loop->updateChannel(this);
+}
+
+void Channel::enableWriting()
+{
+    events |= EPOLLOUT;
     loop->updateChannel(this);
 }
 
@@ -82,12 +84,12 @@ void Channel::setRevents(uint32_t _revents)
     revents = _revents;
 }
 
-void Channel::setReadCallback(std::function<void()> _cb)
+void Channel::setReadCallback(std::function<void()> const &_cb)
 {
     readCallback = _cb;
 }
 
-void Channel::setUseThreadPool(bool use)
+void Channel::setWriteCallback(std::function<void()> const &_cb)
 {
-    useThreadPool = use;
+    writeCallback = _cb;
 }

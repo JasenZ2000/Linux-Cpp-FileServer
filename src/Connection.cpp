@@ -10,39 +10,36 @@
  */
 
 #include "Connection.h"
-#include "Acceptor.h"
 #include "Channel.h"
-#include "Socket.h"
 #include "Buffer.h"
 #include "util.h"
 #include <assert.h>
 #include <string.h>
 #include <unistd.h>
+#include <memory>
 
 #define READ_BUFFER 1024
 
-Connection::Connection(EventLoop *_loop, Socket *_sock)
+Connection::Connection(EventLoop *_loop, int _connid, int _clntFd)
     : loop(_loop),
-      sock(_sock),
-      channel(new Channel(_loop, _sock->getFd())),
-      sendBuffer(new Buffer()),
-      readBuffer(new Buffer())
+      connid(_connid),
+      clntFd(_clntFd)
 {
-    // 事件响应独立包装出去了
-    // std::function<void()> cb = std::bind(&Connection::echo, this, sock->getFd());
-    // channel->setReadCallback(cb);
-    channel->setUseThreadPool(true);
-    channel->enableReading();
-    channel->useET();
-    state = ConnState::Connected;
+    if (loop != nullptr) {
+        channel = std::make_unique<Channel>(loop, clntFd);
+        channel->setReadCallback(std::bind(&Connection::onConnect, this)); // 实时绑定
+        // channel->setWriteCallback(std::bind(&Connection::connWrite, this));
+        channel->enableReading();
+        channel->useET();
+        state = ConnState::Connected;
+    }
+    readBuffer = std::make_unique<Buffer>();
+    sendBuffer = std::make_unique<Buffer>();
 }
 
 Connection::~Connection()
 {
-    delete channel;
-    delete sock;
-    delete sendBuffer;
-    delete readBuffer;
+    ::close(clntFd);
 }
 
 void Connection::connRead()
@@ -59,13 +56,27 @@ void Connection::connWrite()
     sendBuffer->clear();
 }
 
+void Connection::connSend(const std::string &msg)
+{
+    assert(state == ConnState::Connected);
+    sendBuffer->setBuf(msg.c_str());
+    connWrite();
+}
+
+void Connection::connSend(const char *msg)
+{
+    assert(state == ConnState::Connected);
+    sendBuffer->setBuf(msg);
+    connWrite();
+}
+
 void Connection::readNonBlocking()
 {
     char buf[READ_BUFFER];
     while (true)
     {
         bzero(&buf, sizeof(buf));
-        ssize_t bytes_read = read(sock->getFd(), buf, sizeof(buf));
+        ssize_t bytes_read = read(clntFd, buf, sizeof(buf));
         if (bytes_read > 0)
         {
             readBuffer->append(buf, static_cast<int>(bytes_read));
@@ -82,7 +93,7 @@ void Connection::readNonBlocking()
         }
         else if (bytes_read == 0)
         {
-            printf("EOF, client fd %d disconnected\n", sock->getFd());
+            printf("EOF, client fd %d disconnected\n", clntFd);
             state = ConnState::Closed;
             break;
         }
@@ -102,7 +113,7 @@ void Connection::writeNonBlocking() {
     int data_left = data_size;
 
     while (data_left > 0) {
-        ssize_t bytes_write = write(sock->getFd(), buf + data_size - data_left, data_left);
+        ssize_t bytes_write = write(clntFd, buf + data_size - data_left, data_left);
         if (bytes_write == -1 && errno == EINTR) {
             printf("continue writing\n");
             continue;
@@ -125,8 +136,11 @@ ConnState Connection::getState() const {
 }
 
 void Connection::close() {
+    if (state == ConnState::Closed)
+        return;
     state = ConnState::Closed;
-    deleteConnectionCallback(sock);
+    if (deleteConnectionCallback)
+        deleteConnectionCallback(clntFd);
 }
 
 void Connection::setSendBuffer(const char* str) {
@@ -134,35 +148,51 @@ void Connection::setSendBuffer(const char* str) {
 }
 
 Buffer* Connection::getSendBuffer() {
-    return sendBuffer;
+    return sendBuffer.get();
 }
 
 Buffer* Connection::getReadBuffer() {
-    return readBuffer;
+    return readBuffer.get();
 }
 
-const char* Connection::SendBuffer() {
-    return sendBuffer->c_str();
-}
-
-const char* Connection::ReadBuffer() {
-    return readBuffer->c_str();
-}
-
-void Connection::setDeleteConnectionCallback(std::function<void(Socket*)> const &cb)
+void Connection::setDeleteConnectionCallback(std::function<void(int)> const &cb)
 {
-    deleteConnectionCallback = cb;
+    deleteConnectionCallback = std::move(cb);
 }
 
-void Connection::setOnConnectionCallback(std::function<void(Connection *)> const &callback) {
-  onConnectCallback = callback;
-  channel->setReadCallback([this]() { onConnectCallback(this); });
+void Connection::setOnConnectionCallback(std::function<void(Connection *)> const &cb) {
+    onConnectCallback = std::move(cb);
 }
 
 void Connection::getlineSendBuffer() {
     sendBuffer->getline();
 }
 
-Socket* Connection::getSocket() {
-    return sock;
+int Connection::getId() {
+    return connid;
+}
+
+int Connection::getClntFd() {
+    return clntFd;
+}
+
+EventLoop* Connection::getLoop() {
+    return loop;
+}
+
+void Connection::onConnect() {
+    connRead();
+    if (onConnectCallback)
+        onConnectCallback(this);
+}
+
+void Connection::deleteConnection() {
+    //std::cout << CurrentThread::tid() << " TcpConnection::HandleClose" << std::endl;
+    if (state != ConnState::Closed)
+    {
+        state = ConnState::Closed;
+        if(deleteConnectionCallback){
+            deleteConnectionCallback(clntFd);
+        }
+    }
 }

@@ -1,36 +1,36 @@
-/**
- * @file Server.h
- * @author Zasen (zasen2000@buaa.edu.cn)
- * @brief 包装了响应已连接客户端的事件
- * @version 0.13
- * @date 2024-12-28
- * 
- * @copyright Copyright (c) 2024
- * 
- */
 #pragma once
-#include <map>
+#include "common.h"
+#include <unordered_map>
 #include <vector>
 #include <functional>
+#include <memory>
 
 class EventLoop;
-class Socket;
 class Acceptor;
 class Connection;
 class ThreadPool;
 class Server{
 private:
-    EventLoop* mainReactor;
-    Acceptor* acceptor;
-    std::map<int, Connection*> connections;
-    std::vector<EventLoop*> subReactors;
-    ThreadPool* thPool;
+    std::unique_ptr<EventLoop> mainReactor;
+    int nextConnid;
+    std::unique_ptr<Acceptor> acceptor;
+
+    std::unordered_map<int, Connection*> connections;
+    std::vector<std::unique_ptr<EventLoop>> subReactors;
+    std::unique_ptr<ThreadPool> thPool;
+
     std::function<void(Connection*)> connCallback;
+    std::function<void(Connection*)> newConnCallback;
 public:
-    explicit Server(EventLoop*);
+    DISALLOW_COPY_AND_MOVE(Server);
+    Server(const char *ip, const int port);
     ~Server();
+
+    void start();
     // set 响应函数时使用std::function，方便使用lambda表达式等函数对象
-    void setOnConnectCallback(std::function<void(Connection*)>);
-    void newConnection(Socket*);
-    void deleteConnection(Socket*);
+    void setOnConnectCallback(std::function<void(Connection*)> const &fn);
+    void setOnNewConnectionCallback(std::function<void(Connection*)> const &fn);
+
+    void newConnection(int);
+    void deleteConnection(int);
 };

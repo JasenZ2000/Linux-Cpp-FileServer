@@ -277,3 +277,27 @@ auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_
 原来的echo业务是在Connection类中的，而从逻辑上二者是分离的。现在修正Connection的业务逻辑，将业务逻辑从Connection中分离出来，通过回调函数的方式进行处理。在Connection类中较为清晰的将读写两个事件写明了。
 
 又是一场苦战，不难看出来。比想象中轻松，只能说debug一次之后就有经验了。今日的Bug是没把回调函数正确地注册到Channel中，以及读写缓冲区的处理。
+
+## day14 - 代码优化
+
+1、例如EventLoop、Channel等事务与连接相关的类，我们不希望其被复制。要么将其拷贝构造函数与赋值运算符重载函数声明为私有，要么保证其不被自动实现。在其余进行资源创建的时候，尽可能使用移动语义。
+
+~~~cpp
+#define DISALLOW_COPY(cname)     \
+  cname(const cname &) = delete; \
+  cname &operator=(const cname &) = delete;
+
+#define DISALLOW_MOVE(cname) \
+  cname(cname &&) = delete;  \
+  cname &operator=(cname &&) = delete;
+
+#define DISALLOW_COPY_AND_MOVE(cname) \
+  DISALLOW_COPY(cname);               \
+  DISALLOW_MOVE(cname);
+~~~
+
+2、智能指针。在创建连接、资源时大量使用了无删除的new操作，现在尝试避免内存泄漏。bzero和memset之间还有小小争议。在管理智能指针时，基本上谁创建谁负责，许多的类之间是唯一绑定的，但是也存在野指针管理的情况，尤其是EventLoop需要传递的情况。
+
+3、Socket类删掉了，理由是在响应事件的过程中仅需要使用文件描述符，不需要一个Socket类。而在建立连接的过程中虽然需要使用其方法，但全部都在Acceptor类中，无需一个独立的Socket类。
+
+3、卧槽你的，大量的响应函数在Channel、Connection、Server还有Acceptor中间传递，运行的时候还是Epoll查找，Eventloop使Channel开始执行，在一整路向上找到用户的响应函数定义，全麻。

@@ -1,17 +1,15 @@
 #include "EventLoop.h"
 #include "Epoll.h"
 #include "Channel.h"
-#include "ThreadPool.h"
 #include <vector>
+#include <memory>
 
 EventLoop::EventLoop()
-    : ep(new Epoll()),
-      quit(false),
-      tp(new ThreadPool()) {}
+    : ep(std::make_unique<Epoll>()),
+      quit(false) {}
 
 EventLoop::~EventLoop() {
     quit = true;
-    delete ep;
 }
 
 void EventLoop::loop() {
@@ -28,6 +26,6 @@ void EventLoop::updateChannel(Channel* channel) {
     ep->updateChannel(channel);
 }
 
-void EventLoop::addThread(std::function<void()> func) {
-    tp->add(func);
+void EventLoop::removeChannel(Channel* channel) {
+    ep->deleteChannel(channel);
 }
