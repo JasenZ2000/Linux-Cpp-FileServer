@@ -3,9 +3,17 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include <unistd.h>
-#include "src/util.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define BUFFER_SIZE 1024 
+
+void errif(bool condition, const char* msg) {
+    if (condition) {
+        perror(msg);
+        exit(EXIT_FAILURE);
+    }
+}
 
 int main() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);

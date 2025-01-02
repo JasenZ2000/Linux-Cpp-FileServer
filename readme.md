@@ -298,6 +298,66 @@ auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_
 
 2、智能指针。在创建连接、资源时大量使用了无删除的new操作，现在尝试避免内存泄漏。bzero和memset之间还有小小争议。在管理智能指针时，基本上谁创建谁负责，许多的类之间是唯一绑定的，但是也存在野指针管理的情况，尤其是EventLoop需要传递的情况。
 
+~~~cpp
+#include <memory>
+// 智能指针初始化
+std::unique_ptr<Template T> u_ptr(new Object());
+// 智能指针获取
+u_ptr = std::make_unique<Object>();
+// 智能指针获取裸指针，释放
+u_ptr.get()
+u_ptr.release()
+~~~
+
 3、Socket类删掉了，理由是在响应事件的过程中仅需要使用文件描述符，不需要一个Socket类。而在建立连接的过程中虽然需要使用其方法，但全部都在Acceptor类中，无需一个独立的Socket类。
 
 3、卧槽你的，大量的响应函数在Channel、Connection、Server还有Acceptor中间传递，运行的时候还是Epoll查找，Eventloop使Channel开始执行，在一整路向上找到用户的响应函数定义，全麻。
+
+## day15 - Connection的生命周期
+
+之前说的智能指针管理，好处理的对象包括Server以及其对应的主从Reactor，线程，以及acceptor。维度Connection这一个类，由Accpector触发创建事件，由Server的函数进行创建，而删除事件又由Connection本身触发。而由于Connection连接着对应的Channel进行实时事件处理，最糟糕的情况下channel调用响应函数时Connection已经被释放了。导致这一状况的是EventLoop的实时控制要求和Server单一静态管理的矛盾。
+
+解决上述矛盾的方法是用一个shared_ptr，让EventLoop与Server共享Connection，这样就可以在EventLoop中控制Connection的生命周期，而Server则可以通过shared_ptr来管理Connection。
+
+~~~cpp
+#include <memory>
+// 智能指针初始化
+std::shared_ptr<Template T> s_ptr(new Object());
+// 智能指针获取
+s_ptr = std::make_shared<Object>();
+// 对于自定义的类，申明为继承自enable_shared_from_this
+class Object : public std::enable_shared_from_this<Object>
+// 才可使用shared_from_this()获取shared_ptr
+s_ptr_copy = s_ptr.shared_from_this();
+// 弱指针，以及将弱指针提升为shared_ptr
+std::weak_ptr<Template T> w_ptr;
+w_ptr = s_ptr;
+std::shared_ptr<Template T> s_ptr_copy = w_ptr.lock();
+~~~
+
+muduo的处理：
+
+1.首先连接到来，TcpServer创建TcpConnection，并存入容器。引用计数+1 总数：1
+
+2.客户端断开连接，在Channel的handleEvent函数中会将Channel中的TcpConnection弱指针提升,引用计数+1 总数：2
+
+3.触发HandleRead ，可读字节0，进而触发HandleClose,HandleClose函数中栈上的TcpConnectionPtr guardThis会继续将引用计数+1 总数：3
+
+4.触发HandleClose的回调函数 在TcpServer::removeConnection结束后(回归主线程队列)，释放HandleClose的栈指针，以及Channel里提升的指针引用计数-2 总数：1
+
+5.主线程执行回调removeConnectionInLoop，在函数内部将tcpconnection从TcpServer中保存连接容器中erase掉。但在removeConnectionInLoop结尾用conn为参数构造了bind。引用计数不变 总数：1
+
+6.回归次线程处理connectDestroyed事件，结束完释放参数传递的最后一个shard_ptr，释放TcpConnection。引用计数-1 总数：0
+
+md我EventLoop改到一半改不下去了，输了。ctrlcv一个版本了。由简到繁的梯度曲线在这里有点过于陡了，从一个玩具式的服务器到muduo水平的服务器，基本上主要的改变都在day14-15之间，全麻！
+
+改不下去的一个重要原因是没看懂这个从线程触发关闭连接，而后由主线程上完成Server中连接释放，然后再让子线程(Subreactor)完成连接关闭的过程，后面发现是为了保证connections存储模块的线程安全。另一个重要原因是EventLoop的唤醒事件概念，为了避免来了新任务的时候，EventLoop一直卡在等待唤醒事件，导致任务不执行，带来效率降低。这个对EventLoop的改动相当之大了。
+
+现在这个时候可能是我去接触muduo的时机了。后续的任务基本都脱离服务器本身的框架了，只有日志库可能是会贯穿整个项目，预计还有一个计时器是比较棘手的内容，其余都是比较独立的模块内容。
+
+## day16 - CMakeList
+
+使用更加工程化的cmake生成项目，并通过build目录分离生成对象。
+
+[知乎-CMake使用指南] https://zhuanlan.zhihu.com/p/371257515
+

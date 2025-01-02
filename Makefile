@@ -1,13 +1,13 @@
-src=$(wildcard src/*.cpp)
+TCP=$(wildcard tcp/*.cpp)
 
 server:
 	g++ -std=c++14 -pthread -g \
-	$(src) \
-	server.cpp \
+	$(TCP) \
+	echo_server.cpp \
 	-o server
 	
 client:
-	g++ src/util.cpp client.cpp -o client
+	g++ -pthread client.cpp -o client
 
 clean:
 	rm server && rm client
