@@ -1,8 +1,19 @@
+/**
+ * @file TcpServer.cpp
+ * @author Zasen (zasen2000@buaa.edu.cn)
+ * @brief day17-分离了Server创建中手动捆绑Thread与EventLoop的过程。
+ * @version 0.1
+ * @date 2025-01-02
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "TcpServer.h"
 #include "TcpConnection.h"
 #include "EventLoop.h"
 #include "Acceptor.h"
-#include "ThreadPool.h"
+#include "EventLoopThreadPool.h"
 #include "CurrentThread.h"
 #include "common.h"
 #include <memory>
@@ -16,13 +27,7 @@ TcpServer::TcpServer(EventLoop *loop, const char * ip, const int port): main_rea
     std::function<void(int)> cb = std::bind(&TcpServer::HandleNewConnection, this, std::placeholders::_1);
     acceptor_->set_newconnection_callback(cb);
 
-    // 创建从reactor。
-    unsigned int size = std::thread::hardware_concurrency();
-    thread_pool_ = std::make_unique<ThreadPool>(size);
-    for (size_t i = 0; i < size; ++i){
-        std::unique_ptr<EventLoop> sub_reactor = std::make_unique<EventLoop>();
-        sub_reactors_.push_back(std::move(sub_reactor));
-    }
+    thread_pool_ = std::make_unique<EventLoopThreadPool>(main_reactor_, 10);
 
     // std::cout << "Tcpserver listening on " << ip << ":" << port << std::endl;
 }
@@ -31,20 +36,16 @@ TcpServer::~TcpServer(){
 };
 
 void TcpServer::Start(){
-    // 将相应的从reactor分配给不同的线程。
-    for (size_t i = 0; i < sub_reactors_.size(); ++i){
-        std::function<void()> sub_loop = std::bind(&EventLoop::Loop, sub_reactors_[i].get());
-        thread_pool_->Add(std::move(sub_loop));
-    }
+    thread_pool_->Start();
     main_reactor_->Loop();
 }
 
 inline void TcpServer::HandleNewConnection(int fd){
     assert(fd != -1);
-    uint64_t random = fd % sub_reactors_.size();
+    EventLoop *sub_reactor = thread_pool_->GetNextLoop();
     
     // 创建TcpConnection对象
-    std::shared_ptr<TcpConnection> conn = std::make_shared<TcpConnection>(sub_reactors_[random].get(), fd, next_conn_id_);
+    std::shared_ptr<TcpConnection> conn = std::make_shared<TcpConnection>(sub_reactor, fd, next_conn_id_);
     std::function<void(const std::shared_ptr<TcpConnection> &)> cb = std::bind(&TcpServer::HandleClose, this, std::placeholders::_1);
     conn->set_connection_callback(on_connect_);
 

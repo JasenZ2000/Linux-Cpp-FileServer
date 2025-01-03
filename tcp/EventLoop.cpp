@@ -1,5 +1,14 @@
+/**
+ * @file EventLoop.cpp
+ * @author Zasen (zasen2000@buaa.edu.cn)
+ * @brief 创建EventLoop的线程现在确定为从线程，小改初始函数
+ * @version 0.1
+ * @date 2025-01-03
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "EventLoop.h"
-
 #include "Channel.h"
 #include "Epoller.h"
 #include "CurrentThread.h"
@@ -12,7 +21,7 @@
 #include <assert.h>
 
 
-EventLoop::EventLoop() { 
+EventLoop::EventLoop() : tid_(CurrentThread::tid()) { 
     poller_ = std::make_unique<Epoller>();
     wakeup_fd_ = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
     wakeup_channel_ = std::make_unique<Channel>(wakeup_fd_, this);
@@ -28,8 +37,6 @@ EventLoop::~EventLoop() {
 }
 
 void EventLoop::Loop(){
-    // 将Loop函数分配给了不同的线程，获取执行该函数的线程
-    tid_ = CurrentThread::tid();
     while (true)
     {
         for (Channel *active_ch : poller_->Poll()){

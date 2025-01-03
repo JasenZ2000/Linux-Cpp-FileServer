@@ -361,3 +361,12 @@ md我EventLoop改到一半改不下去了，输了。ctrlcv一个版本了。由
 
 [知乎-CMake使用指南] https://zhuanlan.zhihu.com/p/371257515
 
+## day17 - muduo的多线程实现方案
+
+Muduo的多线程实现方案是基于Reactor模式的多线程实现方案。相对于这里原来的常规线程池，通过绑定reactor(epoll)的loop(循环epoll_wait)来实现多线程的方案，muduo通过EventLoopThreadPool，EventLoopThread和EventLoop的三层封装，实现了更加清晰的多线程实现方案。具体会发生哪些影响，等我先看一看。
+
+1、原来：Server类中创线程池，创EventLoop，在Start时把每个EventLoop的Loop分给子线程去执行。现在：Server类创建线程池以及EventLoopThreadPool，由EventLoopThreadPool创建EventLoopThread，由EventLoopThread创建EventLoop。
+
+2、在具体运行时，EventLoopThreadPool完全运行于主线程上，负责创建EventLoopThread并启动；EventLoopThread在初始化时运行于主线程上，开始时自创子线程，在子线程上创建EventLoop，存在线程安全问题。EventLoop本身则运行于子线程上，负责监听事件并处理。
+
+3、原版muduo还是不小的，自己实现了Thread，通过隔离Thread的注册与开始，让逻辑上更加清晰。这里就不能直接参考，C++默认THread是注册即开始的。

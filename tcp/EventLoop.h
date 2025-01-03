@@ -46,7 +46,8 @@ public:
 private:
     std::unique_ptr<Epoller> poller_;
     std::vector<std::function<void()>> to_do_list_;
-    std::mutex mutex_;
+    // 既然有任务队列，就需要有一个锁，这里可能被主线程和子线程同时访问，因此需要保护。
+    std::mutex mutex_; 
 
     int wakeup_fd_;
     std::unique_ptr<Channel> wakeup_channel_;
