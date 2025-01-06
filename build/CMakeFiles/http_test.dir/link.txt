@@ -1,0 +1,1 @@
+g++  -Wall -g -std=c++14 -Werror   CMakeFiles/http_test.dir/test_httpcontext.cpp.o CMakeFiles/http_test.dir/http/HttpContext.cpp.o CMakeFiles/http_test.dir/http/HttpRequest.cpp.o CMakeFiles/http_test.dir/http/HttpResponse.cpp.o CMakeFiles/http_test.dir/http/HttpServer.cpp.o  -o test/http_test 

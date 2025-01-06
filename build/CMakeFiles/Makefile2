@@ -60,76 +60,39 @@ CMAKE_SOURCE_DIR = /data/zzs/CppWebServer
 CMAKE_BINARY_DIR = /data/zzs/CppWebServer/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/echoserver.dir
+# Target rules for target CMakeFiles/http_server.dir
 
 # All Build rule for target.
-CMakeFiles/echoserver.dir/all:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/depend
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14 "Built target echoserver"
-.PHONY : CMakeFiles/echoserver.dir/all
+CMakeFiles/http_server.dir/all:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/depend
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target http_server"
+.PHONY : CMakeFiles/http_server.dir/all
 
 # Include target in all.
-all: CMakeFiles/echoserver.dir/all
+all: CMakeFiles/http_server.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/echoserver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /data/zzs/CppWebServer/build/CMakeFiles 12
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/echoserver.dir/all
+CMakeFiles/http_server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /data/zzs/CppWebServer/build/CMakeFiles 16
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/http_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /data/zzs/CppWebServer/build/CMakeFiles 0
-.PHONY : CMakeFiles/echoserver.dir/rule
+.PHONY : CMakeFiles/http_server.dir/rule
 
 # Convenience name for target.
-echoserver: CMakeFiles/echoserver.dir/rule
+http_server: CMakeFiles/http_server.dir/rule
 
-.PHONY : echoserver
-
-# clean rule for target.
-CMakeFiles/echoserver.dir/clean:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/clean
-.PHONY : CMakeFiles/echoserver.dir/clean
+.PHONY : http_server
 
 # clean rule for target.
-clean: CMakeFiles/echoserver.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/client.dir
-
-# All Build rule for target.
-CMakeFiles/client.dir/all:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/depend
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=1,2 "Built target client"
-.PHONY : CMakeFiles/client.dir/all
-
-# Include target in all.
-all: CMakeFiles/client.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /data/zzs/CppWebServer/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/client.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /data/zzs/CppWebServer/build/CMakeFiles 0
-.PHONY : CMakeFiles/client.dir/rule
-
-# Convenience name for target.
-client: CMakeFiles/client.dir/rule
-
-.PHONY : client
+CMakeFiles/http_server.dir/clean:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/clean
+.PHONY : CMakeFiles/http_server.dir/clean
 
 # clean rule for target.
-CMakeFiles/client.dir/clean:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/clean
-.PHONY : CMakeFiles/client.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/client.dir/clean
+clean: CMakeFiles/http_server.dir/clean
 
 .PHONY : clean
 

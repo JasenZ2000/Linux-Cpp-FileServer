@@ -1,4 +1,3 @@
-/data/zzs/CppWebServer/build/CMakeFiles/edit_cache.dir
 /data/zzs/CppWebServer/build/CMakeFiles/rebuild_cache.dir
-/data/zzs/CppWebServer/build/CMakeFiles/echoserver.dir
-/data/zzs/CppWebServer/build/CMakeFiles/client.dir
+/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir
+/data/zzs/CppWebServer/build/CMakeFiles/edit_cache.dir

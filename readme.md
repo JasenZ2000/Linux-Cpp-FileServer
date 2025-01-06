@@ -370,3 +370,48 @@ Muduo的多线程实现方案是基于Reactor模式的多线程实现方案。�
 2、在具体运行时，EventLoopThreadPool完全运行于主线程上，负责创建EventLoopThread并启动；EventLoopThread在初始化时运行于主线程上，开始时自创子线程，在子线程上创建EventLoop，存在线程安全问题。EventLoop本身则运行于子线程上，负责监听事件并处理。
 
 3、原版muduo还是不小的，自己实现了Thread，通过隔离Thread的注册与开始，让逻辑上更加清晰。这里就不能直接参考，C++默认THread是注册即开始的。
+
+## day18 - HTTP协议
+
+两种HTTP解析方案：原项目的状态转换机，以及目前正在参考的另一个cpp-httplib库（逐行解析）。好像一般是状态转换机相对性能更高，node.js也是用的这种（llhttp）。Http请求报文包括请求行、请求头、请求体，请求体之前还有空行。
+
+~~~
+GET /HEELO HTTP/1.1\r\n
+Host: 127.0.0.1:1234\r\n
+Connection: Keep-alive\r\n
+Content-Length: 12\r\n
+\r\n
+hello world;
+~~~
+
+HTTP请求的解析结果包括以下内容：
+
+~~~cpp
+class HttpRequest{
+private:
+    Method method_; // 请求方法
+    Version version_; // HTTP版本
+    std::map<std::string, std::string> request_params_; // 请求参数
+    std::string url_; // 请求路径
+    std::string protocol_; // 请求协议
+    std::map<std::string, std::string> headers_; // 请求头
+    std::string body_; // 请求体
+}
+~~~
+
+非常纯粹的重复工作，逐字符读入判断状态变化，还挺逆天的。最大的问题是对每个字符都要进行状态判断，效率低下。果然还是分解成内部循环更加符合我刷算法题的直觉，就不在这里写了，要吐出来了。
+
+## day19 - HTTP服务器
+
+HTTP的服务端响应报文包括响应行、响应头、响应体，同样在响应体之前有空行。
+
+~~~
+HTTP/1.1 200 OK\r\n
+Content-Encoding: gzip\r\n
+Content-Type: text/html\r\n
+Content-Length: 5\r\n
+\r\n
+hello
+~~~
+
+其实读入的Http报文也算是一种缓存吧，写到了COnnection里面，挺神奇的。其他真的没啥，主要就是在TCP上加入了固定的Http输入输出格式，比较简单的封装。

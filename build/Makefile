@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /data/zzs/CppWebServer/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,84 +111,152 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named echoserver
+# Target rules for targets named http_server
 
 # Build rule for target.
-echoserver: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 echoserver
-.PHONY : echoserver
+http_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 http_server
+.PHONY : http_server
 
 # fast build rule for target.
-echoserver/fast:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/build
-.PHONY : echoserver/fast
+http_server/fast:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/build
+.PHONY : http_server/fast
 
-#=============================================================================
-# Target rules for targets named client
+http/HttpContext.o: http/HttpContext.cpp.o
 
-# Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client
-.PHONY : client
-
-# fast build rule for target.
-client/fast:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-.PHONY : client/fast
-
-client.o: client.cpp.o
-
-.PHONY : client.o
+.PHONY : http/HttpContext.o
 
 # target to build an object file
-client.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.o
-.PHONY : client.cpp.o
+http/HttpContext.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpContext.cpp.o
+.PHONY : http/HttpContext.cpp.o
 
-client.i: client.cpp.i
+http/HttpContext.i: http/HttpContext.cpp.i
 
-.PHONY : client.i
+.PHONY : http/HttpContext.i
 
 # target to preprocess a source file
-client.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.i
-.PHONY : client.cpp.i
+http/HttpContext.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpContext.cpp.i
+.PHONY : http/HttpContext.cpp.i
 
-client.s: client.cpp.s
+http/HttpContext.s: http/HttpContext.cpp.s
 
-.PHONY : client.s
+.PHONY : http/HttpContext.s
 
 # target to generate assembly for a file
-client.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.s
-.PHONY : client.cpp.s
+http/HttpContext.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpContext.cpp.s
+.PHONY : http/HttpContext.cpp.s
 
-echo_server.o: echo_server.cpp.o
+http/HttpRequest.o: http/HttpRequest.cpp.o
 
-.PHONY : echo_server.o
+.PHONY : http/HttpRequest.o
 
 # target to build an object file
-echo_server.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/echo_server.cpp.o
-.PHONY : echo_server.cpp.o
+http/HttpRequest.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpRequest.cpp.o
+.PHONY : http/HttpRequest.cpp.o
 
-echo_server.i: echo_server.cpp.i
+http/HttpRequest.i: http/HttpRequest.cpp.i
 
-.PHONY : echo_server.i
+.PHONY : http/HttpRequest.i
 
 # target to preprocess a source file
-echo_server.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/echo_server.cpp.i
-.PHONY : echo_server.cpp.i
+http/HttpRequest.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpRequest.cpp.i
+.PHONY : http/HttpRequest.cpp.i
 
-echo_server.s: echo_server.cpp.s
+http/HttpRequest.s: http/HttpRequest.cpp.s
 
-.PHONY : echo_server.s
+.PHONY : http/HttpRequest.s
 
 # target to generate assembly for a file
-echo_server.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/echo_server.cpp.s
-.PHONY : echo_server.cpp.s
+http/HttpRequest.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpRequest.cpp.s
+.PHONY : http/HttpRequest.cpp.s
+
+http/HttpResponse.o: http/HttpResponse.cpp.o
+
+.PHONY : http/HttpResponse.o
+
+# target to build an object file
+http/HttpResponse.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpResponse.cpp.o
+.PHONY : http/HttpResponse.cpp.o
+
+http/HttpResponse.i: http/HttpResponse.cpp.i
+
+.PHONY : http/HttpResponse.i
+
+# target to preprocess a source file
+http/HttpResponse.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpResponse.cpp.i
+.PHONY : http/HttpResponse.cpp.i
+
+http/HttpResponse.s: http/HttpResponse.cpp.s
+
+.PHONY : http/HttpResponse.s
+
+# target to generate assembly for a file
+http/HttpResponse.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpResponse.cpp.s
+.PHONY : http/HttpResponse.cpp.s
+
+http/HttpServer.o: http/HttpServer.cpp.o
+
+.PHONY : http/HttpServer.o
+
+# target to build an object file
+http/HttpServer.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpServer.cpp.o
+.PHONY : http/HttpServer.cpp.o
+
+http/HttpServer.i: http/HttpServer.cpp.i
+
+.PHONY : http/HttpServer.i
+
+# target to preprocess a source file
+http/HttpServer.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpServer.cpp.i
+.PHONY : http/HttpServer.cpp.i
+
+http/HttpServer.s: http/HttpServer.cpp.s
+
+.PHONY : http/HttpServer.s
+
+# target to generate assembly for a file
+http/HttpServer.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpServer.cpp.s
+.PHONY : http/HttpServer.cpp.s
+
+http_server.o: http_server.cpp.o
+
+.PHONY : http_server.o
+
+# target to build an object file
+http_server.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http_server.cpp.o
+.PHONY : http_server.cpp.o
+
+http_server.i: http_server.cpp.i
+
+.PHONY : http_server.i
+
+# target to preprocess a source file
+http_server.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http_server.cpp.i
+.PHONY : http_server.cpp.i
+
+http_server.s: http_server.cpp.s
+
+.PHONY : http_server.s
+
+# target to generate assembly for a file
+http_server.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http_server.cpp.s
+.PHONY : http_server.cpp.s
 
 tcp/Acceptor.o: tcp/Acceptor.cpp.o
 
@@ -196,7 +264,7 @@ tcp/Acceptor.o: tcp/Acceptor.cpp.o
 
 # target to build an object file
 tcp/Acceptor.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o
 .PHONY : tcp/Acceptor.cpp.o
 
 tcp/Acceptor.i: tcp/Acceptor.cpp.i
@@ -205,7 +273,7 @@ tcp/Acceptor.i: tcp/Acceptor.cpp.i
 
 # target to preprocess a source file
 tcp/Acceptor.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.i
 .PHONY : tcp/Acceptor.cpp.i
 
 tcp/Acceptor.s: tcp/Acceptor.cpp.s
@@ -214,7 +282,7 @@ tcp/Acceptor.s: tcp/Acceptor.cpp.s
 
 # target to generate assembly for a file
 tcp/Acceptor.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.s
 .PHONY : tcp/Acceptor.cpp.s
 
 tcp/Buffer.o: tcp/Buffer.cpp.o
@@ -223,7 +291,7 @@ tcp/Buffer.o: tcp/Buffer.cpp.o
 
 # target to build an object file
 tcp/Buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Buffer.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Buffer.cpp.o
 .PHONY : tcp/Buffer.cpp.o
 
 tcp/Buffer.i: tcp/Buffer.cpp.i
@@ -232,7 +300,7 @@ tcp/Buffer.i: tcp/Buffer.cpp.i
 
 # target to preprocess a source file
 tcp/Buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Buffer.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Buffer.cpp.i
 .PHONY : tcp/Buffer.cpp.i
 
 tcp/Buffer.s: tcp/Buffer.cpp.s
@@ -241,7 +309,7 @@ tcp/Buffer.s: tcp/Buffer.cpp.s
 
 # target to generate assembly for a file
 tcp/Buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Buffer.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Buffer.cpp.s
 .PHONY : tcp/Buffer.cpp.s
 
 tcp/Channel.o: tcp/Channel.cpp.o
@@ -250,7 +318,7 @@ tcp/Channel.o: tcp/Channel.cpp.o
 
 # target to build an object file
 tcp/Channel.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Channel.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.o
 .PHONY : tcp/Channel.cpp.o
 
 tcp/Channel.i: tcp/Channel.cpp.i
@@ -259,7 +327,7 @@ tcp/Channel.i: tcp/Channel.cpp.i
 
 # target to preprocess a source file
 tcp/Channel.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Channel.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.i
 .PHONY : tcp/Channel.cpp.i
 
 tcp/Channel.s: tcp/Channel.cpp.s
@@ -268,7 +336,7 @@ tcp/Channel.s: tcp/Channel.cpp.s
 
 # target to generate assembly for a file
 tcp/Channel.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Channel.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.s
 .PHONY : tcp/Channel.cpp.s
 
 tcp/CurrentThread.o: tcp/CurrentThread.cpp.o
@@ -277,7 +345,7 @@ tcp/CurrentThread.o: tcp/CurrentThread.cpp.o
 
 # target to build an object file
 tcp/CurrentThread.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.o
 .PHONY : tcp/CurrentThread.cpp.o
 
 tcp/CurrentThread.i: tcp/CurrentThread.cpp.i
@@ -286,7 +354,7 @@ tcp/CurrentThread.i: tcp/CurrentThread.cpp.i
 
 # target to preprocess a source file
 tcp/CurrentThread.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.i
 .PHONY : tcp/CurrentThread.cpp.i
 
 tcp/CurrentThread.s: tcp/CurrentThread.cpp.s
@@ -295,7 +363,7 @@ tcp/CurrentThread.s: tcp/CurrentThread.cpp.s
 
 # target to generate assembly for a file
 tcp/CurrentThread.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.s
 .PHONY : tcp/CurrentThread.cpp.s
 
 tcp/Epoller.o: tcp/Epoller.cpp.o
@@ -304,7 +372,7 @@ tcp/Epoller.o: tcp/Epoller.cpp.o
 
 # target to build an object file
 tcp/Epoller.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Epoller.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Epoller.cpp.o
 .PHONY : tcp/Epoller.cpp.o
 
 tcp/Epoller.i: tcp/Epoller.cpp.i
@@ -313,7 +381,7 @@ tcp/Epoller.i: tcp/Epoller.cpp.i
 
 # target to preprocess a source file
 tcp/Epoller.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Epoller.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Epoller.cpp.i
 .PHONY : tcp/Epoller.cpp.i
 
 tcp/Epoller.s: tcp/Epoller.cpp.s
@@ -322,7 +390,7 @@ tcp/Epoller.s: tcp/Epoller.cpp.s
 
 # target to generate assembly for a file
 tcp/Epoller.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/Epoller.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Epoller.cpp.s
 .PHONY : tcp/Epoller.cpp.s
 
 tcp/EventLoop.o: tcp/EventLoop.cpp.o
@@ -331,7 +399,7 @@ tcp/EventLoop.o: tcp/EventLoop.cpp.o
 
 # target to build an object file
 tcp/EventLoop.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o
 .PHONY : tcp/EventLoop.cpp.o
 
 tcp/EventLoop.i: tcp/EventLoop.cpp.i
@@ -340,7 +408,7 @@ tcp/EventLoop.i: tcp/EventLoop.cpp.i
 
 # target to preprocess a source file
 tcp/EventLoop.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoop.cpp.i
 .PHONY : tcp/EventLoop.cpp.i
 
 tcp/EventLoop.s: tcp/EventLoop.cpp.s
@@ -349,7 +417,7 @@ tcp/EventLoop.s: tcp/EventLoop.cpp.s
 
 # target to generate assembly for a file
 tcp/EventLoop.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoop.cpp.s
 .PHONY : tcp/EventLoop.cpp.s
 
 tcp/EventLoopThread.o: tcp/EventLoopThread.cpp.o
@@ -358,7 +426,7 @@ tcp/EventLoopThread.o: tcp/EventLoopThread.cpp.o
 
 # target to build an object file
 tcp/EventLoopThread.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o
 .PHONY : tcp/EventLoopThread.cpp.o
 
 tcp/EventLoopThread.i: tcp/EventLoopThread.cpp.i
@@ -367,7 +435,7 @@ tcp/EventLoopThread.i: tcp/EventLoopThread.cpp.i
 
 # target to preprocess a source file
 tcp/EventLoopThread.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.i
 .PHONY : tcp/EventLoopThread.cpp.i
 
 tcp/EventLoopThread.s: tcp/EventLoopThread.cpp.s
@@ -376,7 +444,7 @@ tcp/EventLoopThread.s: tcp/EventLoopThread.cpp.s
 
 # target to generate assembly for a file
 tcp/EventLoopThread.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.s
 .PHONY : tcp/EventLoopThread.cpp.s
 
 tcp/EventLoopThreadPool.o: tcp/EventLoopThreadPool.cpp.o
@@ -385,7 +453,7 @@ tcp/EventLoopThreadPool.o: tcp/EventLoopThreadPool.cpp.o
 
 # target to build an object file
 tcp/EventLoopThreadPool.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o
 .PHONY : tcp/EventLoopThreadPool.cpp.o
 
 tcp/EventLoopThreadPool.i: tcp/EventLoopThreadPool.cpp.i
@@ -394,7 +462,7 @@ tcp/EventLoopThreadPool.i: tcp/EventLoopThreadPool.cpp.i
 
 # target to preprocess a source file
 tcp/EventLoopThreadPool.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.i
 .PHONY : tcp/EventLoopThreadPool.cpp.i
 
 tcp/EventLoopThreadPool.s: tcp/EventLoopThreadPool.cpp.s
@@ -403,7 +471,7 @@ tcp/EventLoopThreadPool.s: tcp/EventLoopThreadPool.cpp.s
 
 # target to generate assembly for a file
 tcp/EventLoopThreadPool.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.s
 .PHONY : tcp/EventLoopThreadPool.cpp.s
 
 tcp/TcpConnection.o: tcp/TcpConnection.cpp.o
@@ -412,7 +480,7 @@ tcp/TcpConnection.o: tcp/TcpConnection.cpp.o
 
 # target to build an object file
 tcp/TcpConnection.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o
 .PHONY : tcp/TcpConnection.cpp.o
 
 tcp/TcpConnection.i: tcp/TcpConnection.cpp.i
@@ -421,7 +489,7 @@ tcp/TcpConnection.i: tcp/TcpConnection.cpp.i
 
 # target to preprocess a source file
 tcp/TcpConnection.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.i
 .PHONY : tcp/TcpConnection.cpp.i
 
 tcp/TcpConnection.s: tcp/TcpConnection.cpp.s
@@ -430,7 +498,7 @@ tcp/TcpConnection.s: tcp/TcpConnection.cpp.s
 
 # target to generate assembly for a file
 tcp/TcpConnection.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.s
 .PHONY : tcp/TcpConnection.cpp.s
 
 tcp/TcpServer.o: tcp/TcpServer.cpp.o
@@ -439,7 +507,7 @@ tcp/TcpServer.o: tcp/TcpServer.cpp.o
 
 # target to build an object file
 tcp/TcpServer.cpp.o:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.o
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o
 .PHONY : tcp/TcpServer.cpp.o
 
 tcp/TcpServer.i: tcp/TcpServer.cpp.i
@@ -448,7 +516,7 @@ tcp/TcpServer.i: tcp/TcpServer.cpp.i
 
 # target to preprocess a source file
 tcp/TcpServer.cpp.i:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.i
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.i
 .PHONY : tcp/TcpServer.cpp.i
 
 tcp/TcpServer.s: tcp/TcpServer.cpp.s
@@ -457,7 +525,7 @@ tcp/TcpServer.s: tcp/TcpServer.cpp.s
 
 # target to generate assembly for a file
 tcp/TcpServer.cpp.s:
-	$(MAKE) -f CMakeFiles/echoserver.dir/build.make CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.s
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.s
 .PHONY : tcp/TcpServer.cpp.s
 
 # Help Target
@@ -466,16 +534,24 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... echoserver"
-	@echo "... client"
-	@echo "... client.o"
-	@echo "... client.i"
-	@echo "... client.s"
-	@echo "... echo_server.o"
-	@echo "... echo_server.i"
-	@echo "... echo_server.s"
+	@echo "... http_server"
+	@echo "... edit_cache"
+	@echo "... http/HttpContext.o"
+	@echo "... http/HttpContext.i"
+	@echo "... http/HttpContext.s"
+	@echo "... http/HttpRequest.o"
+	@echo "... http/HttpRequest.i"
+	@echo "... http/HttpRequest.s"
+	@echo "... http/HttpResponse.o"
+	@echo "... http/HttpResponse.i"
+	@echo "... http/HttpResponse.s"
+	@echo "... http/HttpServer.o"
+	@echo "... http/HttpServer.i"
+	@echo "... http/HttpServer.s"
+	@echo "... http_server.o"
+	@echo "... http_server.i"
+	@echo "... http_server.s"
 	@echo "... tcp/Acceptor.o"
 	@echo "... tcp/Acceptor.i"
 	@echo "... tcp/Acceptor.s"

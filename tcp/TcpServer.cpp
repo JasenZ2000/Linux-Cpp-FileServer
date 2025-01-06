@@ -62,13 +62,14 @@ inline void TcpServer::HandleNewConnection(int fd){
     conn->ConnectionEstablished();
 }
 
+void TcpServer::SetThreadNum(int num) { thread_pool_->SetThreadNum(num);}
 
-inline void TcpServer::HandleClose(const std::shared_ptr<TcpConnection> & conn){
+inline void TcpServer::HandleClose(const conn_ptr & conn){
     std::cout <<  CurrentThread::tid() << " TcpServer::HandleClose"  << std::endl;
     main_reactor_->RunOneFunc(std::bind(&TcpServer::HandleCloseInLoop, this, conn));
 }
 
-inline void TcpServer::HandleCloseInLoop(const std::shared_ptr<TcpConnection> & conn){
+inline void TcpServer::HandleCloseInLoop(const conn_ptr & conn){
     std::cout << CurrentThread::tid()  << " TcpServer::HandleCloseInLoop - Remove connection id: " <<  conn->id() << " and fd: " << conn->fd() << std::endl;
     auto it = connectionsMap_.find(conn->fd());
     assert(it != connectionsMap_.end());
@@ -80,5 +81,5 @@ inline void TcpServer::HandleCloseInLoop(const std::shared_ptr<TcpConnection> & 
     loop->QueueOneFunc(std::bind(&TcpConnection::ConnectionDestructor, conn));
 }
 
-void TcpServer::set_connection_callback(std::function<void(const std::shared_ptr<TcpConnection> &)> const &fn) { on_connect_ = std::move(fn); };
-void TcpServer::set_message_callback(std::function<void(const std::shared_ptr<TcpConnection> &)> const &fn) { on_message_ = std::move(fn); };
+void TcpServer::set_connection_callback(conn_callback const &fn) { on_connect_ = std::move(fn); };
+void TcpServer::set_message_callback(conn_callback const &fn) { on_message_ = std::move(fn); };

@@ -5,9 +5,12 @@
 #include <memory>
 #include <string>
 class Buffer;
+class HttpContext;
 class TcpConnection : public std::enable_shared_from_this<TcpConnection>
 {
 public:
+    typedef std::function<void(const std::shared_ptr<TcpConnection> &)> conn_callback;
+
     enum ConnectionState
     {
         Invalid = 1,
@@ -28,11 +31,11 @@ public:
     void ConnectionDestructor();
 
     // 建立连接时调用回调函数
-    void set_connection_callback(std::function<void(const std::shared_ptr<TcpConnection> &)> const &fn);
+    void set_connection_callback(conn_callback const &fn);
      // 关闭时的回调函数
-    void set_close_callback(std::function<void(const std::shared_ptr<TcpConnection> &)> const &fn);   
+    void set_close_callback(conn_callback const &fn);   
     // 接受到信息的回调函数                                  
-    void set_message_callback(std::function<void(const std::shared_ptr<TcpConnection> &)> const &fn); 
+    void set_message_callback(conn_callback const &fn); 
 
     // 设定send buf
     void set_send_buf(const char *str); 
@@ -57,6 +60,8 @@ public:
     int fd() const;
     int id() const;
 
+    HttpContext *context() const { return context_.get(); };
+
 private:
     // 该连接绑定的Socket
     int connfd_;
@@ -72,9 +77,11 @@ private:
     std::unique_ptr<Buffer> read_buf_;
     std::unique_ptr<Buffer> send_buf_;
 
-    std::function<void(const std::shared_ptr<TcpConnection> &)> on_close_;
-    std::function<void(const std::shared_ptr<TcpConnection> &)> on_message_;
-    std::function<void(const std::shared_ptr<TcpConnection> &)> on_connect_;
+    std::unique_ptr<HttpContext> context_;
+
+    conn_callback on_close_;
+    conn_callback on_message_;
+    conn_callback on_connect_;
 
     void ReadNonBlocking();
     void WriteNonBlocking();

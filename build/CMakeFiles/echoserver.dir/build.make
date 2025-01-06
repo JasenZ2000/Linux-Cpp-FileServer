@@ -64,11 +64,11 @@ CMakeFiles/echoserver.dir/echo_server.cpp.o: ../echo_server.cpp
 
 CMakeFiles/echoserver.dir/echo_server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/echo_server.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/echo_server.cpp > CMakeFiles/echoserver.dir/echo_server.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/echo_server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/echo_server.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/echo_server.cpp -o CMakeFiles/echoserver.dir/echo_server.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/echo_server.cpp.o.requires:
 
@@ -88,11 +88,11 @@ CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.o: ../tcp/Acceptor.cpp
 
 CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/Acceptor.cpp > CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/Acceptor.cpp -o CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Acceptor.cpp.o.requires:
 
@@ -112,11 +112,11 @@ CMakeFiles/echoserver.dir/tcp/Buffer.cpp.o: ../tcp/Buffer.cpp
 
 CMakeFiles/echoserver.dir/tcp/Buffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/Buffer.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/Buffer.cpp > CMakeFiles/echoserver.dir/tcp/Buffer.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Buffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/Buffer.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/Buffer.cpp -o CMakeFiles/echoserver.dir/tcp/Buffer.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Buffer.cpp.o.requires:
 
@@ -136,11 +136,11 @@ CMakeFiles/echoserver.dir/tcp/Channel.cpp.o: ../tcp/Channel.cpp
 
 CMakeFiles/echoserver.dir/tcp/Channel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/Channel.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/Channel.cpp > CMakeFiles/echoserver.dir/tcp/Channel.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Channel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/Channel.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/Channel.cpp -o CMakeFiles/echoserver.dir/tcp/Channel.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Channel.cpp.o.requires:
 
@@ -160,11 +160,11 @@ CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.o: ../tcp/CurrentThread.cpp
 
 CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/CurrentThread.cpp > CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/CurrentThread.cpp -o CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/CurrentThread.cpp.o.requires:
 
@@ -184,11 +184,11 @@ CMakeFiles/echoserver.dir/tcp/Epoller.cpp.o: ../tcp/Epoller.cpp
 
 CMakeFiles/echoserver.dir/tcp/Epoller.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/Epoller.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/Epoller.cpp > CMakeFiles/echoserver.dir/tcp/Epoller.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Epoller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/Epoller.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/Epoller.cpp -o CMakeFiles/echoserver.dir/tcp/Epoller.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/Epoller.cpp.o.requires:
 
@@ -208,11 +208,11 @@ CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.o: ../tcp/EventLoop.cpp
 
 CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/EventLoop.cpp > CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/EventLoop.cpp -o CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/EventLoop.cpp.o.requires:
 
@@ -232,11 +232,11 @@ CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.o: ../tcp/EventLoopThread.cpp
 
 CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/EventLoopThread.cpp > CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/EventLoopThread.cpp -o CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/EventLoopThread.cpp.o.requires:
 
@@ -256,11 +256,11 @@ CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/EventLoopThreadP
 
 CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp > CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp -o CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/EventLoopThreadPool.cpp.o.requires:
 
@@ -280,11 +280,11 @@ CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.cpp
 
 CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/TcpConnection.cpp > CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/TcpConnection.cpp -o CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.o.requires:
 
@@ -304,11 +304,11 @@ CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.cpp
 
 CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/zzs/CppWebServer/tcp/TcpServer.cpp > CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.i
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/zzs/CppWebServer/tcp/TcpServer.cpp -o CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.s
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.o.requires:
 

@@ -16,11 +16,11 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/data/zzs/CppWebServer/tcp/TcpConnection.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/echoserver.dir/tcp/TcpConnection.cpp.o"
   "/data/zzs/CppWebServer/tcp/TcpServer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/echoserver.dir/tcp/TcpServer.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../tcp"
+  "../http"
   )
 
 # Targets to which this target links.
