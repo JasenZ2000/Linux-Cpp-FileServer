@@ -415,3 +415,31 @@ hello
 ~~~
 
 其实读入的Http报文也算是一种缓存吧，写到了COnnection里面，挺神奇的。其他真的没啥，主要就是在TCP上加入了固定的Http输入输出格式，比较简单的封装。
+
+## day20 - 定时器
+
+按时间触发事件，而不只是依赖于事件的触发，即是一个定时任务。不过在代码上似乎靠的是linux的timerfd，结果上类似于时间的触发？Muduo的定时器通过Timer、TimerQueue以及TimerId来实现，而TimerID是用户接口，Timer类保存超时时刻，回调函数以及类型，TimerQueue则是管理Timer的类，基于set，也就是红黑树管理。
+
+~~~cpp
+#include <sys/timefd.h>
+timerfd_ = ::timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC);
+timerfd_settime(tfd, 0, &new_value, NULL)
+~~~
+
+TimerQueue通过channel绑定timerfd，再交由epoll监听并处理，但在one loop per thread的模式下该如何处理呢？答案是给每个Loop配一个TimerQueue。
+
+~~~cpp
+#include <time.h>
+// 纳秒级计时器 ts.tv_sec ts.tv_nsec，还可设定时钟类型
+struct timespec ts;
+clock_gettime(CLOCK_MONOTONIC, &ts);
+// 微秒级计时器 time.tv_sec time.tv_usec
+struct timeval time;
+gettimeofday(&time, NULL);
+~~~
+
+顺手把服务器主动关闭连接也写了吧。这个过程还是有点复杂的。
+
+1、Acceptor在主线程中创建Connection并把创建响应函数绑给Connection，Connection运行在从线程上，并在从线程上调用创建响应函数。我们需要让从线程的EventLoop运行该Connection对应的定时任务。
+
+2、接下来好像就没啥问题了，和之前的Connection关闭连接是相同的运行逻辑，毕竟Loop和线程都相同，直接调函数就行。啥没问题啊，定时器超时相应的时候Connection释放了咋办呢？还是得针对于shared_ptr得到一个weak_ptr在手上进行判断。

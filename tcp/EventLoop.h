@@ -16,6 +16,8 @@
 #include <functional>
 #include <vector>
 #include <thread>
+class TimerStamp;
+class TimerQueue;
 class Epoller;
 class EventLoop
 {
@@ -27,6 +29,11 @@ public:
     void Loop();
     void UpdateChannel(Channel *ch);
     void DeleteChannel(Channel *ch);
+
+    // 定时器功能，
+    void RunAt(TimerStamp timestamp, std::function<void()> const & cb);
+    void RunAfter(double wait_time, std::function < void()>const & cb);
+    void RunEvery(double interval, std::function<void()> const & cb);
 
     // 运行队列中的任务，为保证关闭连接时的内存安全，在poll后执行，但会导致等待
     void DoToDoList();
@@ -54,4 +61,5 @@ private:
 
     bool calling_functors_;
     pid_t tid_;
+    std::unique_ptr<TimerQueue> timer_queue_;
 };

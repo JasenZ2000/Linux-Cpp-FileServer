@@ -10,21 +10,23 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/data/zzs/CppWebServer/http/HttpServer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/http/HttpServer.cpp.o"
   "/data/zzs/CppWebServer/http_server.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/http_server.cpp.o"
   "/data/zzs/CppWebServer/tcp/Acceptor.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o"
-  "/data/zzs/CppWebServer/tcp/Buffer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/Buffer.cpp.o"
   "/data/zzs/CppWebServer/tcp/Channel.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/Channel.cpp.o"
-  "/data/zzs/CppWebServer/tcp/CurrentThread.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.o"
   "/data/zzs/CppWebServer/tcp/Epoller.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/Epoller.cpp.o"
   "/data/zzs/CppWebServer/tcp/EventLoop.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o"
   "/data/zzs/CppWebServer/tcp/EventLoopThread.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o"
   "/data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o"
   "/data/zzs/CppWebServer/tcp/TcpConnection.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o"
   "/data/zzs/CppWebServer/tcp/TcpServer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o"
+  "/data/zzs/CppWebServer/utils/Buffer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/Buffer.cpp.o"
+  "/data/zzs/CppWebServer/utils/CurrentThread.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o"
+  "/data/zzs/CppWebServer/utils/TimerQueue.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o"
   )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../tcp"
   "../http"
+  "../utils"
   )
 
 # Targets to which this target links.

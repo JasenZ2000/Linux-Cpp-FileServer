@@ -49,7 +49,9 @@
         "ratio": "cpp",
         "mutex": "cpp",
         "thread": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "set": "cpp"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }

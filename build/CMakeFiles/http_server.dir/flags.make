@@ -6,5 +6,5 @@ CXX_FLAGS = -Wall -g -std=c++14 -Werror -O0
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http 
+CXX_INCLUDES = -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils 
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "common.h"
-
+#include "TimerStamp.h"
 #include <functional>
 #include <memory>
 #include <string>
@@ -48,12 +48,10 @@ public:
     void Send(const char *msg, int len); // 输出信息
     void Send(const char *msg);
 
-
     void HandleMessage(); // 当接收到信息时，进行回调
 
     // 当TcpConnection发起关闭请求时，进行回调，释放相应的socket.
     void HandleClose(); 
-
 
     ConnectionState state() const;
     EventLoop *loop() const;
@@ -61,6 +59,9 @@ public:
     int id() const;
 
     HttpContext *context() const { return context_.get(); };
+
+    TimerStamp GetActTime() { return timerstamp_; };
+    void SetActTime(TimerStamp ts) { timerstamp_ = ts; };
 
 private:
     // 该连接绑定的Socket
@@ -86,4 +87,5 @@ private:
     void ReadNonBlocking();
     void WriteNonBlocking();
 
+    TimerStamp timerstamp_;
 };

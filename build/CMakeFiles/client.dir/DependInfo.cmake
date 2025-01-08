@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../tcp"
   "../http"
+  "../utils"
   )
 
 # Targets to which this target links.

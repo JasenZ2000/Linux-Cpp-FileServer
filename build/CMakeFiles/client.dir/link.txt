@@ -1,1 +1,1 @@
-g++  -Wall -g -std=c++14 -Werror   CMakeFiles/client.dir/client.cpp.o  -o test/client 
+g++  -Wall -g -std=c++14 -Werror -O0   CMakeFiles/client.dir/client.cpp.o  -o test/client 

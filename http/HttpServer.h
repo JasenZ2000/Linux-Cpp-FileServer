@@ -13,6 +13,7 @@
 #include <functional>
 #include <memory>
 #include "common.h"
+#include "TimerStamp.h"
 
 class HttpRequest;
 class HttpResponse;
@@ -27,11 +28,13 @@ public:
     typedef std::function<void(const HttpRequest &, HttpResponse *)> http_callback;
 
     DISALLOW_COPY_AND_MOVE(HttpServer);
-    HttpServer(EventLoop*, const char *ip, int port);
+    HttpServer(EventLoop*, const char *ip, int port, double timeout = 0.0);
     ~HttpServer();
 
     void set_http_callback(const http_callback &fn) { on_request_ = std::move(fn);};
     void DefaultHttpCallback(const HttpRequest &req, HttpResponse *resp);
+
+    void HandleActiveClose(std::weak_ptr<TcpConnection>&  conn);
 
     void Start();
 
@@ -41,9 +44,15 @@ public:
 
     void SetThreadNums(int thread_nums);
 
+    void Refresh() const {
+        printf("Server alive, current : %s\n", TimerStamp::Now().GetTimeString().data());
+    };
+
 private:
     EventLoop *main_reactor_;
     std::unique_ptr<TcpServer> tcp_server_;
 
     std::function<void(const HttpRequest&, HttpResponse*)> on_request_;
+    double timeout_;
+    bool auto_close_conn_;
 };

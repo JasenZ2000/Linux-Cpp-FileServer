@@ -12,6 +12,8 @@
 #include "Channel.h"
 #include "Epoller.h"
 #include "CurrentThread.h"
+#include "TimerQueue.h"
+#include "TimerStamp.h"
 #include <memory>
 #include <vector>
 #include <stdio.h>
@@ -29,6 +31,7 @@ EventLoop::EventLoop() : tid_(CurrentThread::tid()) {
 
     wakeup_channel_->set_read_callback(std::bind(&EventLoop::HandleRead, this));
     wakeup_channel_->EnableRead();
+    timer_queue_= std::make_unique<TimerQueue>(this);
 }
 
 EventLoop::~EventLoop() {
@@ -102,4 +105,18 @@ void EventLoop::HandleRead(){
     (void) read_size;
     assert(read_size == sizeof(read_one_byte));
     return;
+}
+
+void EventLoop::RunAt(TimerStamp timestamp, std::function<void()>const & cb){
+    timer_queue_->AddTimer(timestamp, std::move(cb), 0.0);
+}
+
+void EventLoop::RunAfter(double wait_time, std::function<void()> const & cb){
+    TimerStamp timestamp(TimerStamp::AddSec(TimerStamp::Now(), wait_time));
+    timer_queue_->AddTimer(timestamp, std::move(cb), 0.0);
+}
+
+void EventLoop::RunEvery(double interval, std::function<void()> const & cb){
+    TimerStamp timestamp(TimerStamp::AddSec(TimerStamp::Now(), interval));
+    timer_queue_->AddTimer(timestamp, std::move(cb), interval);
 }

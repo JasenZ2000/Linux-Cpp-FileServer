@@ -11,11 +11,13 @@ CMakeFiles/http_server.dir/http/HttpRequest.cpp.o: ../http/HttpRequest.h
 CMakeFiles/http_server.dir/http/HttpResponse.cpp.o: ../http/HttpResponse.cpp
 CMakeFiles/http_server.dir/http/HttpResponse.cpp.o: ../http/HttpResponse.h
 
-CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/Buffer.h
-CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/CurrentThread.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/TcpConnection.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/TcpServer.h
-CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/common.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/Buffer.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../http/HttpContext.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../http/HttpRequest.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../http/HttpResponse.h
@@ -26,64 +28,77 @@ CMakeFiles/http_server.dir/http_server.cpp.o: ../http/HttpRequest.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../http/HttpResponse.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../http/HttpServer.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../tcp/EventLoop.h
-CMakeFiles/http_server.dir/http_server.cpp.o: ../tcp/common.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../http_server.cpp
 
+CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o: ../tcp/Acceptor.cpp
 CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o: ../tcp/Acceptor.h
 CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o: ../tcp/Channel.h
 CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o: ../tcp/EventLoop.h
-CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o: ../tcp/common.h
 
-CMakeFiles/http_server.dir/tcp/Buffer.cpp.o: ../tcp/Buffer.cpp
-CMakeFiles/http_server.dir/tcp/Buffer.cpp.o: ../tcp/Buffer.h
-CMakeFiles/http_server.dir/tcp/Buffer.cpp.o: ../tcp/common.h
-
+CMakeFiles/http_server.dir/tcp/Channel.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/Channel.cpp.o: ../tcp/Channel.cpp
 CMakeFiles/http_server.dir/tcp/Channel.cpp.o: ../tcp/Channel.h
 CMakeFiles/http_server.dir/tcp/Channel.cpp.o: ../tcp/EventLoop.h
-CMakeFiles/http_server.dir/tcp/Channel.cpp.o: ../tcp/common.h
 
-CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.o: ../tcp/CurrentThread.cpp
-CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.o: ../tcp/CurrentThread.h
-
+CMakeFiles/http_server.dir/tcp/Epoller.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/Epoller.cpp.o: ../tcp/Channel.h
 CMakeFiles/http_server.dir/tcp/Epoller.cpp.o: ../tcp/Epoller.cpp
 CMakeFiles/http_server.dir/tcp/Epoller.cpp.o: ../tcp/Epoller.h
-CMakeFiles/http_server.dir/tcp/Epoller.cpp.o: ../tcp/common.h
 
+CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../utils/TimerQueue.h
+CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../tcp/Channel.h
-CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../tcp/CurrentThread.h
 CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../tcp/Epoller.h
 CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../tcp/EventLoop.cpp
 CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../tcp/EventLoop.h
-CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o: ../tcp/common.h
 
+CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o: ../tcp/EventLoopThread.cpp
 CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o: ../tcp/EventLoopThread.h
-CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o: ../tcp/common.h
 
+CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/EventLoopThread.h
 CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/EventLoopThreadPool.cpp
 CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/EventLoopThreadPool.h
-CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/common.h
 
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../http/HttpContext.h
-CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/Buffer.h
+CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../utils/Buffer.h
+CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/Channel.h
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.cpp
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.h
-CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/common.h
 
+CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/Acceptor.h
-CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/CurrentThread.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/EventLoopThreadPool.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/TcpConnection.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.cpp
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.h
-CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/common.h
+
+CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/Buffer.cpp
+CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/Buffer.h
+CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/common.h
+
+CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.cpp
+CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.h
+
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../tcp/Channel.h
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../tcp/EventLoop.h
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../utils/Timer.h
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../utils/TimerQueue.cpp
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../utils/TimerQueue.h
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../utils/common.h
 

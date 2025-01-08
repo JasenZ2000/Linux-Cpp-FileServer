@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+#=============================================================================
 # Target rules for targets named http_server
 
 # Build rule for target.
@@ -122,6 +135,33 @@ http_server: cmake_check_build_system
 http_server/fast:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/build
 .PHONY : http_server/fast
+
+client.o: client.cpp.o
+
+.PHONY : client.o
+
+# target to build an object file
+client.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.o
+.PHONY : client.cpp.o
+
+client.i: client.cpp.i
+
+.PHONY : client.i
+
+# target to preprocess a source file
+client.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.i
+.PHONY : client.cpp.i
+
+client.s: client.cpp.s
+
+.PHONY : client.s
+
+# target to generate assembly for a file
+client.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.s
+.PHONY : client.cpp.s
 
 http/HttpContext.o: http/HttpContext.cpp.o
 
@@ -285,33 +325,6 @@ tcp/Acceptor.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.s
 .PHONY : tcp/Acceptor.cpp.s
 
-tcp/Buffer.o: tcp/Buffer.cpp.o
-
-.PHONY : tcp/Buffer.o
-
-# target to build an object file
-tcp/Buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Buffer.cpp.o
-.PHONY : tcp/Buffer.cpp.o
-
-tcp/Buffer.i: tcp/Buffer.cpp.i
-
-.PHONY : tcp/Buffer.i
-
-# target to preprocess a source file
-tcp/Buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Buffer.cpp.i
-.PHONY : tcp/Buffer.cpp.i
-
-tcp/Buffer.s: tcp/Buffer.cpp.s
-
-.PHONY : tcp/Buffer.s
-
-# target to generate assembly for a file
-tcp/Buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Buffer.cpp.s
-.PHONY : tcp/Buffer.cpp.s
-
 tcp/Channel.o: tcp/Channel.cpp.o
 
 .PHONY : tcp/Channel.o
@@ -338,33 +351,6 @@ tcp/Channel.s: tcp/Channel.cpp.s
 tcp/Channel.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.s
 .PHONY : tcp/Channel.cpp.s
-
-tcp/CurrentThread.o: tcp/CurrentThread.cpp.o
-
-.PHONY : tcp/CurrentThread.o
-
-# target to build an object file
-tcp/CurrentThread.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.o
-.PHONY : tcp/CurrentThread.cpp.o
-
-tcp/CurrentThread.i: tcp/CurrentThread.cpp.i
-
-.PHONY : tcp/CurrentThread.i
-
-# target to preprocess a source file
-tcp/CurrentThread.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.i
-.PHONY : tcp/CurrentThread.cpp.i
-
-tcp/CurrentThread.s: tcp/CurrentThread.cpp.s
-
-.PHONY : tcp/CurrentThread.s
-
-# target to generate assembly for a file
-tcp/CurrentThread.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.s
-.PHONY : tcp/CurrentThread.cpp.s
 
 tcp/Epoller.o: tcp/Epoller.cpp.o
 
@@ -528,6 +514,87 @@ tcp/TcpServer.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.s
 .PHONY : tcp/TcpServer.cpp.s
 
+utils/Buffer.o: utils/Buffer.cpp.o
+
+.PHONY : utils/Buffer.o
+
+# target to build an object file
+utils/Buffer.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Buffer.cpp.o
+.PHONY : utils/Buffer.cpp.o
+
+utils/Buffer.i: utils/Buffer.cpp.i
+
+.PHONY : utils/Buffer.i
+
+# target to preprocess a source file
+utils/Buffer.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Buffer.cpp.i
+.PHONY : utils/Buffer.cpp.i
+
+utils/Buffer.s: utils/Buffer.cpp.s
+
+.PHONY : utils/Buffer.s
+
+# target to generate assembly for a file
+utils/Buffer.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Buffer.cpp.s
+.PHONY : utils/Buffer.cpp.s
+
+utils/CurrentThread.o: utils/CurrentThread.cpp.o
+
+.PHONY : utils/CurrentThread.o
+
+# target to build an object file
+utils/CurrentThread.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o
+.PHONY : utils/CurrentThread.cpp.o
+
+utils/CurrentThread.i: utils/CurrentThread.cpp.i
+
+.PHONY : utils/CurrentThread.i
+
+# target to preprocess a source file
+utils/CurrentThread.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.i
+.PHONY : utils/CurrentThread.cpp.i
+
+utils/CurrentThread.s: utils/CurrentThread.cpp.s
+
+.PHONY : utils/CurrentThread.s
+
+# target to generate assembly for a file
+utils/CurrentThread.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.s
+.PHONY : utils/CurrentThread.cpp.s
+
+utils/TimerQueue.o: utils/TimerQueue.cpp.o
+
+.PHONY : utils/TimerQueue.o
+
+# target to build an object file
+utils/TimerQueue.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o
+.PHONY : utils/TimerQueue.cpp.o
+
+utils/TimerQueue.i: utils/TimerQueue.cpp.i
+
+.PHONY : utils/TimerQueue.i
+
+# target to preprocess a source file
+utils/TimerQueue.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/TimerQueue.cpp.i
+.PHONY : utils/TimerQueue.cpp.i
+
+utils/TimerQueue.s: utils/TimerQueue.cpp.s
+
+.PHONY : utils/TimerQueue.s
+
+# target to generate assembly for a file
+utils/TimerQueue.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/TimerQueue.cpp.s
+.PHONY : utils/TimerQueue.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -535,8 +602,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... http_server"
+	@echo "... client"
 	@echo "... edit_cache"
+	@echo "... http_server"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
 	@echo "... http/HttpContext.o"
 	@echo "... http/HttpContext.i"
 	@echo "... http/HttpContext.s"
@@ -555,15 +626,9 @@ help:
 	@echo "... tcp/Acceptor.o"
 	@echo "... tcp/Acceptor.i"
 	@echo "... tcp/Acceptor.s"
-	@echo "... tcp/Buffer.o"
-	@echo "... tcp/Buffer.i"
-	@echo "... tcp/Buffer.s"
 	@echo "... tcp/Channel.o"
 	@echo "... tcp/Channel.i"
 	@echo "... tcp/Channel.s"
-	@echo "... tcp/CurrentThread.o"
-	@echo "... tcp/CurrentThread.i"
-	@echo "... tcp/CurrentThread.s"
 	@echo "... tcp/Epoller.o"
 	@echo "... tcp/Epoller.i"
 	@echo "... tcp/Epoller.s"
@@ -582,6 +647,15 @@ help:
 	@echo "... tcp/TcpServer.o"
 	@echo "... tcp/TcpServer.i"
 	@echo "... tcp/TcpServer.s"
+	@echo "... utils/Buffer.o"
+	@echo "... utils/Buffer.i"
+	@echo "... utils/Buffer.s"
+	@echo "... utils/CurrentThread.o"
+	@echo "... utils/CurrentThread.i"
+	@echo "... utils/CurrentThread.s"
+	@echo "... utils/TimerQueue.o"
+	@echo "... utils/TimerQueue.i"
+	@echo "... utils/TimerQueue.s"
 .PHONY : help
 
 

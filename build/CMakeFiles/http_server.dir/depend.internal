@@ -12,11 +12,13 @@ CMakeFiles/http_server.dir/http/HttpResponse.cpp.o
  /data/zzs/CppWebServer/http/HttpResponse.cpp
  /data/zzs/CppWebServer/http/HttpResponse.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o
- ../tcp/Buffer.h
- ../tcp/CurrentThread.h
+ ../tcp/EventLoop.h
  ../tcp/TcpConnection.h
  ../tcp/TcpServer.h
- ../tcp/common.h
+ ../utils/Buffer.h
+ ../utils/CurrentThread.h
+ ../utils/TimerStamp.h
+ ../utils/common.h
  /data/zzs/CppWebServer/http/HttpContext.h
  /data/zzs/CppWebServer/http/HttpRequest.h
  /data/zzs/CppWebServer/http/HttpResponse.h
@@ -27,63 +29,76 @@ CMakeFiles/http_server.dir/http_server.cpp.o
  ../http/HttpResponse.h
  ../http/HttpServer.h
  ../tcp/EventLoop.h
- ../tcp/common.h
+ ../utils/TimerStamp.h
+ ../utils/common.h
  /data/zzs/CppWebServer/http_server.cpp
 CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/Acceptor.cpp
  /data/zzs/CppWebServer/tcp/Acceptor.h
  /data/zzs/CppWebServer/tcp/Channel.h
  /data/zzs/CppWebServer/tcp/EventLoop.h
- /data/zzs/CppWebServer/tcp/common.h
-CMakeFiles/http_server.dir/tcp/Buffer.cpp.o
- /data/zzs/CppWebServer/tcp/Buffer.cpp
- /data/zzs/CppWebServer/tcp/Buffer.h
- /data/zzs/CppWebServer/tcp/common.h
 CMakeFiles/http_server.dir/tcp/Channel.cpp.o
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/Channel.cpp
  /data/zzs/CppWebServer/tcp/Channel.h
  /data/zzs/CppWebServer/tcp/EventLoop.h
- /data/zzs/CppWebServer/tcp/common.h
-CMakeFiles/http_server.dir/tcp/CurrentThread.cpp.o
- /data/zzs/CppWebServer/tcp/CurrentThread.cpp
- /data/zzs/CppWebServer/tcp/CurrentThread.h
 CMakeFiles/http_server.dir/tcp/Epoller.cpp.o
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/Channel.h
  /data/zzs/CppWebServer/tcp/Epoller.cpp
  /data/zzs/CppWebServer/tcp/Epoller.h
- /data/zzs/CppWebServer/tcp/common.h
 CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o
+ ../utils/CurrentThread.h
+ ../utils/TimerQueue.h
+ ../utils/TimerStamp.h
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/Channel.h
- /data/zzs/CppWebServer/tcp/CurrentThread.h
  /data/zzs/CppWebServer/tcp/Epoller.h
  /data/zzs/CppWebServer/tcp/EventLoop.cpp
  /data/zzs/CppWebServer/tcp/EventLoop.h
- /data/zzs/CppWebServer/tcp/common.h
 CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/EventLoop.h
  /data/zzs/CppWebServer/tcp/EventLoopThread.cpp
  /data/zzs/CppWebServer/tcp/EventLoopThread.h
- /data/zzs/CppWebServer/tcp/common.h
 CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/EventLoop.h
  /data/zzs/CppWebServer/tcp/EventLoopThread.h
  /data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp
  /data/zzs/CppWebServer/tcp/EventLoopThreadPool.h
- /data/zzs/CppWebServer/tcp/common.h
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o
  ../http/HttpContext.h
- /data/zzs/CppWebServer/tcp/Buffer.h
+ ../utils/Buffer.h
+ ../utils/TimerStamp.h
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/Channel.h
  /data/zzs/CppWebServer/tcp/EventLoop.h
  /data/zzs/CppWebServer/tcp/TcpConnection.cpp
  /data/zzs/CppWebServer/tcp/TcpConnection.h
- /data/zzs/CppWebServer/tcp/common.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o
+ ../utils/CurrentThread.h
+ ../utils/TimerStamp.h
+ ../utils/common.h
  /data/zzs/CppWebServer/tcp/Acceptor.h
- /data/zzs/CppWebServer/tcp/CurrentThread.h
  /data/zzs/CppWebServer/tcp/EventLoop.h
  /data/zzs/CppWebServer/tcp/EventLoopThreadPool.h
  /data/zzs/CppWebServer/tcp/TcpConnection.h
  /data/zzs/CppWebServer/tcp/TcpServer.cpp
  /data/zzs/CppWebServer/tcp/TcpServer.h
- /data/zzs/CppWebServer/tcp/common.h
+CMakeFiles/http_server.dir/utils/Buffer.cpp.o
+ /data/zzs/CppWebServer/utils/Buffer.cpp
+ /data/zzs/CppWebServer/utils/Buffer.h
+ /data/zzs/CppWebServer/utils/common.h
+CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o
+ /data/zzs/CppWebServer/utils/CurrentThread.cpp
+ /data/zzs/CppWebServer/utils/CurrentThread.h
+CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o
+ ../tcp/Channel.h
+ ../tcp/EventLoop.h
+ /data/zzs/CppWebServer/utils/Timer.h
+ /data/zzs/CppWebServer/utils/TimerQueue.cpp
+ /data/zzs/CppWebServer/utils/TimerQueue.h
+ /data/zzs/CppWebServer/utils/TimerStamp.h
+ /data/zzs/CppWebServer/utils/common.h
