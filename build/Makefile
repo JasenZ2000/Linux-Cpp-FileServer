@@ -568,6 +568,60 @@ utils/CurrentThread.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.s
 .PHONY : utils/CurrentThread.cpp.s
 
+utils/LogStream.o: utils/LogStream.cpp.o
+
+.PHONY : utils/LogStream.o
+
+# target to build an object file
+utils/LogStream.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogStream.cpp.o
+.PHONY : utils/LogStream.cpp.o
+
+utils/LogStream.i: utils/LogStream.cpp.i
+
+.PHONY : utils/LogStream.i
+
+# target to preprocess a source file
+utils/LogStream.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogStream.cpp.i
+.PHONY : utils/LogStream.cpp.i
+
+utils/LogStream.s: utils/LogStream.cpp.s
+
+.PHONY : utils/LogStream.s
+
+# target to generate assembly for a file
+utils/LogStream.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogStream.cpp.s
+.PHONY : utils/LogStream.cpp.s
+
+utils/Logger.o: utils/Logger.cpp.o
+
+.PHONY : utils/Logger.o
+
+# target to build an object file
+utils/Logger.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Logger.cpp.o
+.PHONY : utils/Logger.cpp.o
+
+utils/Logger.i: utils/Logger.cpp.i
+
+.PHONY : utils/Logger.i
+
+# target to preprocess a source file
+utils/Logger.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Logger.cpp.i
+.PHONY : utils/Logger.cpp.i
+
+utils/Logger.s: utils/Logger.cpp.s
+
+.PHONY : utils/Logger.s
+
+# target to generate assembly for a file
+utils/Logger.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Logger.cpp.s
+.PHONY : utils/Logger.cpp.s
+
 utils/TimerQueue.o: utils/TimerQueue.cpp.o
 
 .PHONY : utils/TimerQueue.o
@@ -653,6 +707,12 @@ help:
 	@echo "... utils/CurrentThread.o"
 	@echo "... utils/CurrentThread.i"
 	@echo "... utils/CurrentThread.s"
+	@echo "... utils/LogStream.o"
+	@echo "... utils/LogStream.i"
+	@echo "... utils/LogStream.s"
+	@echo "... utils/Logger.o"
+	@echo "... utils/Logger.i"
+	@echo "... utils/Logger.s"
 	@echo "... utils/TimerQueue.o"
 	@echo "... utils/TimerQueue.i"
 	@echo "... utils/TimerQueue.s"

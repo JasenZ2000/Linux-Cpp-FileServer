@@ -19,6 +19,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/data/zzs/CppWebServer/tcp/TcpServer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o"
   "/data/zzs/CppWebServer/utils/Buffer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/Buffer.cpp.o"
   "/data/zzs/CppWebServer/utils/CurrentThread.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o"
+  "/data/zzs/CppWebServer/utils/LogStream.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/LogStream.cpp.o"
+  "/data/zzs/CppWebServer/utils/Logger.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/Logger.cpp.o"
   "/data/zzs/CppWebServer/utils/TimerQueue.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o"
   )
 

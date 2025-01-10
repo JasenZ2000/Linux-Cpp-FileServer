@@ -7,6 +7,7 @@
 #include "CurrentThread.h"
 #include "Buffer.h"
 #include "EventLoop.h"
+#include "Logger.h"
 
 #include <memory>
 #include <iostream>
@@ -24,6 +25,12 @@ HttpServer::HttpServer(EventLoop *loop, const char *ip, const int port, double t
     tcp_server_->set_message_callback(std::bind(&HttpServer::onMessage, this, std::placeholders::_1));
     set_http_callback(std::bind(&HttpServer::DefaultHttpCallback, this, std::placeholders::_1, std::placeholders::_2));
     main_reactor_->RunEvery(5., std::bind(&HttpServer::Refresh, this));
+    LOG_INFO << "HttpServer Listening on [ " << ip << ":" << port << " ]";
+};
+
+void HttpServer::Refresh() const 
+{
+    LOG_INFO  << "Server alive\n";
 };
 
 HttpServer::~HttpServer(){};
@@ -34,11 +41,9 @@ void HttpServer::onConnection(const conn_ptr &conn){
     socklen_t peer_addrlength = sizeof(peeraddr);
     getpeername(clnt_fd, (struct sockaddr *)&peeraddr, &peer_addrlength);
 
-    std::cout << CurrentThread::tid()
-              << " HttpServer::OnNewConnection : new connection "
+    LOG_INFO  << " HttpServer::OnNewConnection : new connection "
               << "[fd#" << clnt_fd << "]"
-              << " from " << inet_ntoa(peeraddr.sin_addr) << ":" << ntohs(peeraddr.sin_port)
-              << std::endl;
+              << " from " << inet_ntoa(peeraddr.sin_addr) << ":" << ntohs(peeraddr.sin_port);
 
     if (auto_close_conn_)
     {
@@ -51,7 +56,6 @@ void HttpServer::HandleActiveClose(std::weak_ptr<TcpConnection>& conn){
     {
         if (TimerStamp::AddSec(sp->GetActTime(), timeout_) < TimerStamp::Now())
         {
-            std::cout << CurrentThread::tid() << " HttpServer::HandleActiveClose" << std::endl;
             sp->HandleClose();
         }
         else
@@ -62,7 +66,7 @@ void HttpServer::HandleActiveClose(std::weak_ptr<TcpConnection>& conn){
 }
 
 void HttpServer::onMessage(const conn_ptr &conn){
-    std::cout << CurrentThread::tid() << " HttpServer::onMessage" << std::endl;
+    LOG_DEBUG << " HttpServer::onMessage";
     if (conn->state() == TcpConnection::ConnectionState::Connected)
     {
         if (auto_close_conn_)
@@ -76,7 +80,6 @@ void HttpServer::onMessage(const conn_ptr &conn){
         }
         if (context->IsComplete())
         {
-            std::cout << "HttpServer::onMessage : Completed" << std::endl;
             onRequest(conn, *context->GetRequest());
             context->Reset();
         }
@@ -84,7 +87,7 @@ void HttpServer::onMessage(const conn_ptr &conn){
 }
 
 void HttpServer::onRequest(const conn_ptr &conn, const HttpRequest &req){
-    std::cout << "HttpServer::onRequest" << std::endl;
+    LOG_DEBUG << "HttpServer::onRequest";
     const std::string &connection = req.GetHeaderString("Connection");
     bool close = connection == "close" ||
                  (req.GetVersion() == HttpRequest::kHTTP_1_0 &&
@@ -92,11 +95,10 @@ void HttpServer::onRequest(const conn_ptr &conn, const HttpRequest &req){
     HttpResponse response(close);
     on_request_(req, &response);
 
-    std::cout << "HttpServer::onRequest : Send" << std::endl;
     conn->Send(response.message().c_str());
     if (response.close_connection())
     {
-        std::cout << "HttpServer::onRequest : HandleClose" << std::endl;
+        LOG_INFO << "HttpServer::onRequest : HandleClose";
         conn->HandleClose();
     }
 }

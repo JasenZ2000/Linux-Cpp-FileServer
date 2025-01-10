@@ -21,6 +21,16 @@
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/LogStream.cpp.o -c /data/zzs/CppWebServer/utils/LogStream.cpp",
+  "file": "/data/zzs/CppWebServer/utils/LogStream.cpp"
+},
+{
+  "directory": "/data/zzs/CppWebServer/build",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/Logger.cpp.o -c /data/zzs/CppWebServer/utils/Logger.cpp",
+  "file": "/data/zzs/CppWebServer/utils/Logger.cpp"
+},
+{
+  "directory": "/data/zzs/CppWebServer/build",
   "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o -c /data/zzs/CppWebServer/utils/TimerQueue.cpp",
   "file": "/data/zzs/CppWebServer/utils/TimerQueue.cpp"
 },

@@ -16,6 +16,7 @@
 #include "EventLoopThreadPool.h"
 #include "CurrentThread.h"
 #include "common.h"
+#include "Logger.h"
 #include <memory>
 #include <assert.h>
 #include <iostream>
@@ -65,12 +66,11 @@ inline void TcpServer::HandleNewConnection(int fd){
 void TcpServer::SetThreadNum(int num) { thread_pool_->SetThreadNum(num);}
 
 inline void TcpServer::HandleClose(const conn_ptr & conn){
-    std::cout <<  CurrentThread::tid() << " TcpServer::HandleClose"  << std::endl;
     main_reactor_->RunOneFunc(std::bind(&TcpServer::HandleCloseInLoop, this, conn));
 }
 
 inline void TcpServer::HandleCloseInLoop(const conn_ptr & conn){
-    std::cout << CurrentThread::tid()  << " TcpServer::HandleCloseInLoop - Remove connection id: " <<  conn->id() << " and fd: " << conn->fd() << std::endl;
+    LOG_INFO  << " TcpServer::HandleCloseInLoop - Remove connection id: " <<  conn->id() << " and fd: " << conn->fd();
     auto it = connectionsMap_.find(conn->fd());
     assert(it != connectionsMap_.end());
     // 释放Server处的指针计数

@@ -26,3 +26,6 @@ add_executable(client client.cpp)
 
 add_executable(http_server http_server.cpp ${SRC_UTIL} ${SRC_HTTP} ${SRC_TCP})
 target_link_libraries(http_server ${CMAKE_THREAD_LIBS_INIT})
+
+# add_executable(test_logstream test_logstream.cpp ${SRC_UTIL} ${SRC_HTTP} ${SRC_TCP})
+# target_link_libraries(test_logstream ${CMAKE_THREAD_LIBS_INIT})

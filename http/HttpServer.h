@@ -44,9 +44,7 @@ public:
 
     void SetThreadNums(int thread_nums);
 
-    void Refresh() const {
-        printf("Server alive, current : %s\n", TimerStamp::Now().GetTimeString().data());
-    };
+    void Refresh() const;
 
 private:
     EventLoop *main_reactor_;

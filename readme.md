@@ -443,3 +443,37 @@ gettimeofday(&time, NULL);
 1、Acceptor在主线程中创建Connection并把创建响应函数绑给Connection，Connection运行在从线程上，并在从线程上调用创建响应函数。我们需要让从线程的EventLoop运行该Connection对应的定时任务。
 
 2、接下来好像就没啥问题了，和之前的Connection关闭连接是相同的运行逻辑，毕竟Loop和线程都相同，直接调函数就行。啥没问题啊，定时器超时相应的时候Connection释放了咋办呢？还是得针对于shared_ptr得到一个weak_ptr在手上进行判断。
+
+## day22 - 日志库
+
+### 输出流
+
+~~~cpp
+class LogStream
+{
+    // 对应实现 log << 2 log << 'c' 这种情况
+    LogStream &operator<<(int);
+    LogStream &operator<<(char);
+}
+// 对应实现 log << Fmt("hello %s", "world") 这种格式化输出情况
+inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
+    s.append(fmt.data(), fmt.length());
+    return s;
+};
+~~~
+
+### 日志库接口
+
+日志等级：DEBUG、INFO、WARN、ERROR、FATAL，本质上通过宏来快速获得对应的日志输出流，取代std::cout，实现一个便捷的接口。
+
+~~~cpp
+#define LOG_DEBUG if (Logger::logLevel() <= Logger::DEBUG) \
+    Logger(__FILE__, __LINE__, Logger::DEBUG, __func__).stream()
+#define LOG_INFO if (Logger::logLevel() <= Logger::INFO) \
+    Logger(__FILE__, __LINE__, Logger::INFO).stream()
+#define LOG_WARN Logger(__FILE__, __LINE__, Logger::WARN).stream()
+#define LOG_ERROR Logger(__FILE__, __LINE__, Logger::ERROR).stream()
+#define LOG_FATAL Logger(__FILE__, __LINE__, Logger::FATAL).stream()
+~~~
+
+### 异步日志

@@ -16,6 +16,8 @@ CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/TcpConnection.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../tcp/TcpServer.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/Buffer.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/LogStream.h
+CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/Logger.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/TimerStamp.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/http/HttpServer.cpp.o: ../http/HttpContext.h
@@ -78,6 +80,8 @@ CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.cpp
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.h
 
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/LogStream.h
+CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/Logger.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/TimerStamp.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/Acceptor.h
@@ -93,6 +97,17 @@ CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/common.h
 
 CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.cpp
 CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.h
+
+CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/LogStream.cpp
+CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/LogStream.h
+CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/common.h
+
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/LogStream.h
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/Logger.cpp
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/Logger.h
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/common.h
 
 CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../tcp/Channel.h
 CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o: ../tcp/EventLoop.h
