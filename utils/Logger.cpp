@@ -76,6 +76,7 @@ void defaultOutput(const char* msg, int len){
     fwrite(msg, 1, len, stdout);  // 默认写出到stdout
 }
 
+// Output可能是异步的，而flush则是必须立刻输出
 void defaultFlush(){
     fflush(stdout);    // 默认flush到stdout
 }
@@ -87,7 +88,7 @@ Logger::LogLevel g_logLevel = Logger::LogLevel::INFO;
 Logger::~Logger()
 {
     impl_.Finish();
-    const FixedBuffer &buf(stream().buffer());
+    const LogStream::Buffer &buf(stream().buffer());
     g_output(buf.data(), buf.len());
     if (impl_.level_ == FATAL)
     {

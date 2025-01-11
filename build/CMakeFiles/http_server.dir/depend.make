@@ -30,6 +30,11 @@ CMakeFiles/http_server.dir/http_server.cpp.o: ../http/HttpRequest.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../http/HttpResponse.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../http/HttpServer.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../tcp/EventLoop.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/AsyncLogger.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/Buffer.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/LogFile.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/LogStream.h
+CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/Logger.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/TimerStamp.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/http_server.cpp.o: ../http_server.cpp
@@ -79,6 +84,7 @@ CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.cpp
 CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.h
 
+CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/Buffer.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/CurrentThread.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/LogStream.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../utils/Logger.h
@@ -91,6 +97,13 @@ CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/TcpConnection.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.cpp
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.h
 
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o: ../utils/AsyncLogger.cpp
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o: ../utils/AsyncLogger.h
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o: ../utils/Buffer.h
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o: ../utils/LogFile.h
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o: ../utils/common.h
+
 CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/Buffer.cpp
 CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/Buffer.h
 CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/common.h
@@ -98,10 +111,16 @@ CMakeFiles/http_server.dir/utils/Buffer.cpp.o: ../utils/common.h
 CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.cpp
 CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.h
 
+CMakeFiles/http_server.dir/utils/LogFile.cpp.o: ../utils/LogFile.cpp
+CMakeFiles/http_server.dir/utils/LogFile.cpp.o: ../utils/LogFile.h
+CMakeFiles/http_server.dir/utils/LogFile.cpp.o: ../utils/TimerStamp.h
+
+CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/Buffer.h
 CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/LogStream.cpp
 CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/LogStream.h
 CMakeFiles/http_server.dir/utils/LogStream.cpp.o: ../utils/common.h
 
+CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/Buffer.h
 CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/CurrentThread.h
 CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/LogStream.h
 CMakeFiles/http_server.dir/utils/Logger.cpp.o: ../utils/Logger.cpp

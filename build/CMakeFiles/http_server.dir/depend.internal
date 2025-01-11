@@ -31,6 +31,11 @@ CMakeFiles/http_server.dir/http_server.cpp.o
  ../http/HttpResponse.h
  ../http/HttpServer.h
  ../tcp/EventLoop.h
+ ../utils/AsyncLogger.h
+ ../utils/Buffer.h
+ ../utils/LogFile.h
+ ../utils/LogStream.h
+ ../utils/Logger.h
  ../utils/TimerStamp.h
  ../utils/common.h
  /data/zzs/CppWebServer/http_server.cpp
@@ -80,6 +85,7 @@ CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o
  /data/zzs/CppWebServer/tcp/TcpConnection.cpp
  /data/zzs/CppWebServer/tcp/TcpConnection.h
 CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o
+ ../utils/Buffer.h
  ../utils/CurrentThread.h
  ../utils/LogStream.h
  ../utils/Logger.h
@@ -91,6 +97,13 @@ CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o
  /data/zzs/CppWebServer/tcp/TcpConnection.h
  /data/zzs/CppWebServer/tcp/TcpServer.cpp
  /data/zzs/CppWebServer/tcp/TcpServer.h
+CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o
+ /data/zzs/CppWebServer/utils/AsyncLogger.cpp
+ /data/zzs/CppWebServer/utils/AsyncLogger.h
+ /data/zzs/CppWebServer/utils/Buffer.h
+ /data/zzs/CppWebServer/utils/LogFile.h
+ /data/zzs/CppWebServer/utils/TimerStamp.h
+ /data/zzs/CppWebServer/utils/common.h
 CMakeFiles/http_server.dir/utils/Buffer.cpp.o
  /data/zzs/CppWebServer/utils/Buffer.cpp
  /data/zzs/CppWebServer/utils/Buffer.h
@@ -98,11 +111,17 @@ CMakeFiles/http_server.dir/utils/Buffer.cpp.o
 CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o
  /data/zzs/CppWebServer/utils/CurrentThread.cpp
  /data/zzs/CppWebServer/utils/CurrentThread.h
+CMakeFiles/http_server.dir/utils/LogFile.cpp.o
+ /data/zzs/CppWebServer/utils/LogFile.cpp
+ /data/zzs/CppWebServer/utils/LogFile.h
+ /data/zzs/CppWebServer/utils/TimerStamp.h
 CMakeFiles/http_server.dir/utils/LogStream.cpp.o
+ /data/zzs/CppWebServer/utils/Buffer.h
  /data/zzs/CppWebServer/utils/LogStream.cpp
  /data/zzs/CppWebServer/utils/LogStream.h
  /data/zzs/CppWebServer/utils/common.h
 CMakeFiles/http_server.dir/utils/Logger.cpp.o
+ /data/zzs/CppWebServer/utils/Buffer.h
  /data/zzs/CppWebServer/utils/CurrentThread.h
  /data/zzs/CppWebServer/utils/LogStream.h
  /data/zzs/CppWebServer/utils/Logger.cpp

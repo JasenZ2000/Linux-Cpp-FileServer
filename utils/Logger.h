@@ -1,7 +1,7 @@
 /**
  * @file Logger.h
  * @author Zasen (zasen2000@buaa.edu.cn)
- * @brief 目前看起来是个写入文件的日志输出流
+ * @brief 日志输出流，默认输出到stdout
  * @version 0.1
  * @date 2025-01-09
  * 

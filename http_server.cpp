@@ -3,6 +3,9 @@
 #include "HttpRequest.h"
 #include "HttpResponse.h"
 #include "EventLoop.h"
+#include "Logger.h"
+#include "AsyncLogger.h"
+#include <thread>
 #include <string>
 
 const std::string html = " <font color=\"red\">This is html!</font> ";
@@ -36,6 +39,17 @@ void HttpResponseCallback(const HttpRequest &request, HttpResponse *response)
     return;
 }
 
+std::unique_ptr<AsyncLogger> asynclog;
+
+void AsyncOutputFunc(const char *data, int len)
+{
+    asynclog->Append(data, len);
+}
+
+void AsyncFlushFunc() {
+    asynclog->Flush();
+}
+
 int main(int argc, char *argv[]){
     int port;
     if (argc <= 1)
@@ -47,6 +61,14 @@ int main(int argc, char *argv[]){
         printf("error");
         exit(0);
     }
+
+    // 好糟糕啊，这东西独立于服务器建立，但其工作流在服务器内访问
+    asynclog = std::make_unique<AsyncLogger>();
+    Logger::setOutput(AsyncOutputFunc);
+    Logger::setFlush(AsyncFlushFunc);
+
+    asynclog->Start();
+
     int size = 10; // std::thread::hardware_concurrency();
     EventLoop *loop = new EventLoop();
     HttpServer *server = new HttpServer(loop, "127.0.0.1", port, 10.0);

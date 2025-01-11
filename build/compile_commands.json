@@ -11,6 +11,11 @@
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o -c /data/zzs/CppWebServer/utils/AsyncLogger.cpp",
+  "file": "/data/zzs/CppWebServer/utils/AsyncLogger.cpp"
+},
+{
+  "directory": "/data/zzs/CppWebServer/build",
   "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/Buffer.cpp.o -c /data/zzs/CppWebServer/utils/Buffer.cpp",
   "file": "/data/zzs/CppWebServer/utils/Buffer.cpp"
 },
@@ -18,6 +23,11 @@
   "directory": "/data/zzs/CppWebServer/build",
   "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o -c /data/zzs/CppWebServer/utils/CurrentThread.cpp",
   "file": "/data/zzs/CppWebServer/utils/CurrentThread.cpp"
+},
+{
+  "directory": "/data/zzs/CppWebServer/build",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/LogFile.cpp.o -c /data/zzs/CppWebServer/utils/LogFile.cpp",
+  "file": "/data/zzs/CppWebServer/utils/LogFile.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",

@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/http_server.dir/http_server.cpp.o"
+  "CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o"
   "CMakeFiles/http_server.dir/utils/Buffer.cpp.o"
   "CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o"
+  "CMakeFiles/http_server.dir/utils/LogFile.cpp.o"
   "CMakeFiles/http_server.dir/utils/LogStream.cpp.o"
   "CMakeFiles/http_server.dir/utils/Logger.cpp.o"
   "CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o"

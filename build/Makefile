@@ -514,6 +514,33 @@ tcp/TcpServer.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.s
 .PHONY : tcp/TcpServer.cpp.s
 
+utils/AsyncLogger.o: utils/AsyncLogger.cpp.o
+
+.PHONY : utils/AsyncLogger.o
+
+# target to build an object file
+utils/AsyncLogger.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o
+.PHONY : utils/AsyncLogger.cpp.o
+
+utils/AsyncLogger.i: utils/AsyncLogger.cpp.i
+
+.PHONY : utils/AsyncLogger.i
+
+# target to preprocess a source file
+utils/AsyncLogger.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.i
+.PHONY : utils/AsyncLogger.cpp.i
+
+utils/AsyncLogger.s: utils/AsyncLogger.cpp.s
+
+.PHONY : utils/AsyncLogger.s
+
+# target to generate assembly for a file
+utils/AsyncLogger.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.s
+.PHONY : utils/AsyncLogger.cpp.s
+
 utils/Buffer.o: utils/Buffer.cpp.o
 
 .PHONY : utils/Buffer.o
@@ -567,6 +594,33 @@ utils/CurrentThread.s: utils/CurrentThread.cpp.s
 utils/CurrentThread.cpp.s:
 	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.s
 .PHONY : utils/CurrentThread.cpp.s
+
+utils/LogFile.o: utils/LogFile.cpp.o
+
+.PHONY : utils/LogFile.o
+
+# target to build an object file
+utils/LogFile.cpp.o:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogFile.cpp.o
+.PHONY : utils/LogFile.cpp.o
+
+utils/LogFile.i: utils/LogFile.cpp.i
+
+.PHONY : utils/LogFile.i
+
+# target to preprocess a source file
+utils/LogFile.cpp.i:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogFile.cpp.i
+.PHONY : utils/LogFile.cpp.i
+
+utils/LogFile.s: utils/LogFile.cpp.s
+
+.PHONY : utils/LogFile.s
+
+# target to generate assembly for a file
+utils/LogFile.cpp.s:
+	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogFile.cpp.s
+.PHONY : utils/LogFile.cpp.s
 
 utils/LogStream.o: utils/LogStream.cpp.o
 
@@ -701,12 +755,18 @@ help:
 	@echo "... tcp/TcpServer.o"
 	@echo "... tcp/TcpServer.i"
 	@echo "... tcp/TcpServer.s"
+	@echo "... utils/AsyncLogger.o"
+	@echo "... utils/AsyncLogger.i"
+	@echo "... utils/AsyncLogger.s"
 	@echo "... utils/Buffer.o"
 	@echo "... utils/Buffer.i"
 	@echo "... utils/Buffer.s"
 	@echo "... utils/CurrentThread.o"
 	@echo "... utils/CurrentThread.i"
 	@echo "... utils/CurrentThread.s"
+	@echo "... utils/LogFile.o"
+	@echo "... utils/LogFile.i"
+	@echo "... utils/LogFile.s"
 	@echo "... utils/LogStream.o"
 	@echo "... utils/LogStream.i"
 	@echo "... utils/LogStream.s"
