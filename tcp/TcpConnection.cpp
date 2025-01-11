@@ -17,7 +17,7 @@ TcpConnection::TcpConnection(EventLoop *loop, int connfd, int connid) : connfd_(
     if (loop != nullptr)
     {
         channel_ = std::make_unique<Channel>(connfd, loop);
-        channel_->EnableET();
+        channel_->EnableET(); // !! 接收信息使用的是边缘触发
         channel_->set_read_callback(std::bind(&TcpConnection::HandleMessage, this));
     }
     read_buf_ = std::make_unique<Buffer>();
@@ -80,7 +80,12 @@ void TcpConnection::HandleMessage()
     Read();
     if (on_message_)
     {
+        // 要求用户处理业务，正确读取缓存区中的数据。
         on_message_(shared_from_this());
+    }
+    else
+    {
+        read_buf_->RetrieveAll();
     }
 }
 
@@ -89,32 +94,35 @@ int TcpConnection::fd() const { return connfd_; }
 int TcpConnection::id() const { return connid_; }
 
 TcpConnection::ConnectionState TcpConnection::state() const { return state_; }
-void TcpConnection::set_send_buf(const char *str) { send_buf_->set_buf(str); }
+
 Buffer *TcpConnection::read_buf() { return read_buf_.get(); }
 Buffer *TcpConnection::send_buf() { return send_buf_.get(); }
 
+void TcpConnection::Send(const char *msg, int len)
+{
+    send_buf_->Append(msg, len);
+    Write();
+}
+
 void TcpConnection::Send(const std::string &msg)
 {
-    set_send_buf(msg.c_str());
-    Write();
+    Send(msg.c_str(), static_cast<int>(msg.size()));
 }
 
 void TcpConnection::Send(const char *msg)
 {
-    set_send_buf(msg);
-    Write();
+    Send(msg, static_cast<int>(strlen(msg)));
 }
 
 void TcpConnection::Read()
 {
-    read_buf_->Clear();
     ReadNonBlocking();
 }
 
 void TcpConnection::Write()
 {
     WriteNonBlocking();
-    send_buf_->Clear();
+    send_buf_->RetrieveAll();
 }
 
 void TcpConnection::ReadNonBlocking()
@@ -152,9 +160,9 @@ void TcpConnection::ReadNonBlocking()
 
 void TcpConnection::WriteNonBlocking()
 {
-    char buf[send_buf_->Size()];
-    memcpy(buf, send_buf_->c_str(), send_buf_->Size());
-    int data_size = send_buf_->Size();
+    char buf[send_buf_->readablebytes()];
+    memcpy(buf, send_buf_->beginread(), send_buf_->readablebytes());
+    int data_size = send_buf_->readablebytes();
     int data_left = data_size;
 
     while (data_left > 0)

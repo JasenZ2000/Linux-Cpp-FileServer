@@ -39,11 +39,14 @@ public:
 
     // 设定send buf
     void set_send_buf(const char *str); 
+
     Buffer *read_buf();
     Buffer *send_buf();
 
-    void Read(); // 读操作
+    /// @brief 读到socket缓冲区为空
+    void Read();
     void Write(); // 写操作
+
     void Send(const std::string &msg); // 输出信息
     void Send(const char *msg, int len); // 输出信息
     void Send(const char *msg);

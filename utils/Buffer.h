@@ -16,24 +16,56 @@
 #include <vector>
 #include "common.h"
 
+static const int kPrePendIndex = 8; // prependindex长度
+static const int kInitalSize = 1024; // 初始化开辟空间长度
 
+/// @brief 不定长缓冲区，切分preadable、writable、readable区域
 class Buffer{
     public:
         DISALLOW_COPY_AND_MOVE(Buffer);
-        Buffer() = default;
+        Buffer();
         ~Buffer() = default;
 
-        const std::string &buf() const { return buf_; };
-        const char *c_str() const { return buf_.c_str(); };
+        // 访问接口
+        char *begin();
+        const char *begin() const;
 
-        void set_buf(const char *buf);
+        char *beginread();
+        const char *beginread() const;
 
-        size_t Size() const { return buf_.size(); };
+        char *beginwrite();
+        const char *beginwrite() const;
+
+        // 缓冲区大小接口
+        int readablebytes() const;
+        int writablebytes() const;
+        int prependablebytes() const;
+
+        // 缓冲区写入接口
+        void Append(const char *_str);
         void Append(const char *_str, int _size);
-        void Clear() { buf_.clear(); };
+        void Append(const std::string &_str);
+
+        // 缓冲区阅读接口
+        const char *Peek() const;
+        char *Peek();
+        std::string PeekAsString(int _size);
+        std::string PeekAllAsString();
+
+        // 缓冲区读取接口
+        void Retrieve(int _size);
+        std::string RetrieveAsString(int _size);
+        void RetrieveAll();
+        std::string RetrieveAllAsString();
+        void RetrieveUtil(const char *end);
+        std::string RetrieveUtilAsString(const char *end);
     
+        void EnsureWritableBytes(int len);
+
     private:
-        std::string buf_;
+        std::vector<char> buf_;
+        int read_index_ = kPrePendIndex;
+        int write_index_ = kPrePendIndex;
 };
 
 static const int kBufferSize = 4096;

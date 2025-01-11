@@ -65,23 +65,40 @@ void HttpServer::HandleActiveClose(std::weak_ptr<TcpConnection>& conn){
     }
 }
 
+// 投子认负，等到HTTP请求在Buffer中已经完整，才会将其移出Buffer，如果HTTP请求不完整，那么就不进行记录。
 void HttpServer::onMessage(const conn_ptr &conn){
     LOG_DEBUG << " HttpServer::onMessage";
     if (conn->state() == TcpConnection::ConnectionState::Connected)
     {
         if (auto_close_conn_)
             conn->SetActTime(TimerStamp::Now());
-        // connection一次读取可能读不完一个请求，因此需要多次读取。
+
         HttpContext *context = conn->context();
-        if (!context->ParseRequest(conn->read_buf()->c_str(), conn->read_buf()->Size()))
+
+        while (true)
+        {
+        bool complete = context->ParseRequest(conn->read_buf()->PeekAllAsString());
+        bool ok = context->IsInvalid();
+
+        if (!ok)
         {
             conn->Send("HTTP/1.1 400 Bad Request\r\n\r\n");
             conn->HandleClose();
+            return;
         }
-        if (context->IsComplete())
+        else if (complete)
         {
             onRequest(conn, *context->GetRequest());
-            context->Reset();
+            // 读取完一个请求后，需要将其从Buffer中移除。
+            conn->read_buf()->Retrieve(context->GetContentLength());
+        }
+
+        context->Reset();
+
+        if (ok && !complete)
+        {
+            break;
+        }
         }
     }
 }

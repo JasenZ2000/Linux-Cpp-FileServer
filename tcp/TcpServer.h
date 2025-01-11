@@ -23,6 +23,8 @@ public:
     void Start();
 
     void set_connection_callback(conn_callback const &fn);
+    /// @brief 收到数据的响应，要求执行时处理缓存区数据
+    /// @param fn 
     void set_message_callback(conn_callback const &fn);
 
     inline void HandleClose(const conn_ptr &);

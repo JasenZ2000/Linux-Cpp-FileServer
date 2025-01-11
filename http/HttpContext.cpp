@@ -1,3 +1,13 @@
+/**
+ * @file HttpContext.cpp
+ * @author Zasen (zasen2000@buaa.edu.cn)
+ * @brief 改来改去，最后很悲伤的发现这个版本确实无法解决中断与重启读取的问题
+ * @version 0.1
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "HttpContext.h"
 #include "HttpRequest.h"
 
@@ -11,16 +21,23 @@ HttpContext::HttpContext() : state_(START)
 
 HttpContext::~HttpContext() {}
 
+bool HttpContext::ParseRequest(const std::string &str)
+{
+    return ParseRequest(str.c_str(), static_cast<int>(str.size()));
+}
+
 bool HttpContext::ParseRequest(const char *begin, int size)
 {
     char *start = const_cast<char *>(begin); // 某个词语头
     char *cur = start;                       // 当前字符，寻找词语尾
     char *keyend = cur;                      // 某个键值对的键的结尾
     char *valbegin = cur;                    // 某个键值对的值的开头
+    int   len = 0;
 
     while (cur <= begin + size && state_ != COMPLETE && state_ != kINVALID)
     {
         char ch = *cur;
+        len++;
         if (state_ == START) // 开始：检测是否是请求方法
         {
             if (ch == CR || ch == LF || isblank(ch))
@@ -286,7 +303,13 @@ bool HttpContext::ParseRequest(const char *begin, int size)
         else if (state_ == BODY) // 读取body
         {
             int bodylength = size - (cur - begin);
+            if (request_->GetHeaders().count("Content-Length"))
+            {
+                bodylength = std::stoi(request_->GetHeaderString("Content-Length"));
+            }
+            if (bodylength > size - (cur - begin))
             request_->SetBody(std::string(start, start + bodylength));
+            len += bodylength;
             state_ = COMPLETE;
         }
         else
@@ -295,5 +318,11 @@ bool HttpContext::ParseRequest(const char *begin, int size)
         }
         cur++;
     }
+
+    if (state_ == COMPLETE)
+    {
+        content_length_ = len;
+    }
+
     return state_ == COMPLETE;
 }

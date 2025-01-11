@@ -60,10 +60,16 @@ public:
     ~HttpContext();
 
     bool ParseRequest(const char *begin, int size);
+    bool ParseRequest(const std::string &str);
     HttpRequest *GetRequest() { return request_.get(); }
     bool IsComplete() { return state_ == COMPLETE; }
-    void Reset() { state_ = START; };
+    void Reset() { state_ = START; request_.reset(new HttpRequest()); };
+    int GetContentLength() { return content_length_; }
+    bool IsInvalid() { return state_ == kINVALID; }
+
 public:
     HttpRequestParseState state_;
     std::unique_ptr<HttpRequest> request_;
+    int content_length_;
+
 };
