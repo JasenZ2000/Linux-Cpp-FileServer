@@ -111,57 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named client
+# Target rules for targets named test_httpcontext
 
 # Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client
-.PHONY : client
+test_httpcontext: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_httpcontext
+.PHONY : test_httpcontext
 
 # fast build rule for target.
-client/fast:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-.PHONY : client/fast
-
-#=============================================================================
-# Target rules for targets named http_server
-
-# Build rule for target.
-http_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 http_server
-.PHONY : http_server
-
-# fast build rule for target.
-http_server/fast:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/build
-.PHONY : http_server/fast
-
-client.o: client.cpp.o
-
-.PHONY : client.o
-
-# target to build an object file
-client.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.o
-.PHONY : client.cpp.o
-
-client.i: client.cpp.i
-
-.PHONY : client.i
-
-# target to preprocess a source file
-client.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.i
-.PHONY : client.cpp.i
-
-client.s: client.cpp.s
-
-.PHONY : client.s
-
-# target to generate assembly for a file
-client.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.s
-.PHONY : client.cpp.s
+test_httpcontext/fast:
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/build
+.PHONY : test_httpcontext/fast
 
 http/HttpContext.o: http/HttpContext.cpp.o
 
@@ -169,7 +129,7 @@ http/HttpContext.o: http/HttpContext.cpp.o
 
 # target to build an object file
 http/HttpContext.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpContext.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpContext.cpp.o
 .PHONY : http/HttpContext.cpp.o
 
 http/HttpContext.i: http/HttpContext.cpp.i
@@ -178,7 +138,7 @@ http/HttpContext.i: http/HttpContext.cpp.i
 
 # target to preprocess a source file
 http/HttpContext.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpContext.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpContext.cpp.i
 .PHONY : http/HttpContext.cpp.i
 
 http/HttpContext.s: http/HttpContext.cpp.s
@@ -187,7 +147,7 @@ http/HttpContext.s: http/HttpContext.cpp.s
 
 # target to generate assembly for a file
 http/HttpContext.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpContext.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpContext.cpp.s
 .PHONY : http/HttpContext.cpp.s
 
 http/HttpRequest.o: http/HttpRequest.cpp.o
@@ -196,7 +156,7 @@ http/HttpRequest.o: http/HttpRequest.cpp.o
 
 # target to build an object file
 http/HttpRequest.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpRequest.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpRequest.cpp.o
 .PHONY : http/HttpRequest.cpp.o
 
 http/HttpRequest.i: http/HttpRequest.cpp.i
@@ -205,7 +165,7 @@ http/HttpRequest.i: http/HttpRequest.cpp.i
 
 # target to preprocess a source file
 http/HttpRequest.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpRequest.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpRequest.cpp.i
 .PHONY : http/HttpRequest.cpp.i
 
 http/HttpRequest.s: http/HttpRequest.cpp.s
@@ -214,7 +174,7 @@ http/HttpRequest.s: http/HttpRequest.cpp.s
 
 # target to generate assembly for a file
 http/HttpRequest.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpRequest.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpRequest.cpp.s
 .PHONY : http/HttpRequest.cpp.s
 
 http/HttpResponse.o: http/HttpResponse.cpp.o
@@ -223,7 +183,7 @@ http/HttpResponse.o: http/HttpResponse.cpp.o
 
 # target to build an object file
 http/HttpResponse.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpResponse.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpResponse.cpp.o
 .PHONY : http/HttpResponse.cpp.o
 
 http/HttpResponse.i: http/HttpResponse.cpp.i
@@ -232,7 +192,7 @@ http/HttpResponse.i: http/HttpResponse.cpp.i
 
 # target to preprocess a source file
 http/HttpResponse.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpResponse.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpResponse.cpp.i
 .PHONY : http/HttpResponse.cpp.i
 
 http/HttpResponse.s: http/HttpResponse.cpp.s
@@ -241,7 +201,7 @@ http/HttpResponse.s: http/HttpResponse.cpp.s
 
 # target to generate assembly for a file
 http/HttpResponse.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpResponse.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpResponse.cpp.s
 .PHONY : http/HttpResponse.cpp.s
 
 http/HttpServer.o: http/HttpServer.cpp.o
@@ -250,7 +210,7 @@ http/HttpServer.o: http/HttpServer.cpp.o
 
 # target to build an object file
 http/HttpServer.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpServer.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpServer.cpp.o
 .PHONY : http/HttpServer.cpp.o
 
 http/HttpServer.i: http/HttpServer.cpp.i
@@ -259,7 +219,7 @@ http/HttpServer.i: http/HttpServer.cpp.i
 
 # target to preprocess a source file
 http/HttpServer.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpServer.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpServer.cpp.i
 .PHONY : http/HttpServer.cpp.i
 
 http/HttpServer.s: http/HttpServer.cpp.s
@@ -268,35 +228,8 @@ http/HttpServer.s: http/HttpServer.cpp.s
 
 # target to generate assembly for a file
 http/HttpServer.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http/HttpServer.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/http/HttpServer.cpp.s
 .PHONY : http/HttpServer.cpp.s
-
-http_server.o: http_server.cpp.o
-
-.PHONY : http_server.o
-
-# target to build an object file
-http_server.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http_server.cpp.o
-.PHONY : http_server.cpp.o
-
-http_server.i: http_server.cpp.i
-
-.PHONY : http_server.i
-
-# target to preprocess a source file
-http_server.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http_server.cpp.i
-.PHONY : http_server.cpp.i
-
-http_server.s: http_server.cpp.s
-
-.PHONY : http_server.s
-
-# target to generate assembly for a file
-http_server.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/http_server.cpp.s
-.PHONY : http_server.cpp.s
 
 tcp/Acceptor.o: tcp/Acceptor.cpp.o
 
@@ -304,7 +237,7 @@ tcp/Acceptor.o: tcp/Acceptor.cpp.o
 
 # target to build an object file
 tcp/Acceptor.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Acceptor.cpp.o
 .PHONY : tcp/Acceptor.cpp.o
 
 tcp/Acceptor.i: tcp/Acceptor.cpp.i
@@ -313,7 +246,7 @@ tcp/Acceptor.i: tcp/Acceptor.cpp.i
 
 # target to preprocess a source file
 tcp/Acceptor.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Acceptor.cpp.i
 .PHONY : tcp/Acceptor.cpp.i
 
 tcp/Acceptor.s: tcp/Acceptor.cpp.s
@@ -322,7 +255,7 @@ tcp/Acceptor.s: tcp/Acceptor.cpp.s
 
 # target to generate assembly for a file
 tcp/Acceptor.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Acceptor.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Acceptor.cpp.s
 .PHONY : tcp/Acceptor.cpp.s
 
 tcp/Channel.o: tcp/Channel.cpp.o
@@ -331,7 +264,7 @@ tcp/Channel.o: tcp/Channel.cpp.o
 
 # target to build an object file
 tcp/Channel.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Channel.cpp.o
 .PHONY : tcp/Channel.cpp.o
 
 tcp/Channel.i: tcp/Channel.cpp.i
@@ -340,7 +273,7 @@ tcp/Channel.i: tcp/Channel.cpp.i
 
 # target to preprocess a source file
 tcp/Channel.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Channel.cpp.i
 .PHONY : tcp/Channel.cpp.i
 
 tcp/Channel.s: tcp/Channel.cpp.s
@@ -349,7 +282,7 @@ tcp/Channel.s: tcp/Channel.cpp.s
 
 # target to generate assembly for a file
 tcp/Channel.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Channel.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Channel.cpp.s
 .PHONY : tcp/Channel.cpp.s
 
 tcp/Epoller.o: tcp/Epoller.cpp.o
@@ -358,7 +291,7 @@ tcp/Epoller.o: tcp/Epoller.cpp.o
 
 # target to build an object file
 tcp/Epoller.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Epoller.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Epoller.cpp.o
 .PHONY : tcp/Epoller.cpp.o
 
 tcp/Epoller.i: tcp/Epoller.cpp.i
@@ -367,7 +300,7 @@ tcp/Epoller.i: tcp/Epoller.cpp.i
 
 # target to preprocess a source file
 tcp/Epoller.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Epoller.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Epoller.cpp.i
 .PHONY : tcp/Epoller.cpp.i
 
 tcp/Epoller.s: tcp/Epoller.cpp.s
@@ -376,7 +309,7 @@ tcp/Epoller.s: tcp/Epoller.cpp.s
 
 # target to generate assembly for a file
 tcp/Epoller.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/Epoller.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/Epoller.cpp.s
 .PHONY : tcp/Epoller.cpp.s
 
 tcp/EventLoop.o: tcp/EventLoop.cpp.o
@@ -385,7 +318,7 @@ tcp/EventLoop.o: tcp/EventLoop.cpp.o
 
 # target to build an object file
 tcp/EventLoop.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoop.cpp.o
 .PHONY : tcp/EventLoop.cpp.o
 
 tcp/EventLoop.i: tcp/EventLoop.cpp.i
@@ -394,7 +327,7 @@ tcp/EventLoop.i: tcp/EventLoop.cpp.i
 
 # target to preprocess a source file
 tcp/EventLoop.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoop.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoop.cpp.i
 .PHONY : tcp/EventLoop.cpp.i
 
 tcp/EventLoop.s: tcp/EventLoop.cpp.s
@@ -403,7 +336,7 @@ tcp/EventLoop.s: tcp/EventLoop.cpp.s
 
 # target to generate assembly for a file
 tcp/EventLoop.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoop.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoop.cpp.s
 .PHONY : tcp/EventLoop.cpp.s
 
 tcp/EventLoopThread.o: tcp/EventLoopThread.cpp.o
@@ -412,7 +345,7 @@ tcp/EventLoopThread.o: tcp/EventLoopThread.cpp.o
 
 # target to build an object file
 tcp/EventLoopThread.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoopThread.cpp.o
 .PHONY : tcp/EventLoopThread.cpp.o
 
 tcp/EventLoopThread.i: tcp/EventLoopThread.cpp.i
@@ -421,7 +354,7 @@ tcp/EventLoopThread.i: tcp/EventLoopThread.cpp.i
 
 # target to preprocess a source file
 tcp/EventLoopThread.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoopThread.cpp.i
 .PHONY : tcp/EventLoopThread.cpp.i
 
 tcp/EventLoopThread.s: tcp/EventLoopThread.cpp.s
@@ -430,7 +363,7 @@ tcp/EventLoopThread.s: tcp/EventLoopThread.cpp.s
 
 # target to generate assembly for a file
 tcp/EventLoopThread.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoopThread.cpp.s
 .PHONY : tcp/EventLoopThread.cpp.s
 
 tcp/EventLoopThreadPool.o: tcp/EventLoopThreadPool.cpp.o
@@ -439,7 +372,7 @@ tcp/EventLoopThreadPool.o: tcp/EventLoopThreadPool.cpp.o
 
 # target to build an object file
 tcp/EventLoopThreadPool.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoopThreadPool.cpp.o
 .PHONY : tcp/EventLoopThreadPool.cpp.o
 
 tcp/EventLoopThreadPool.i: tcp/EventLoopThreadPool.cpp.i
@@ -448,7 +381,7 @@ tcp/EventLoopThreadPool.i: tcp/EventLoopThreadPool.cpp.i
 
 # target to preprocess a source file
 tcp/EventLoopThreadPool.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoopThreadPool.cpp.i
 .PHONY : tcp/EventLoopThreadPool.cpp.i
 
 tcp/EventLoopThreadPool.s: tcp/EventLoopThreadPool.cpp.s
@@ -457,7 +390,7 @@ tcp/EventLoopThreadPool.s: tcp/EventLoopThreadPool.cpp.s
 
 # target to generate assembly for a file
 tcp/EventLoopThreadPool.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/EventLoopThreadPool.cpp.s
 .PHONY : tcp/EventLoopThreadPool.cpp.s
 
 tcp/TcpConnection.o: tcp/TcpConnection.cpp.o
@@ -466,7 +399,7 @@ tcp/TcpConnection.o: tcp/TcpConnection.cpp.o
 
 # target to build an object file
 tcp/TcpConnection.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/TcpConnection.cpp.o
 .PHONY : tcp/TcpConnection.cpp.o
 
 tcp/TcpConnection.i: tcp/TcpConnection.cpp.i
@@ -475,7 +408,7 @@ tcp/TcpConnection.i: tcp/TcpConnection.cpp.i
 
 # target to preprocess a source file
 tcp/TcpConnection.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/TcpConnection.cpp.i
 .PHONY : tcp/TcpConnection.cpp.i
 
 tcp/TcpConnection.s: tcp/TcpConnection.cpp.s
@@ -484,7 +417,7 @@ tcp/TcpConnection.s: tcp/TcpConnection.cpp.s
 
 # target to generate assembly for a file
 tcp/TcpConnection.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/TcpConnection.cpp.s
 .PHONY : tcp/TcpConnection.cpp.s
 
 tcp/TcpServer.o: tcp/TcpServer.cpp.o
@@ -493,7 +426,7 @@ tcp/TcpServer.o: tcp/TcpServer.cpp.o
 
 # target to build an object file
 tcp/TcpServer.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/TcpServer.cpp.o
 .PHONY : tcp/TcpServer.cpp.o
 
 tcp/TcpServer.i: tcp/TcpServer.cpp.i
@@ -502,7 +435,7 @@ tcp/TcpServer.i: tcp/TcpServer.cpp.i
 
 # target to preprocess a source file
 tcp/TcpServer.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/TcpServer.cpp.i
 .PHONY : tcp/TcpServer.cpp.i
 
 tcp/TcpServer.s: tcp/TcpServer.cpp.s
@@ -511,8 +444,35 @@ tcp/TcpServer.s: tcp/TcpServer.cpp.s
 
 # target to generate assembly for a file
 tcp/TcpServer.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/tcp/TcpServer.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/tcp/TcpServer.cpp.s
 .PHONY : tcp/TcpServer.cpp.s
+
+test_httpcontext.o: test_httpcontext.cpp.o
+
+.PHONY : test_httpcontext.o
+
+# target to build an object file
+test_httpcontext.cpp.o:
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/test_httpcontext.cpp.o
+.PHONY : test_httpcontext.cpp.o
+
+test_httpcontext.i: test_httpcontext.cpp.i
+
+.PHONY : test_httpcontext.i
+
+# target to preprocess a source file
+test_httpcontext.cpp.i:
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/test_httpcontext.cpp.i
+.PHONY : test_httpcontext.cpp.i
+
+test_httpcontext.s: test_httpcontext.cpp.s
+
+.PHONY : test_httpcontext.s
+
+# target to generate assembly for a file
+test_httpcontext.cpp.s:
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/test_httpcontext.cpp.s
+.PHONY : test_httpcontext.cpp.s
 
 utils/AsyncLogger.o: utils/AsyncLogger.cpp.o
 
@@ -520,7 +480,7 @@ utils/AsyncLogger.o: utils/AsyncLogger.cpp.o
 
 # target to build an object file
 utils/AsyncLogger.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/AsyncLogger.cpp.o
 .PHONY : utils/AsyncLogger.cpp.o
 
 utils/AsyncLogger.i: utils/AsyncLogger.cpp.i
@@ -529,7 +489,7 @@ utils/AsyncLogger.i: utils/AsyncLogger.cpp.i
 
 # target to preprocess a source file
 utils/AsyncLogger.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/AsyncLogger.cpp.i
 .PHONY : utils/AsyncLogger.cpp.i
 
 utils/AsyncLogger.s: utils/AsyncLogger.cpp.s
@@ -538,7 +498,7 @@ utils/AsyncLogger.s: utils/AsyncLogger.cpp.s
 
 # target to generate assembly for a file
 utils/AsyncLogger.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/AsyncLogger.cpp.s
 .PHONY : utils/AsyncLogger.cpp.s
 
 utils/Buffer.o: utils/Buffer.cpp.o
@@ -547,7 +507,7 @@ utils/Buffer.o: utils/Buffer.cpp.o
 
 # target to build an object file
 utils/Buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Buffer.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/Buffer.cpp.o
 .PHONY : utils/Buffer.cpp.o
 
 utils/Buffer.i: utils/Buffer.cpp.i
@@ -556,7 +516,7 @@ utils/Buffer.i: utils/Buffer.cpp.i
 
 # target to preprocess a source file
 utils/Buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Buffer.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/Buffer.cpp.i
 .PHONY : utils/Buffer.cpp.i
 
 utils/Buffer.s: utils/Buffer.cpp.s
@@ -565,7 +525,7 @@ utils/Buffer.s: utils/Buffer.cpp.s
 
 # target to generate assembly for a file
 utils/Buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Buffer.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/Buffer.cpp.s
 .PHONY : utils/Buffer.cpp.s
 
 utils/CurrentThread.o: utils/CurrentThread.cpp.o
@@ -574,7 +534,7 @@ utils/CurrentThread.o: utils/CurrentThread.cpp.o
 
 # target to build an object file
 utils/CurrentThread.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/CurrentThread.cpp.o
 .PHONY : utils/CurrentThread.cpp.o
 
 utils/CurrentThread.i: utils/CurrentThread.cpp.i
@@ -583,7 +543,7 @@ utils/CurrentThread.i: utils/CurrentThread.cpp.i
 
 # target to preprocess a source file
 utils/CurrentThread.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/CurrentThread.cpp.i
 .PHONY : utils/CurrentThread.cpp.i
 
 utils/CurrentThread.s: utils/CurrentThread.cpp.s
@@ -592,7 +552,7 @@ utils/CurrentThread.s: utils/CurrentThread.cpp.s
 
 # target to generate assembly for a file
 utils/CurrentThread.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/CurrentThread.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/CurrentThread.cpp.s
 .PHONY : utils/CurrentThread.cpp.s
 
 utils/LogFile.o: utils/LogFile.cpp.o
@@ -601,7 +561,7 @@ utils/LogFile.o: utils/LogFile.cpp.o
 
 # target to build an object file
 utils/LogFile.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogFile.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/LogFile.cpp.o
 .PHONY : utils/LogFile.cpp.o
 
 utils/LogFile.i: utils/LogFile.cpp.i
@@ -610,7 +570,7 @@ utils/LogFile.i: utils/LogFile.cpp.i
 
 # target to preprocess a source file
 utils/LogFile.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogFile.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/LogFile.cpp.i
 .PHONY : utils/LogFile.cpp.i
 
 utils/LogFile.s: utils/LogFile.cpp.s
@@ -619,7 +579,7 @@ utils/LogFile.s: utils/LogFile.cpp.s
 
 # target to generate assembly for a file
 utils/LogFile.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogFile.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/LogFile.cpp.s
 .PHONY : utils/LogFile.cpp.s
 
 utils/LogStream.o: utils/LogStream.cpp.o
@@ -628,7 +588,7 @@ utils/LogStream.o: utils/LogStream.cpp.o
 
 # target to build an object file
 utils/LogStream.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogStream.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/LogStream.cpp.o
 .PHONY : utils/LogStream.cpp.o
 
 utils/LogStream.i: utils/LogStream.cpp.i
@@ -637,7 +597,7 @@ utils/LogStream.i: utils/LogStream.cpp.i
 
 # target to preprocess a source file
 utils/LogStream.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogStream.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/LogStream.cpp.i
 .PHONY : utils/LogStream.cpp.i
 
 utils/LogStream.s: utils/LogStream.cpp.s
@@ -646,7 +606,7 @@ utils/LogStream.s: utils/LogStream.cpp.s
 
 # target to generate assembly for a file
 utils/LogStream.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/LogStream.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/LogStream.cpp.s
 .PHONY : utils/LogStream.cpp.s
 
 utils/Logger.o: utils/Logger.cpp.o
@@ -655,7 +615,7 @@ utils/Logger.o: utils/Logger.cpp.o
 
 # target to build an object file
 utils/Logger.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Logger.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/Logger.cpp.o
 .PHONY : utils/Logger.cpp.o
 
 utils/Logger.i: utils/Logger.cpp.i
@@ -664,7 +624,7 @@ utils/Logger.i: utils/Logger.cpp.i
 
 # target to preprocess a source file
 utils/Logger.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Logger.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/Logger.cpp.i
 .PHONY : utils/Logger.cpp.i
 
 utils/Logger.s: utils/Logger.cpp.s
@@ -673,7 +633,7 @@ utils/Logger.s: utils/Logger.cpp.s
 
 # target to generate assembly for a file
 utils/Logger.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/Logger.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/Logger.cpp.s
 .PHONY : utils/Logger.cpp.s
 
 utils/TimerQueue.o: utils/TimerQueue.cpp.o
@@ -682,7 +642,7 @@ utils/TimerQueue.o: utils/TimerQueue.cpp.o
 
 # target to build an object file
 utils/TimerQueue.cpp.o:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/TimerQueue.cpp.o
 .PHONY : utils/TimerQueue.cpp.o
 
 utils/TimerQueue.i: utils/TimerQueue.cpp.i
@@ -691,7 +651,7 @@ utils/TimerQueue.i: utils/TimerQueue.cpp.i
 
 # target to preprocess a source file
 utils/TimerQueue.cpp.i:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/TimerQueue.cpp.i
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/TimerQueue.cpp.i
 .PHONY : utils/TimerQueue.cpp.i
 
 utils/TimerQueue.s: utils/TimerQueue.cpp.s
@@ -700,7 +660,7 @@ utils/TimerQueue.s: utils/TimerQueue.cpp.s
 
 # target to generate assembly for a file
 utils/TimerQueue.cpp.s:
-	$(MAKE) -f CMakeFiles/http_server.dir/build.make CMakeFiles/http_server.dir/utils/TimerQueue.cpp.s
+	$(MAKE) -f CMakeFiles/test_httpcontext.dir/build.make CMakeFiles/test_httpcontext.dir/utils/TimerQueue.cpp.s
 .PHONY : utils/TimerQueue.cpp.s
 
 # Help Target
@@ -710,12 +670,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... client"
+	@echo "... test_httpcontext"
 	@echo "... edit_cache"
-	@echo "... http_server"
-	@echo "... client.o"
-	@echo "... client.i"
-	@echo "... client.s"
 	@echo "... http/HttpContext.o"
 	@echo "... http/HttpContext.i"
 	@echo "... http/HttpContext.s"
@@ -728,9 +684,6 @@ help:
 	@echo "... http/HttpServer.o"
 	@echo "... http/HttpServer.i"
 	@echo "... http/HttpServer.s"
-	@echo "... http_server.o"
-	@echo "... http_server.i"
-	@echo "... http_server.s"
 	@echo "... tcp/Acceptor.o"
 	@echo "... tcp/Acceptor.i"
 	@echo "... tcp/Acceptor.s"
@@ -755,6 +708,9 @@ help:
 	@echo "... tcp/TcpServer.o"
 	@echo "... tcp/TcpServer.i"
 	@echo "... tcp/TcpServer.s"
+	@echo "... test_httpcontext.o"
+	@echo "... test_httpcontext.i"
+	@echo "... test_httpcontext.s"
 	@echo "... utils/AsyncLogger.o"
 	@echo "... utils/AsyncLogger.i"
 	@echo "... utils/AsyncLogger.s"

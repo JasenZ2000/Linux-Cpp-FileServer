@@ -1,0 +1,37 @@
+19700216 20:24:07.934592Z 22501 INFO  HttpServer Listening on [ 127.0.0.1:1234 ] - HttpServer.cpp:28
+19700216 20:24:12.934627Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:17.934693Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:22.934753Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:27.934889Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:32.934940Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:33.497545Z 22501 INFO   HttpServer::OnNewConnection : new connection [fd#46] from 127.0.0.1:51684 - HttpServer.cpp:44
+19700216 20:24:33.505552Z 22501 INFO   TcpServer::HandleCloseInLoop - Remove connection id: 1 and fd: 46 - TcpServer.cpp:73
+19700216 20:24:37.934994Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:42.935063Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:47.935125Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:50.048529Z 22501 INFO   HttpServer::OnNewConnection : new connection [fd#46] from 127.0.0.1:45754 - HttpServer.cpp:44
+19700216 20:24:50.056424Z 22501 INFO   TcpServer::HandleCloseInLoop - Remove connection id: 2 and fd: 46 - TcpServer.cpp:73
+19700216 20:24:52.935246Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:24:57.935313Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:25:02.935480Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:25:07.935631Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:25:12.820259Z 22501 INFO   HttpServer::OnNewConnection : new connection [fd#46] from 127.0.0.1:44470 - HttpServer.cpp:44
+19700216 20:25:12.935701Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:25:14.411188Z 22501 INFO   TcpServer::HandleCloseInLoop - Remove connection id: 3 and fd: 46 - TcpServer.cpp:73
+19700216 20:25:17.935757Z 22501 INFO  Server alive
+ - HttpServer.cpp:33
+19700216 20:25:22.935818Z 22501 INFO  Server alive
+ - HttpServer.cpp:33

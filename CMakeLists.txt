@@ -20,12 +20,12 @@ set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/test/)
 # add_executable(echoserver echo_server.cpp ${SRC})
 # target_link_libraries(echoserver ${CMAKE_THREAD_LIBS_INIT})
 
-add_executable(client client.cpp)
+# add_executable(client client.cpp)
 
 # add_executable(http_test test_httpcontext.cpp ${SRC_HTTP})
 
-add_executable(http_server http_server.cpp ${SRC_UTIL} ${SRC_HTTP} ${SRC_TCP})
-target_link_libraries(http_server ${CMAKE_THREAD_LIBS_INIT})
+# add_executable(http_server http_server.cpp ${SRC_UTIL} ${SRC_HTTP} ${SRC_TCP})
+# target_link_libraries(http_server ${CMAKE_THREAD_LIBS_INIT})
 
-# add_executable(test_logstream test_logstream.cpp ${SRC_UTIL} ${SRC_HTTP} ${SRC_TCP})
-# target_link_libraries(test_logstream ${CMAKE_THREAD_LIBS_INIT})
+add_executable(test_httpcontext test_httpcontext.cpp ${SRC_UTIL} ${SRC_HTTP} ${SRC_TCP})
+target_link_libraries(test_httpcontext ${CMAKE_THREAD_LIBS_INIT})

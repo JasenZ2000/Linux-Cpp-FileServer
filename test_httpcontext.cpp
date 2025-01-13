@@ -3,44 +3,91 @@
 #include "HttpContext.h"
 #include "HttpRequest.h"
 #include <map>
-int main(){
+// int main(){
 
-    HttpContext *context = new HttpContext();
+//     HttpContext *context = new HttpContext();
 
-	std::string str = "GET /hello?a=2 HTTP/1.1\r\n"
-					  "Host: 127.0.0.1:1234\r\n"
-					  "Connection: keep-alive\r\n"
-					  "Cache-Control: max-age=0\r\n"
-					  "sec-ch-ua: \"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"\r\n"
-					  "sec-ch-ua-mobile: ?0\r\n"
-					  "sec-ch-ua-platform: \"Linux\"\r\n"
-					  "Upgrade-Insecure-Requests: 1\r\n"
-					  "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36\r\n"
-					  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\r\n"
-					  "Sec-Fetch-Site: none\r\n"
-					  "Sec-Fetch-Mode: navigate\r\n"
-					  "Sec-Fetch-User: ?1\r\n"
-					  "Sec-Fetch-Dest: document\r\n"
-					  "Accept-Encoding: gzip, deflate, br\r\n"
-					  "Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7\r\n"
-					  "Cookie: username-127-0-0-1-8888=\"2|1:0|10:1681994652|23:username-127-0-0-1-8888|44:Yzg5ZjA1OGU0MWQ1NGNlMWI2MGQwYTFhMDAxYzY3YzU=|6d0b051e144fa862c61464acf2d14418d9ba26107549656a86d92e079ff033ea\"; _xsrf=2|dd035ca7|e419a1d40c38998f604fb6748dc79a10|168199465\r\n"
-					  "\r\n";
-	//std::cout << str.size() << std::endl;
-    context->ParseRequest(str.c_str(), str.size());
-    HttpRequest * request = context->GetRequest();
+// 	std::string str = "GET /hello?a=2 HTTP/1.1\r\n"
+// 					  "Host: 127.0.0.1:1234\r\n"
+// 					  "Connection: keep-alive\r\n"
+// 					  "Cache-Control: max-age=0\r\n"
+// 					  "sec-ch-ua: \"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"\r\n"
+// 					  "sec-ch-ua-mobile: ?0\r\n"
+// 					  "sec-ch-ua-platform: \"Linux\"\r\n"
+// 					  "Upgrade-Insecure-Requests: 1\r\n"
+// 					  "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36\r\n"
+// 					  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\r\n"
+// 					  "Sec-Fetch-Site: none\r\n"
+// 					  "Sec-Fetch-Mode: navigate\r\n"
+// 					  "Sec-Fetch-User: ?1\r\n"
+// 					  "Sec-Fetch-Dest: document\r\n"
+// 					  "Accept-Encoding: gzip, deflate, br\r\n"
+// 					  "Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7\r\n"
+// 					  "Cookie: username-127-0-0-1-8888=\"2|1:0|10:1681994652|23:username-127-0-0-1-8888|44:Yzg5ZjA1OGU0MWQ1NGNlMWI2MGQwYTFhMDAxYzY3YzU=|6d0b051e144fa862c61464acf2d14418d9ba26107549656a86d92e079ff033ea\"; _xsrf=2|dd035ca7|e419a1d40c38998f604fb6748dc79a10|168199465\r\n"
+// 					  "\r\n";
 
-    std::cout << "method: " << request->GetMethodString() << std::endl << std::endl;
-    std::cout << "url: " << request->GetUrl() << std::endl << std::endl;
-	std::cout <<"request_params: " << std::endl;
-    for(auto it:request->GetRequestParams()){
-        std::cout << "key:   " << it.first <<  std::endl <<"value: " << it.second << std::endl << std::endl;
-    }
-    std::cout << "protocol: " << request->GetProtocol() << std::endl << std::endl;
-    std::cout << "version: " << request->GetVersionString() << std::endl << std::endl;
+// 	//std::cout << str.size() << std::endl;
+//     context->ParseRequest(str);
+//     HttpRequest * request = context->GetRequest();
 
-	std::cout << "headers: " << std::endl;
-	for (auto it : request->GetHeaders())
+//     std::cout << "method: " << request->GetMethodString() << std::endl << std::endl;
+//     std::cout << "url: " << request->GetUrl() << std::endl << std::endl;
+// 	std::cout <<"request_params: " << std::endl;
+//     for(auto it:request->GetRequestParams()){
+//         std::cout << "key:   " << it.first <<  std::endl <<"value: " << it.second << std::endl << std::endl;
+//     }
+//     std::cout << "protocol: " << request->GetProtocol() << std::endl << std::endl;
+//     std::cout << "version: " << request->GetVersionString() << std::endl << std::endl;
+
+// 	std::cout << "headers: " << std::endl;
+// 	for (auto it : request->GetHeaders())
+// 	{
+// 		std::cout << "key:   " << it.first <<  std::endl <<"value: " << it.second << std::endl;
+// 	}
+// }
+
+int main()
+{
+	HttpContext context;
+
+	// 模拟分段数据传输
+	std::string part1 = "POST /test HTTP/1.1\r\nHost: example.com\r\nContent-Length: 20\r\n\r\nHello, ";
+	std::string part2 = "World!1234567890";
+
+	// 第一次解析（数据不完整）
+	if (context.ParseRequest(part1))
 	{
-		std::cout << "key:   " << it.first <<  std::endl <<"value: " << it.second << std::endl;
+		std::cout << "第一部分接收成功，但数据不完整\n";
+		if (context.IsComplete())
+		{
+			std::cout << "请求完整\n";
+			HttpRequest *request = context.GetRequest();
+			std::cout << "数据完整，成功解析请求：\n";
+			std::cout << "方法: " << request->GetMethodString() << "\n";
+			std::cout << "URL: " << request->GetUrl() << "\n";
+			std::cout << "headers: " << std::endl;
+			for (auto it : request->GetHeaders())
+			{
+				std::cout << "key:   " << it.first << std::endl
+						  << "value: " << it.second << std::endl;
+			}
+			std::cout << "Body: " << request->GetBody() << "\n";
+		}
 	}
+
+	// 第二次解析（数据完整）
+	if (context.ParseRequest(part2) && context.IsComplete())
+	{
+		HttpRequest *request = context.GetRequest();
+		std::cout << "数据完整，成功解析请求：\n";
+		std::cout << "方法: " << request->GetMethodString() << "\n";
+		std::cout << "URL: " << request->GetUrl() << "\n";
+		std::cout << "Body: " << request->GetBody() << "\n";
+	}
+	else
+	{
+		std::cout << "请求仍然不完整\n";
+	}
+
+	return 0;
 }

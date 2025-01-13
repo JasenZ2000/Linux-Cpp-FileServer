@@ -67,7 +67,6 @@ void HttpServer::HandleActiveClose(std::weak_ptr<TcpConnection>& conn){
 
 // 投子认负，等到HTTP请求在Buffer中已经完整，才会将其移出Buffer，如果HTTP请求不完整，那么就不进行记录。
 void HttpServer::onMessage(const conn_ptr &conn){
-    LOG_DEBUG << " HttpServer::onMessage";
     if (conn->state() == TcpConnection::ConnectionState::Connected)
     {
         if (auto_close_conn_)
@@ -77,28 +76,29 @@ void HttpServer::onMessage(const conn_ptr &conn){
 
         while (true)
         {
-        bool complete = context->ParseRequest(conn->read_buf()->PeekAllAsString());
-        bool ok = context->IsInvalid();
+            std::string in_buffer = conn->read_buf()->RetrieveAllAsString();
+            LOG_INFO << " HttpServer::onMessage: \r\n" << in_buffer;
 
-        if (!ok)
-        {
-            conn->Send("HTTP/1.1 400 Bad Request\r\n\r\n");
-            conn->HandleClose();
-            return;
-        }
-        else if (complete)
-        {
-            onRequest(conn, *context->GetRequest());
-            // 读取完一个请求后，需要将其从Buffer中移除。
-            conn->read_buf()->Retrieve(context->GetContentLength());
-        }
+            bool ok = context->ParseRequest(in_buffer);
+            bool complete = context->IsComplete();
 
-        context->Reset();
+            LOG_DEBUG << " HttpServer::onMessage" << " complete: " << complete << " ok: " << ok;
 
-        if (ok && !complete)
-        {
-            break;
-        }
+            if (!ok)
+            {
+                conn->Send("HTTP/1.1 400 Bad Request\r\n\r\n");
+                conn->HandleClose();
+                return;
+            }
+            else if (complete)
+            {
+                onRequest(conn, *context->GetRequest());
+                context->Reset();
+            }
+            else
+            {
+                break;
+            }
         }
     }
 }
@@ -115,7 +115,7 @@ void HttpServer::onRequest(const conn_ptr &conn, const HttpRequest &req){
     conn->Send(response.message().c_str());
     if (response.close_connection())
     {
-        LOG_INFO << "HttpServer::onRequest : HandleClose";
+        LOG_DEBUG << "HttpServer::onRequest : HandleClose";
         conn->HandleClose();
     }
 }

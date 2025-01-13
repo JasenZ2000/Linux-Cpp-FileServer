@@ -16,6 +16,8 @@ CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../tcp/TcpConnection.h
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../tcp/TcpServer.h
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../utils/Buffer.h
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../utils/LogStream.h
+CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../utils/Logger.h
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../utils/TimerStamp.h
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../utils/common.h
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../http/HttpContext.h
@@ -69,7 +71,10 @@ CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o: ../tcp/EventLoop.h
 CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.cpp
 CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.h
 
+CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../utils/Buffer.h
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../utils/LogStream.h
+CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../utils/Logger.h
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../utils/TimerStamp.h
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../utils/common.h
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../tcp/Acceptor.h
@@ -79,9 +84,17 @@ CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../tcp/TcpConnection.h
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.cpp
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.h
 
+CMakeFiles/test_logstream.dir/test_logstream.cpp.o: ../utils/Buffer.h
 CMakeFiles/test_logstream.dir/test_logstream.cpp.o: ../utils/LogStream.h
 CMakeFiles/test_logstream.dir/test_logstream.cpp.o: ../utils/common.h
 CMakeFiles/test_logstream.dir/test_logstream.cpp.o: ../test_logstream.cpp
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/AsyncLogger.cpp
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/AsyncLogger.h
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/Buffer.h
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/LogFile.h
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/common.h
 
 CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o: ../utils/Buffer.cpp
 CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o: ../utils/Buffer.h
@@ -89,6 +102,23 @@ CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o: ../utils/common.h
 
 CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.cpp
 CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.h
+
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o: ../utils/LogFile.cpp
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o: ../utils/LogFile.h
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o: ../utils/TimerStamp.h
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o: ../utils/Buffer.h
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o: ../utils/LogStream.cpp
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o: ../utils/LogStream.h
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o: ../utils/common.h
+
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/Buffer.h
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/CurrentThread.h
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/LogStream.h
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/Logger.cpp
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/Logger.h
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/TimerStamp.h
+CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/common.h
 
 CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o: ../tcp/Channel.h
 CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o: ../tcp/EventLoop.h

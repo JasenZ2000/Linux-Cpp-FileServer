@@ -1,0 +1,51 @@
+19700217 03:47:01.913960Z 24577 INFO  HttpServer Listening on [ 127.0.0.1:1234 ] - HttpServer.cpp:28
+19700217 03:47:06.914051Z 24577 INFO  Server alive
+ - HttpServer.cpp:33
+19700217 03:47:11.914118Z 24577 INFO  Server alive
+ - HttpServer.cpp:33
+19700217 03:47:12.948764Z 24577 INFO   HttpServer::OnNewConnection : new connection [fd#46] from 127.0.0.1:46728 - HttpServer.cpp:44
+19700217 03:47:12.958006Z 24579 INFO   HttpServer::onMessageGET / HTTP/1.1
+Host: 127.0.0.1:1234
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+
+ - HttpServer.cpp:80
+19700217 03:47:12.958104Z 24579 INFO   HttpServer::onMessage complete: 1 ok: 1 - HttpServer.cpp:85
+19700217 03:47:12.958107Z 24579 INFO  HttpServer::onRequest - HttpServer.cpp:107
+19700217 03:47:12.958209Z 24579 INFO  HttpServer::onRequest : HandleClose - HttpServer.cpp:118
+19700217 03:47:12.958247Z 24579 INFO   HttpServer::onMessage - HttpServer.cpp:80
+19700217 03:47:12.958250Z 24579 INFO   HttpServer::onMessage complete: 0 ok: 1 - HttpServer.cpp:85
+19700217 03:47:12.958266Z 24577 INFO   TcpServer::HandleCloseInLoop - Remove connection id: 1 and fd: 46 - TcpServer.cpp:73
+19700217 03:47:16.277672Z 24577 INFO   HttpServer::OnNewConnection : new connection [fd#46] from 127.0.0.1:46742 - HttpServer.cpp:44
+19700217 03:47:16.914243Z 24577 INFO  Server alive
+ - HttpServer.cpp:33
+19700217 03:47:18.465093Z 24580 INFO   HttpServer::onMessageGET /hello HTTP/1.1
+Host: 127.0.0.1:1234
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+
+ - HttpServer.cpp:80
+19700217 03:47:18.465168Z 24580 INFO   HttpServer::onMessage complete: 1 ok: 1 - HttpServer.cpp:85
+19700217 03:47:18.465171Z 24580 INFO  HttpServer::onRequest - HttpServer.cpp:107
+19700217 03:47:18.465240Z 24580 INFO  HttpServer::onRequest : HandleClose - HttpServer.cpp:118
+19700217 03:47:18.465284Z 24580 INFO   HttpServer::onMessage - HttpServer.cpp:80
+19700217 03:47:18.465288Z 24580 INFO   HttpServer::onMessage complete: 0 ok: 1 - HttpServer.cpp:85
+19700217 03:47:18.465299Z 24577 INFO   TcpServer::HandleCloseInLoop - Remove connection id: 2 and fd: 46 - TcpServer.cpp:73
+19700217 03:47:21.914377Z 24577 INFO  Server alive
+ - HttpServer.cpp:33

@@ -8,68 +8,29 @@ class HttpRequest;
 #define CR '\r'
 #define LF '\n'
 
-enum HttpRequestParseState 
-{
-    kINVALID,         // 无效
-    kINVALID_METHOD,  // 无效请求方法
-    kINVALID_URL,     // 无效请求路径
-    kINVALID_VERSION, // 无效的协议版本号
-    kINVALID_HEADER,  // 无效请求头
-
-    START,  // 解析开始
-    METHOD, // 请求方法
-
-    BEFORE_URL, // 请求连接前的状态，需要'/'开头
-    IN_URL,     // url处理
-
-    BEFORE_URL_PARAM_KEY, // URL请求参数键之前
-    URL_PARAM_KEY, // URL请求参数键
-    BEFORE_URL_PARAM_VALUE, // URL请求参数值之前
-    URL_PARAM_VALUE, // URL请求参数值
-
-    BEFORE_PROTOCOL, // 协议解析之前
-    PROTOCOL,        // 协议
-
-    BEFORE_VERSION, // 版本开始前
-    VERSION_SPLIT,  // 版本分割符，这里不考虑 1.1/1.0 这种情况中的'.'
-    VERSION,        // 版本
-
-    HEADER,
-    HEADER_KEY, //
-
-    HEADER_BEFORE_COLON, // 请求头冒号之前
-    HEADER_AFTER_COLON,  // 请求头冒号
-    HEADER_VALUE,        // 请求值
-
-    WHEN_CR, // 遇到一个回车
-
-    CR_LF, // 回车换行
-
-    CR_LF_CR, // 回车换行之后的状态
-
-    BODY, // 请求体
-
-    COMPLETE, // 完成
-
-};
-
 class HttpContext
 {
 public:
     HttpContext();
     ~HttpContext();
 
-    bool ParseRequest(const char *begin, int size);
+    // bool ParseRequest(const char *begin, int size); 反正会自动转换
     bool ParseRequest(const std::string &str);
-    HttpRequest *GetRequest() { return request_.get(); }
-    bool IsComplete() { return state_ == COMPLETE; }
-    void Reset() { state_ = START; request_.reset(new HttpRequest()); };
-    int GetContentLength() { return content_length_; }
-    bool IsInvalid() { return state_ == kINVALID; }
+    HttpRequest *GetRequest();
+    bool IsComplete();
+    void Reset();
+    void ClearBuffer();
+    int GetContentLength();
 
-public:
-    HttpRequestParseState state_;
+private:
     std::unique_ptr<HttpRequest> request_;
-    int content_length_;
+    size_t content_length_;
+    bool complete_headers_;
+    bool complete_request_;
+    std::string buffer_; // 增量式读取
+
+    bool ParseRequestLine(const std::string &str);
+    bool ParseRequestHeaders(const std::string &str);
+    bool ParseChunkedBody();
 
 };

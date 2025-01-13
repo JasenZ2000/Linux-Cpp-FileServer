@@ -501,4 +501,6 @@ inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
 
 在之前的实现代码中，服务端收到了消息后，会清空读缓存区，然后一直读到读取失败或读取结束，算是阻塞在read函数上了。这种也是默认的接收方式，但是对于粘包问题则毫无办法。现在必须分离出从socket读取消息与从缓冲区读取消息的过程，即实现read和retrieve两个函数。
 
-缓冲区分成prependable, readable, writable三个部分，仅仅是单一缓冲区，同时可用于输入和输出，提高了内存空间利用率。目前的大问题是prependable部分的空间如何利用，以及如何处理读入的数据。
+缓冲区分成prependable, readable, writable三个部分，仅仅是单一缓冲区，同时可用于输入和输出，提高了内存空间利用率。目前的大问题是prependable部分的空间如何利用，以及如何处理读入的数据，没有具体的。
+
+进一步还优化了增量式的HTTP请求解析，将HTTP请求解析的过程放在了缓冲区中，而不是在每次读取消息时都进行全文解析，且针对于Http1.0，close，chunked等情况进行了处理。

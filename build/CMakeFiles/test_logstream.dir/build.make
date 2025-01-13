@@ -57,33 +57,57 @@ include CMakeFiles/test_logstream.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_logstream.dir/flags.make
 
-CMakeFiles/test_logstream.dir/test_logstream.cpp.o: CMakeFiles/test_logstream.dir/flags.make
-CMakeFiles/test_logstream.dir/test_logstream.cpp.o: ../test_logstream.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_logstream.dir/test_logstream.cpp.o"
-	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/test_logstream.cpp.o -c /data/zzs/CppWebServer/test_logstream.cpp
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o: CMakeFiles/test_logstream.dir/flags.make
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o: ../test_httpcontext.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o"
+	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o -c /data/zzs/CppWebServer/test_httpcontext.cpp
 
-CMakeFiles/test_logstream.dir/test_logstream.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_logstream.dir/test_logstream.cpp.i"
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_logstream.dir/test_httpcontext.cpp.i"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/test_logstream.dir/test_logstream.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_logstream.dir/test_logstream.cpp.s"
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_logstream.dir/test_httpcontext.cpp.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/test_logstream.dir/test_logstream.cpp.o.requires:
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.requires:
 
-.PHONY : CMakeFiles/test_logstream.dir/test_logstream.cpp.o.requires
+.PHONY : CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.requires
 
-CMakeFiles/test_logstream.dir/test_logstream.cpp.o.provides: CMakeFiles/test_logstream.dir/test_logstream.cpp.o.requires
-	$(MAKE) -f CMakeFiles/test_logstream.dir/build.make CMakeFiles/test_logstream.dir/test_logstream.cpp.o.provides.build
-.PHONY : CMakeFiles/test_logstream.dir/test_logstream.cpp.o.provides
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.provides: CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_logstream.dir/build.make CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.provides.build
+.PHONY : CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.provides
 
-CMakeFiles/test_logstream.dir/test_logstream.cpp.o.provides.build: CMakeFiles/test_logstream.dir/test_logstream.cpp.o
+CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.provides.build: CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o
+
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: CMakeFiles/test_logstream.dir/flags.make
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o: ../utils/AsyncLogger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o"
+	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o -c /data/zzs/CppWebServer/utils/AsyncLogger.cpp
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.requires:
+
+.PHONY : CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.requires
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.provides: CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_logstream.dir/build.make CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.provides.build
+.PHONY : CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.provides
+
+CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.provides.build: CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o
 
 
 CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o: ../utils/Buffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o -c /data/zzs/CppWebServer/utils/Buffer.cpp
 
 CMakeFiles/test_logstream.dir/utils/Buffer.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o.provides.build: CMakeFiles/test
 
 CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o: ../utils/CurrentThread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o -c /data/zzs/CppWebServer/utils/CurrentThread.cpp
 
 CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.i: cmake_force
@@ -129,9 +153,57 @@ CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o.provides: CMakeFiles/tes
 CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o.provides.build: CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o
 
 
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o: CMakeFiles/test_logstream.dir/flags.make
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o: ../utils/LogFile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o"
+	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o -c /data/zzs/CppWebServer/utils/LogFile.cpp
+
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_logstream.dir/utils/LogFile.cpp.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_logstream.dir/utils/LogFile.cpp.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.requires:
+
+.PHONY : CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.requires
+
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.provides: CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_logstream.dir/build.make CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.provides.build
+.PHONY : CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.provides
+
+CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.provides.build: CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o
+
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o: CMakeFiles/test_logstream.dir/flags.make
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o: ../utils/LogStream.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o"
+	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o -c /data/zzs/CppWebServer/utils/LogStream.cpp
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_logstream.dir/utils/LogStream.cpp.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_logstream.dir/utils/LogStream.cpp.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.requires:
+
+.PHONY : CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.requires
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.provides: CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_logstream.dir/build.make CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.provides.build
+.PHONY : CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.provides
+
+CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.provides.build: CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o
+
+
 CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/utils/Logger.cpp.o: ../utils/Logger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test_logstream.dir/utils/Logger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/test_logstream.dir/utils/Logger.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/Logger.cpp.o -c /data/zzs/CppWebServer/utils/Logger.cpp
 
 CMakeFiles/test_logstream.dir/utils/Logger.cpp.i: cmake_force
@@ -155,7 +227,7 @@ CMakeFiles/test_logstream.dir/utils/Logger.cpp.o.provides.build: CMakeFiles/test
 
 CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o: ../utils/TimerQueue.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o -c /data/zzs/CppWebServer/utils/TimerQueue.cpp
 
 CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.i: cmake_force
@@ -179,7 +251,7 @@ CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o: ../http/HttpContext.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o -c /data/zzs/CppWebServer/http/HttpContext.cpp
 
 CMakeFiles/test_logstream.dir/http/HttpContext.cpp.i: cmake_force
@@ -203,7 +275,7 @@ CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.o: ../http/HttpRequest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.o -c /data/zzs/CppWebServer/http/HttpRequest.cpp
 
 CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.i: cmake_force
@@ -227,7 +299,7 @@ CMakeFiles/test_logstream.dir/http/HttpRequest.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.o: ../http/HttpResponse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.o -c /data/zzs/CppWebServer/http/HttpResponse.cpp
 
 CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.i: cmake_force
@@ -251,7 +323,7 @@ CMakeFiles/test_logstream.dir/http/HttpResponse.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o: ../http/HttpServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o -c /data/zzs/CppWebServer/http/HttpServer.cpp
 
 CMakeFiles/test_logstream.dir/http/HttpServer.cpp.i: cmake_force
@@ -275,7 +347,7 @@ CMakeFiles/test_logstream.dir/http/HttpServer.cpp.o.provides.build: CMakeFiles/t
 
 CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.o: ../tcp/Acceptor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.o -c /data/zzs/CppWebServer/tcp/Acceptor.cpp
 
 CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.i: cmake_force
@@ -299,7 +371,7 @@ CMakeFiles/test_logstream.dir/tcp/Acceptor.cpp.o.provides.build: CMakeFiles/test
 
 CMakeFiles/test_logstream.dir/tcp/Channel.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/Channel.cpp.o: ../tcp/Channel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/test_logstream.dir/tcp/Channel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/test_logstream.dir/tcp/Channel.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/Channel.cpp.o -c /data/zzs/CppWebServer/tcp/Channel.cpp
 
 CMakeFiles/test_logstream.dir/tcp/Channel.cpp.i: cmake_force
@@ -323,7 +395,7 @@ CMakeFiles/test_logstream.dir/tcp/Channel.cpp.o.provides.build: CMakeFiles/test_
 
 CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.o: ../tcp/Epoller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.o -c /data/zzs/CppWebServer/tcp/Epoller.cpp
 
 CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.i: cmake_force
@@ -347,7 +419,7 @@ CMakeFiles/test_logstream.dir/tcp/Epoller.cpp.o.provides.build: CMakeFiles/test_
 
 CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.o: ../tcp/EventLoop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoop.cpp
 
 CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.i: cmake_force
@@ -371,7 +443,7 @@ CMakeFiles/test_logstream.dir/tcp/EventLoop.cpp.o.provides.build: CMakeFiles/tes
 
 CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.o: ../tcp/EventLoopThread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoopThread.cpp
 
 CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.i: cmake_force
@@ -395,7 +467,7 @@ CMakeFiles/test_logstream.dir/tcp/EventLoopThread.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o: ../tcp/EventLoopThreadPool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp
 
 CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.i: cmake_force
@@ -419,7 +491,7 @@ CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o.provides.build: CMak
 
 CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o: ../tcp/TcpConnection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o -c /data/zzs/CppWebServer/tcp/TcpConnection.cpp
 
 CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.i: cmake_force
@@ -443,7 +515,7 @@ CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: CMakeFiles/test_logstream.dir/flags.make
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o: ../tcp/TcpServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o"
 	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o -c /data/zzs/CppWebServer/tcp/TcpServer.cpp
 
 CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.i: cmake_force
@@ -467,9 +539,12 @@ CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o.provides.build: CMakeFiles/tes
 
 # Object files for target test_logstream
 test_logstream_OBJECTS = \
-"CMakeFiles/test_logstream.dir/test_logstream.cpp.o" \
+"CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o" \
+"CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o" \
 "CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o" \
 "CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o" \
+"CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o" \
+"CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o" \
 "CMakeFiles/test_logstream.dir/utils/Logger.cpp.o" \
 "CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o" \
 "CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o" \
@@ -488,9 +563,12 @@ test_logstream_OBJECTS = \
 # External object files for target test_logstream
 test_logstream_EXTERNAL_OBJECTS =
 
-test/test_logstream: CMakeFiles/test_logstream.dir/test_logstream.cpp.o
+test/test_logstream: CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o
+test/test_logstream: CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o
+test/test_logstream: CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o
+test/test_logstream: CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/utils/Logger.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o
@@ -507,7 +585,7 @@ test/test_logstream: CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o
 test/test_logstream: CMakeFiles/test_logstream.dir/build.make
 test/test_logstream: CMakeFiles/test_logstream.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable test/test_logstream"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/data/zzs/CppWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable test/test_logstream"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_logstream.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -515,9 +593,12 @@ CMakeFiles/test_logstream.dir/build: test/test_logstream
 
 .PHONY : CMakeFiles/test_logstream.dir/build
 
-CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/test_logstream.cpp.o.requires
+CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o.requires
+CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o.requires
 CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o.requires
 CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o.requires
+CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o.requires
+CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o.requires
 CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/Logger.cpp.o.requires
 CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o.requires
 CMakeFiles/test_logstream.dir/requires: CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o.requires

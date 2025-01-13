@@ -1,7 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_logstream.dir/test_logstream.cpp.o"
+  "CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o"
+  "CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o"
   "CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o"
   "CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o"
+  "CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o"
+  "CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o"
   "CMakeFiles/test_logstream.dir/utils/Logger.cpp.o"
   "CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o"
   "CMakeFiles/test_logstream.dir/http/HttpContext.cpp.o"

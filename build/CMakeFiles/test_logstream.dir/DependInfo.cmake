@@ -16,9 +16,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/tcp/EventLoopThreadPool.cpp.o"
   "/data/zzs/CppWebServer/tcp/TcpConnection.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/tcp/TcpConnection.cpp.o"
   "/data/zzs/CppWebServer/tcp/TcpServer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/tcp/TcpServer.cpp.o"
-  "/data/zzs/CppWebServer/test_logstream.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/test_logstream.cpp.o"
+  "/data/zzs/CppWebServer/test_httpcontext.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/test_httpcontext.cpp.o"
+  "/data/zzs/CppWebServer/utils/AsyncLogger.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/AsyncLogger.cpp.o"
   "/data/zzs/CppWebServer/utils/Buffer.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/Buffer.cpp.o"
   "/data/zzs/CppWebServer/utils/CurrentThread.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/CurrentThread.cpp.o"
+  "/data/zzs/CppWebServer/utils/LogFile.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/LogFile.cpp.o"
+  "/data/zzs/CppWebServer/utils/LogStream.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/LogStream.cpp.o"
   "/data/zzs/CppWebServer/utils/Logger.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/Logger.cpp.o"
   "/data/zzs/CppWebServer/utils/TimerQueue.cpp" "/data/zzs/CppWebServer/build/CMakeFiles/test_logstream.dir/utils/TimerQueue.cpp.o"
   )

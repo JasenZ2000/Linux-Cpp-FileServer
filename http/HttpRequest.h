@@ -48,6 +48,7 @@ public:
 
     void SetBody(const std::string &body);
     const std::string &GetBody() const;
+    void AddBody(const std::string &body);
 
 private:
     Method method_;

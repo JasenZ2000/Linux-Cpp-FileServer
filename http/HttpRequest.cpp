@@ -65,11 +65,11 @@ std::string HttpRequest::GetMethodString() const
 
 void HttpRequest::SetVersion(const std::string &version)
 {
-    if (version == "1.0")
+    if (version == "HTTP/1.0")
     {
         version_ = kHTTP_1_0;
     }
-    else if (version == "1.1")
+    else if (version == "HTTP/1.1")
     {
         version_ = kHTTP_1_1;
     }
@@ -145,3 +145,8 @@ const std::map<std::string, std::string> &HttpRequest::GetHeaders() const{ retur
 void HttpRequest::SetBody(const std::string &body) { body_ = std::move(body); }
 
 const std::string &HttpRequest::GetBody() const{ return body_; }
+
+void HttpRequest::AddBody(const std::string &body)
+{
+    body_ += body;
+}
