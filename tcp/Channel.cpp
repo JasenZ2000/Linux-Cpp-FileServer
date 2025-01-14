@@ -52,6 +52,16 @@ void Channel::EnableWrite(){
     loop_->UpdateChannel(this);
 }
 
+void Channel::DisableRead(){
+    listen_events_ &= ~(EPOLLIN | EPOLLPRI);
+    loop_->UpdateChannel(this);
+}
+
+void Channel::DisableWrite(){
+    listen_events_ &= ~EPOLLOUT;
+    loop_->UpdateChannel(this);
+}
+
 void Channel::EnableET(){
     listen_events_ |= EPOLLET;
     loop_->UpdateChannel(this);

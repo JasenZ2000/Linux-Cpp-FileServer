@@ -83,7 +83,7 @@ void defaultFlush(){
 
 Logger::OutputFunc g_output = defaultOutput;
 Logger::FlushFunc g_flush = defaultFlush;
-Logger::LogLevel g_logLevel = Logger::LogLevel::INFO;
+Logger::LogLevel g_logLevel = Logger::LogLevel::DEBUG;
 
 Logger::~Logger()
 {

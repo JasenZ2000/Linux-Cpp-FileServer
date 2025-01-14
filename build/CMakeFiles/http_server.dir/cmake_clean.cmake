@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/http_server.dir/utils/LogStream.cpp.o"
   "CMakeFiles/http_server.dir/utils/Logger.cpp.o"
   "CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o"
+  "CMakeFiles/http_server.dir/http/FileSystem.cpp.o"
   "CMakeFiles/http_server.dir/http/HttpContext.cpp.o"
   "CMakeFiles/http_server.dir/http/HttpRequest.cpp.o"
   "CMakeFiles/http_server.dir/http/HttpResponse.cpp.o"

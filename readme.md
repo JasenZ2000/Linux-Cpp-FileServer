@@ -7,7 +7,7 @@
 
 ## To Learn Sth More
 
-1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket；4、更好的缓冲区设计；5、线程池优化；6、Http请求的粘包情况处理
+1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket；4、更好的缓冲区设计；5、线程池优化；
 
 ## day01 - socket实现
 在Linux服务器上进行实现，gcc/g++ 7.5.0, cmake 3.10.2, VSCode 1.85.2
@@ -504,3 +504,5 @@ inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
 缓冲区分成prependable, readable, writable三个部分，仅仅是单一缓冲区，同时可用于输入和输出，提高了内存空间利用率。目前的大问题是prependable部分的空间如何利用，以及如何处理读入的数据，没有具体的。
 
 进一步还优化了增量式的HTTP请求解析，将HTTP请求解析的过程放在了缓冲区中，而不是在每次读取消息时都进行全文解析，且针对于Http1.0，close，chunked等情况进行了处理。
+
+day26的写事件也顺手做了，主要就是通过关注写缓存的是否为空，空则不关注写事件，不空则关注写事件。

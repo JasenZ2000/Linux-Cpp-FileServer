@@ -62,6 +62,8 @@ class Buffer{
     
         void EnsureWritableBytes(int len);
 
+        bool IsEmpty() const { return beginread() == beginwrite(); };
+
     private:
         std::vector<char> buf_;
         int read_index_ = kPrePendIndex;

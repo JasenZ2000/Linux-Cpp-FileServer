@@ -53,6 +53,8 @@ public:
 
     void HandleMessage(); // 当接收到信息时，进行回调
 
+    void HandleWrite();
+
     // 当TcpConnection发起关闭请求时，进行回调，释放相应的socket.
     void HandleClose(); 
 

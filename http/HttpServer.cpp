@@ -24,7 +24,7 @@ HttpServer::HttpServer(EventLoop *loop, const char *ip, const int port, double t
     tcp_server_->set_connection_callback(std::bind(&HttpServer::onConnection, this, std::placeholders::_1));    
     tcp_server_->set_message_callback(std::bind(&HttpServer::onMessage, this, std::placeholders::_1));
     set_http_callback(std::bind(&HttpServer::DefaultHttpCallback, this, std::placeholders::_1, std::placeholders::_2));
-    main_reactor_->RunEvery(5., std::bind(&HttpServer::Refresh, this));
+    // main_reactor_->RunEvery(5., std::bind(&HttpServer::Refresh, this));
     LOG_INFO << "HttpServer Listening on [ " << ip << ":" << port << " ]";
 };
 
@@ -74,7 +74,7 @@ void HttpServer::onMessage(const conn_ptr &conn){
 
         HttpContext *context = conn->context();
 
-        while (true)
+        if (!conn->read_buf()->IsEmpty())
         {
             std::string in_buffer = conn->read_buf()->RetrieveAllAsString();
             LOG_INFO << " HttpServer::onMessage: \r\n" << in_buffer;
@@ -82,7 +82,7 @@ void HttpServer::onMessage(const conn_ptr &conn){
             bool ok = context->ParseRequest(in_buffer);
             bool complete = context->IsComplete();
 
-            LOG_DEBUG << " HttpServer::onMessage" << " complete: " << complete << " ok: " << ok;
+            LOG_INFO << " HttpServer::onMessage" << " complete: " << complete << " ok: " << ok;
 
             if (!ok)
             {
@@ -97,7 +97,7 @@ void HttpServer::onMessage(const conn_ptr &conn){
             }
             else
             {
-                break;
+                
             }
         }
     }
@@ -112,7 +112,8 @@ void HttpServer::onRequest(const conn_ptr &conn, const HttpRequest &req){
     HttpResponse response(close);
     on_request_(req, &response);
 
-    conn->Send(response.message().c_str());
+    conn->Send(response.message());
+
     if (response.close_connection())
     {
         LOG_DEBUG << "HttpServer::onRequest : HandleClose";

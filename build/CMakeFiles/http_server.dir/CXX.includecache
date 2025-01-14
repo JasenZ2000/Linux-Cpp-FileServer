@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../http/FileSystem.h
+string
+-
+vector
+-
+HttpRequest.h
+../http/HttpRequest.h
+HttpResponse.h
+../http/HttpResponse.h
+
 ../http/HttpContext.h
 string
 -
@@ -19,7 +29,7 @@ map
 -
 
 ../http/HttpResponse.h
-map
+unordered_map
 -
 string
 -
@@ -182,6 +192,34 @@ string
 
 ../utils/common.h
 
+/data/zzs/CppWebServer/http/FileSystem.cpp
+FileSystem.h
+/data/zzs/CppWebServer/http/FileSystem.h
+fstream
+-
+dirent.h
+-
+Logger.h
+/data/zzs/CppWebServer/http/Logger.h
+sys/types.h
+-
+unistd.h
+-
+fcntl.h
+-
+sys/stat.h
+-
+
+/data/zzs/CppWebServer/http/FileSystem.h
+string
+-
+vector
+-
+HttpRequest.h
+/data/zzs/CppWebServer/http/HttpRequest.h
+HttpResponse.h
+/data/zzs/CppWebServer/http/HttpResponse.h
+
 /data/zzs/CppWebServer/http/HttpContext.cpp
 HttpContext.h
 /data/zzs/CppWebServer/http/HttpContext.h
@@ -217,7 +255,7 @@ sstream
 -
 
 /data/zzs/CppWebServer/http/HttpResponse.h
-map
+unordered_map
 -
 string
 -
@@ -265,10 +303,6 @@ iostream
 -
 HttpServer.h
 /data/zzs/CppWebServer/HttpServer.h
-HttpRequest.h
-/data/zzs/CppWebServer/HttpRequest.h
-HttpResponse.h
-/data/zzs/CppWebServer/HttpResponse.h
 EventLoop.h
 /data/zzs/CppWebServer/EventLoop.h
 Logger.h
@@ -279,6 +313,8 @@ thread
 -
 string
 -
+FileSystem.h
+/data/zzs/CppWebServer/FileSystem.h
 
 /data/zzs/CppWebServer/tcp/Acceptor.cpp
 Acceptor.h
@@ -461,6 +497,8 @@ EventLoop.h
 /data/zzs/CppWebServer/tcp/EventLoop.h
 HttpContext.h
 /data/zzs/CppWebServer/tcp/HttpContext.h
+Logger.h
+/data/zzs/CppWebServer/tcp/Logger.h
 memory
 -
 unistd.h

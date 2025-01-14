@@ -17,6 +17,7 @@ class Channel {
         void HandleEventWithGuard() const;
         void EnableRead();  // 允许读
         void EnableWrite(); // 允许写
+        void DisableRead();
         void EnableET(); // 以ET形式触发
         void DisableWrite();
 

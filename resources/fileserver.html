@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文件操作</title>
+    <style>
+        /* 居中对齐的样式 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 0;
+        }
+
+        table {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        td a {
+            margin-left: 10px;
+            /* 添加下载和删除按钮之间的间距 */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Chunked Transfer Upload</h1>
+        <input type="file" id="fileInput">
+        <button onclick="uploadFile()">上传文件</button>
+
+        <script>
+            async function uploadFile() {
+                const fileInput = document.getElementById('fileInput');
+                const file = fileInput.files[0];
+                if (!file) {
+                    alert('请选择文件');
+                    return;
+                }
+
+                // 使用 fetch 和 ReadableStream 实现分块传输
+                const stream = file.stream(); // 将文件转换为可读流
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Transfer-Encoding': 'chunked',
+                        'Content-Type': 'application/octet-stream'
+                    },
+                    body: stream
+                });
+
+                if (response.ok) {
+                    alert('文件上传成功！');
+                } else {
+                    alert('上传失败');
+                }
+            }
+        </script>
+
+        <h2>文件列表</h2>
+        <table>
+            <tr>
+                <th>文件名</th>
+                <th>操作</th>
+            </tr>
+            <!--filelist-->
+            <!--
+            <tr> 示例
+                <td>a.txt</td>
+                <td>
+                    <a href="/download/a.txt">下载</a>
+                    <a href="/download/a.txt">删除</a>
+                </td>
+            </tr>
+            -->
+
+        </table>
+    </div>
+</body>
+
+</html>

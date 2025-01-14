@@ -1,9 +1,20 @@
+/**
+ * @file TcpConnection.cpp
+ * @author Zasen (zasen2000@buaa.edu.cn)
+ * @brief 原来的写操作会一致阻塞到写完为止，现在只写一次，等待下一次EPOLLOUT事件的触发。
+ * @version 0.1
+ * @date 2025-01-13
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "TcpConnection.h"
 #include "Buffer.h"
 #include "Channel.h"
 #include "common.h"
 #include "EventLoop.h"
 #include "HttpContext.h"
+#include "Logger.h"
 
 #include <memory>
 #include <unistd.h>
@@ -19,6 +30,7 @@ TcpConnection::TcpConnection(EventLoop *loop, int connfd, int connid) : connfd_(
         channel_ = std::make_unique<Channel>(connfd, loop);
         channel_->EnableET(); // !! 接收信息使用的是边缘触发
         channel_->set_read_callback(std::bind(&TcpConnection::HandleMessage, this));
+        channel_->set_write_callback(std::bind(&TcpConnection::HandleWrite, this));
     }
     read_buf_ = std::make_unique<Buffer>();
     send_buf_ = std::make_unique<Buffer>();
@@ -85,7 +97,18 @@ void TcpConnection::HandleMessage()
     }
     else
     {
+        // 没有用户处理业务，直接将缓存区中的数据清空，避免内存泄漏。
         read_buf_->RetrieveAll();
+    }
+}
+
+void TcpConnection::HandleWrite()
+{
+    WriteNonBlocking();
+    // 此时channel一定在监听写事件
+    if (send_buf_->readablebytes() == 0)
+    {
+        channel_->DisableWrite();
     }
 }
 
@@ -98,10 +121,17 @@ TcpConnection::ConnectionState TcpConnection::state() const { return state_; }
 Buffer *TcpConnection::read_buf() { return read_buf_.get(); }
 Buffer *TcpConnection::send_buf() { return send_buf_.get(); }
 
+
 void TcpConnection::Send(const char *msg, int len)
 {
     send_buf_->Append(msg, len);
+    LOG_DEBUG << "TcpConnection::Send - TcpConnection Send " << len << " bytes";
     Write();
+    LOG_DEBUG << "TcpConnection::Send - TcpConnection Left " << send_buf_->readablebytes() << " bytes";
+    if (send_buf_->readablebytes() > 0)
+    {
+        channel_->EnableWrite();
+    }
 }
 
 void TcpConnection::Send(const std::string &msg)
@@ -122,7 +152,6 @@ void TcpConnection::Read()
 void TcpConnection::Write()
 {
     WriteNonBlocking();
-    send_buf_->RetrieveAll();
 }
 
 void TcpConnection::ReadNonBlocking()
@@ -158,30 +187,19 @@ void TcpConnection::ReadNonBlocking()
     }
 }
 
+// 写操作是有可能写着写着，缓冲区满了，就不能再写了，需要等待下一次EPOLLOUT事件的触发。
+// 读操作由于数据已经输入内核缓冲区，此时应用程序可以直接从内核缓冲区中读取数据，读到读完为止。
 void TcpConnection::WriteNonBlocking()
 {
-    char buf[send_buf_->readablebytes()];
-    memcpy(buf, send_buf_->beginread(), send_buf_->readablebytes());
-    int data_size = send_buf_->readablebytes();
-    int data_left = data_size;
+    int size = send_buf_->readablebytes();
+    int data_send = static_cast<int>(write(connfd_, send_buf_->Peek(), size));
 
-    while (data_left > 0)
-    {
-        ssize_t bytes_write = write(connfd_, buf + data_size - data_left, data_left);
-        if (bytes_write == -1 && errno == EINTR)
-        {
-            // std::cout << "continue writing" << std::endl;
-            continue;
-        }
-        if (bytes_write == -1 && errno == EAGAIN)
-        {
-            break;
-        }
-        if (bytes_write == -1)
-        {
-            HandleClose();
-            break;
-        }
-        data_left -= bytes_write;
-    }
+    // 第一种情况：EWOULDBLOCK = EAGAIN = 11, EAGAIN为Linux统一，写入缓冲区已满，socket非阻塞（当前不能发送）
+    if (data_send == -1 && (errno == EWOULDBLOCK || errno == EAGAIN))
+        data_send = 0; // 一点都没写进去
+    else if (data_send == -1)
+        LOG_ERROR << "TcpConnection::Send - TcpConnection Send ERROR";
+
+    LOG_DEBUG << "TcpConnection::Send - TcpConnection Send " << data_send << " bytes, Left " << size - data_send << " bytes";
+    send_buf_->Retrieve(data_send);
 }

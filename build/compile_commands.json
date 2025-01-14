@@ -1,102 +1,107 @@
 [
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/test_httpcontext.cpp.o -c /data/zzs/CppWebServer/test_httpcontext.cpp",
-  "file": "/data/zzs/CppWebServer/test_httpcontext.cpp"
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/http_server.cpp.o -c /data/zzs/CppWebServer/http_server.cpp",
+  "file": "/data/zzs/CppWebServer/http_server.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/AsyncLogger.cpp.o -c /data/zzs/CppWebServer/utils/AsyncLogger.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/AsyncLogger.cpp.o -c /data/zzs/CppWebServer/utils/AsyncLogger.cpp",
   "file": "/data/zzs/CppWebServer/utils/AsyncLogger.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/Buffer.cpp.o -c /data/zzs/CppWebServer/utils/Buffer.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/Buffer.cpp.o -c /data/zzs/CppWebServer/utils/Buffer.cpp",
   "file": "/data/zzs/CppWebServer/utils/Buffer.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/CurrentThread.cpp.o -c /data/zzs/CppWebServer/utils/CurrentThread.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/CurrentThread.cpp.o -c /data/zzs/CppWebServer/utils/CurrentThread.cpp",
   "file": "/data/zzs/CppWebServer/utils/CurrentThread.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/LogFile.cpp.o -c /data/zzs/CppWebServer/utils/LogFile.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/LogFile.cpp.o -c /data/zzs/CppWebServer/utils/LogFile.cpp",
   "file": "/data/zzs/CppWebServer/utils/LogFile.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/LogStream.cpp.o -c /data/zzs/CppWebServer/utils/LogStream.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/LogStream.cpp.o -c /data/zzs/CppWebServer/utils/LogStream.cpp",
   "file": "/data/zzs/CppWebServer/utils/LogStream.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/Logger.cpp.o -c /data/zzs/CppWebServer/utils/Logger.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/Logger.cpp.o -c /data/zzs/CppWebServer/utils/Logger.cpp",
   "file": "/data/zzs/CppWebServer/utils/Logger.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/utils/TimerQueue.cpp.o -c /data/zzs/CppWebServer/utils/TimerQueue.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/utils/TimerQueue.cpp.o -c /data/zzs/CppWebServer/utils/TimerQueue.cpp",
   "file": "/data/zzs/CppWebServer/utils/TimerQueue.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/http/HttpContext.cpp.o -c /data/zzs/CppWebServer/http/HttpContext.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/http/FileSystem.cpp.o -c /data/zzs/CppWebServer/http/FileSystem.cpp",
+  "file": "/data/zzs/CppWebServer/http/FileSystem.cpp"
+},
+{
+  "directory": "/data/zzs/CppWebServer/build",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/http/HttpContext.cpp.o -c /data/zzs/CppWebServer/http/HttpContext.cpp",
   "file": "/data/zzs/CppWebServer/http/HttpContext.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/http/HttpRequest.cpp.o -c /data/zzs/CppWebServer/http/HttpRequest.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/http/HttpRequest.cpp.o -c /data/zzs/CppWebServer/http/HttpRequest.cpp",
   "file": "/data/zzs/CppWebServer/http/HttpRequest.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/http/HttpResponse.cpp.o -c /data/zzs/CppWebServer/http/HttpResponse.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/http/HttpResponse.cpp.o -c /data/zzs/CppWebServer/http/HttpResponse.cpp",
   "file": "/data/zzs/CppWebServer/http/HttpResponse.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/http/HttpServer.cpp.o -c /data/zzs/CppWebServer/http/HttpServer.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/http/HttpServer.cpp.o -c /data/zzs/CppWebServer/http/HttpServer.cpp",
   "file": "/data/zzs/CppWebServer/http/HttpServer.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/Acceptor.cpp.o -c /data/zzs/CppWebServer/tcp/Acceptor.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/Acceptor.cpp.o -c /data/zzs/CppWebServer/tcp/Acceptor.cpp",
   "file": "/data/zzs/CppWebServer/tcp/Acceptor.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/Channel.cpp.o -c /data/zzs/CppWebServer/tcp/Channel.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/Channel.cpp.o -c /data/zzs/CppWebServer/tcp/Channel.cpp",
   "file": "/data/zzs/CppWebServer/tcp/Channel.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/Epoller.cpp.o -c /data/zzs/CppWebServer/tcp/Epoller.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/Epoller.cpp.o -c /data/zzs/CppWebServer/tcp/Epoller.cpp",
   "file": "/data/zzs/CppWebServer/tcp/Epoller.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/EventLoop.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoop.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/EventLoop.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoop.cpp",
   "file": "/data/zzs/CppWebServer/tcp/EventLoop.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/EventLoopThread.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoopThread.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/EventLoopThread.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoopThread.cpp",
   "file": "/data/zzs/CppWebServer/tcp/EventLoopThread.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/EventLoopThreadPool.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/EventLoopThreadPool.cpp.o -c /data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp",
   "file": "/data/zzs/CppWebServer/tcp/EventLoopThreadPool.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/TcpConnection.cpp.o -c /data/zzs/CppWebServer/tcp/TcpConnection.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/TcpConnection.cpp.o -c /data/zzs/CppWebServer/tcp/TcpConnection.cpp",
   "file": "/data/zzs/CppWebServer/tcp/TcpConnection.cpp"
 },
 {
   "directory": "/data/zzs/CppWebServer/build",
-  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/test_httpcontext.dir/tcp/TcpServer.cpp.o -c /data/zzs/CppWebServer/tcp/TcpServer.cpp",
+  "command": "g++   -I/data/zzs/CppWebServer/tcp -I/data/zzs/CppWebServer/http -I/data/zzs/CppWebServer/utils  -Wall -g -std=c++14 -Werror -O0   -o CMakeFiles/http_server.dir/tcp/TcpServer.cpp.o -c /data/zzs/CppWebServer/tcp/TcpServer.cpp",
   "file": "/data/zzs/CppWebServer/tcp/TcpServer.cpp"
 }
 ]
