@@ -110,6 +110,7 @@ void HttpServer::onRequest(const conn_ptr &conn, const HttpRequest &req){
                  (req.GetVersion() == HttpRequest::kHTTP_1_0 &&
                   connection != "Keep-Alive");
     HttpResponse response(close);
+    
     on_request_(req, &response);
 
     conn->Send(response.message());

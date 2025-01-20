@@ -3,6 +3,7 @@
 跟随github项目，学习C++实现Web服务器。
 
 ## 原项目地址
+
 [30daysCppWebServer] https://github.com/Wlgls/30daysCppWebServer
 
 ## To Learn Sth More
@@ -10,16 +11,19 @@
 1、C++异常处理；2、UDP的消息传输；3、非阻塞式socket；4、更好的缓冲区设计；5、线程池优化；
 
 ## day01 - socket实现
+
 在Linux服务器上进行实现，gcc/g++ 7.5.0, cmake 3.10.2, VSCode 1.85.2
 
 VSCode Git设置：
-~~~bash
+
+```bash
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
-~~~
+```
 
-socket使用: 
-~~~cpp
+socket使用:
+
+```cpp
 #include <sys/socket.h>
 // domain: 协议族，AF_INET (IPv4), AF_INET6 (IPv6), AF_UNIX
 // type: 套接字类型，SOCK_STREAM (TCP流), SOCK_DGRAM (UDP报), SOCK_RAW
@@ -42,7 +46,7 @@ connect(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
 listen(sockfd, backlog);
 // 接受连接 （服务端） 对SOCK_STREAM类型适用
 int connfd = accept(sockfd, (struct sockaddr*)&client_addr, &client_addr_len);
-~~~
+```
 
 最简单的socket：客户端保存服务器的socket，服务端保存连接的socket，而后进行通信。
 
@@ -50,7 +54,7 @@ int connfd = accept(sockfd, (struct sockaddr*)&client_addr, &client_addr_len);
 
 socket使用中，最通用的错误信号为调用函数返回-1，可以通过结合stdio的perror函数，对应各种错误位置进行错误输出。
 
-~~~cpp
+```cpp
 #include <sys/socket.h>
 #include <stdio.h>
 
@@ -68,23 +72,23 @@ errif(listen(sockfd, SOMAXCONN) == -1, "socket listen error");
 int clnt_sockfd = accept(sockfd, (sockaddr*)&clnt_addr, &clnt_addr_len);
 errif(clnt_sockfd == -1, "socket accept error");
 errif(connect(sockfd, (sockaddr*)&serv_addr, sizeof(serv_addr)) == -1, "socket connect error");
-~~~
+```
 
 socket的消息传送以文件接口为主, unistd.h 中的 read/write 函数用于TCP协议，sendto/recvfrom 函数用于UDP协议。
 
-~~~cpp
+```cpp
 #include <unistd.h>
 char buffer[1024];
 // read时返回的是读取的字节数，失败返回-1，返回0表示对端关闭连接
 ssize_t read_bytes = read(int fd, void *buf, size_t count);
 ssize_t write_bytes = write(int fd, const void *buf, size_t count);
-~~~
+```
 
 ## day03 - 简单高并发 // IO多路复用
 
 IO复用是指通过单个线程，同时监听多个IO事件，当有IO事件发生时，通知程序进行处理。在Linux中，IO复用的实现有select、poll、epoll等。通过epoll的IO复用，也就是通过单一的监控线程，去把握当前有哪些连接是需要处理的。没有epoll时，需要为每个连接创建一个线程，每个线程可能还需要通过堵塞/轮询的方式监控变化，这样会造成线程数量过多，导致线程切换的开销过大。
 
-~~~cpp
+```cpp
 // select:将文件描述符集合fd_set拷贝到内核空间，内核遍历所有文件描述符，当有IO事件发生时，将文件描述符从内核空间拷贝回用户空间，用户程序进行处理。数量有限制，遍历复杂。
 // nfds: 文件描述符的最大值+1
 int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
@@ -130,7 +134,7 @@ if (ret == -1 && errno == EINTR) { // 客户端正常中断
     printf("fd %d message all read, errno: %d\n", event[i].data.fd, errno);
     break;
 }
-~~~
+```
 
 ## day04 - 包装 - 更加清晰的Socket使用
 
@@ -146,11 +150,11 @@ if (ret == -1 && errno == EINTR) { // 客户端正常中断
 
 这个过程中涉及到创建类的实例对象时，可以使用智能指针进行管理。然而生命周期的管理比你想的复杂。
 
-~~~Cpp
+```Cpp
 #include <memory>
 // 智能指针
 std::unique_ptr<Template T> u_ptr(new Object());
-~~~
+```
 
 ## day05 - epoll与Channel
 
@@ -180,14 +184,14 @@ Day06的代码基本上只是进一步的封装，还在打牢基础。今日实
 
 其实就是把新建连接这一块的内容拆出来独立封装，从功能角度而言是独立且关键的部分，但目前表现不出影响。要说的话，基于functional与bind的函数对象传递是非常实用的写法。
 
-~~~cpp
+```cpp
 #include <functional>
 // C++11 提供的通用函数封装工具，适用普通函数、函数对象、lambda表达式以及成员函数。
 // void ( int ) 返回值为void，参数为int的函数对象
 std::function<void(int)> func;
 // 用bind绑定成员函数以及参数，分别需要目标函数地址，类对象地址，参数
 func = std::bind(&MyClass::MyFunc, &myObj, std::placeholders::_1);
-~~~
+```
 
 ## day08 - Connection
 
@@ -207,7 +211,7 @@ MD源码有问题，新连接都没有创建对应的Socket和InetAddress，把�
 
 这里采用固定线程数的线程池，其应当注意两点：1、对任务队列读写的互斥；2、任务队列为空时避免轮询。两个问题分别对应到mutex和condition_variable。
 
-~~~cpp
+```cpp
 #include <mutex>
 std::mutex mtx;
 // 加锁：lock, unlock, try_lock都是基本函数
@@ -221,7 +225,7 @@ std::condition_variable cv;
 // 等待：wait, wait_for, wait_until 等待到条件成立，wait_for和wait_until可以指定等待时间。
 cv.wait(lock, []{ return !task_queue.empty(); });
 cv.notify_one(); // 唤醒一个等待的线程，与之前的条件判断配合，保证虚假唤醒不影响程序的正常运行。
-~~~
+```
 
 这个版本把所有任务打包成std::function<void()>的方式包装可执行任务，并通过线程池进行调度。缺陷则是没有返回值。
 
@@ -233,7 +237,7 @@ day11 - 线程池的优化
 
 这里的处理用到了泛型编程，将返回值与函数参数类别作为模板输入。
 
-~~~cpp
+```cpp
 template <class F, class... Args>
 // F:可调用（函数）类型，Args:可调用的参数类型 返回一个future，其利用result_of获取可调用对象的返回类型。
 auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type>
@@ -255,7 +259,7 @@ auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_
     cv.notify_one();
     return res;
 }
-~~~
+```
 
 之前码代码的时候意识到但没有处理的问题零零总总全在这处理了，虽然也没完全处理完，但说实话真挺累人的，一个bug排了半天：
 
@@ -282,7 +286,7 @@ auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_
 
 1、例如EventLoop、Channel等事务与连接相关的类，我们不希望其被复制。要么将其拷贝构造函数与赋值运算符重载函数声明为私有，要么保证其不被自动实现。在其余进行资源创建的时候，尽可能使用移动语义。
 
-~~~cpp
+```cpp
 #define DISALLOW_COPY(cname)     \
   cname(const cname &) = delete; \
   cname &operator=(const cname &) = delete;
@@ -294,11 +298,11 @@ auto ThreadPool::add(F&& f, Args&&... args) -> std::future<typename std::result_
 #define DISALLOW_COPY_AND_MOVE(cname) \
   DISALLOW_COPY(cname);               \
   DISALLOW_MOVE(cname);
-~~~
+```
 
 2、智能指针。在创建连接、资源时大量使用了无删除的new操作，现在尝试避免内存泄漏。bzero和memset之间还有小小争议。在管理智能指针时，基本上谁创建谁负责，许多的类之间是唯一绑定的，但是也存在野指针管理的情况，尤其是EventLoop需要传递的情况。
 
-~~~cpp
+```cpp
 #include <memory>
 // 智能指针初始化
 std::unique_ptr<Template T> u_ptr(new Object());
@@ -307,7 +311,7 @@ u_ptr = std::make_unique<Object>();
 // 智能指针获取裸指针，释放
 u_ptr.get()
 u_ptr.release()
-~~~
+```
 
 3、Socket类删掉了，理由是在响应事件的过程中仅需要使用文件描述符，不需要一个Socket类。而在建立连接的过程中虽然需要使用其方法，但全部都在Acceptor类中，无需一个独立的Socket类。
 
@@ -319,7 +323,7 @@ u_ptr.release()
 
 解决上述矛盾的方法是用一个shared_ptr，让EventLoop与Server共享Connection，这样就可以在EventLoop中控制Connection的生命周期，而Server则可以通过shared_ptr来管理Connection。
 
-~~~cpp
+```cpp
 #include <memory>
 // 智能指针初始化
 std::shared_ptr<Template T> s_ptr(new Object());
@@ -333,7 +337,7 @@ s_ptr_copy = s_ptr.shared_from_this();
 std::weak_ptr<Template T> w_ptr;
 w_ptr = s_ptr;
 std::shared_ptr<Template T> s_ptr_copy = w_ptr.lock();
-~~~
+```
 
 muduo的处理：
 
@@ -375,18 +379,18 @@ Muduo的多线程实现方案是基于Reactor模式的多线程实现方案。�
 
 两种HTTP解析方案：原项目的状态转换机，以及目前正在参考的另一个cpp-httplib库（逐行解析）。好像一般是状态转换机相对性能更高，node.js也是用的这种（llhttp）。Http请求报文包括请求行、请求头、请求体，请求体之前还有空行。
 
-~~~
+```
 GET /HEELO HTTP/1.1\r\n
 Host: 127.0.0.1:1234\r\n
 Connection: Keep-alive\r\n
 Content-Length: 12\r\n
 \r\n
 hello world;
-~~~
+```
 
 HTTP请求的解析结果包括以下内容：
 
-~~~cpp
+```cpp
 class HttpRequest{
 private:
     Method method_; // 请求方法
@@ -397,7 +401,7 @@ private:
     std::map<std::string, std::string> headers_; // 请求头
     std::string body_; // 请求体
 }
-~~~
+```
 
 非常纯粹的重复工作，逐字符读入判断状态变化，还挺逆天的。最大的问题是对每个字符都要进行状态判断，效率低下。果然还是分解成内部循环更加符合我刷算法题的直觉，就不在这里写了，要吐出来了。
 
@@ -405,14 +409,14 @@ private:
 
 HTTP的服务端响应报文包括响应行、响应头、响应体，同样在响应体之前有空行。
 
-~~~
+```
 HTTP/1.1 200 OK\r\n
 Content-Encoding: gzip\r\n
 Content-Type: text/html\r\n
 Content-Length: 5\r\n
 \r\n
 hello
-~~~
+```
 
 其实读入的Http报文也算是一种缓存吧，写到了COnnection里面，挺神奇的。其他真的没啥，主要就是在TCP上加入了固定的Http输入输出格式，比较简单的封装。
 
@@ -420,15 +424,15 @@ hello
 
 按时间触发事件，而不只是依赖于事件的触发，即是一个定时任务。不过在代码上似乎靠的是linux的timerfd，结果上类似于时间的触发？Muduo的定时器通过Timer、TimerQueue以及TimerId来实现，而TimerID是用户接口，Timer类保存超时时刻，回调函数以及类型，TimerQueue则是管理Timer的类，基于set，也就是红黑树管理。
 
-~~~cpp
+```cpp
 #include <sys/timefd.h>
 timerfd_ = ::timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC);
 timerfd_settime(tfd, 0, &new_value, NULL)
-~~~
+```
 
 TimerQueue通过channel绑定timerfd，再交由epoll监听并处理，但在one loop per thread的模式下该如何处理呢？答案是给每个Loop配一个TimerQueue。
 
-~~~cpp
+```cpp
 #include <time.h>
 // 纳秒级计时器 ts.tv_sec ts.tv_nsec，还可设定时钟类型
 struct timespec ts;
@@ -436,7 +440,7 @@ clock_gettime(CLOCK_MONOTONIC, &ts);
 // 微秒级计时器 time.tv_sec time.tv_usec
 struct timeval time;
 gettimeofday(&time, NULL);
-~~~
+```
 
 顺手把服务器主动关闭连接也写了吧。这个过程还是有点复杂的。
 
@@ -448,7 +452,7 @@ gettimeofday(&time, NULL);
 
 ### 输出流
 
-~~~cpp
+```cpp
 class LogStream
 {
     // 对应实现 log << 2 log << 'c' 这种情况
@@ -460,13 +464,13 @@ inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
     s.append(fmt.data(), fmt.length());
     return s;
 };
-~~~
+```
 
 ### 日志库接口
 
 日志等级：DEBUG、INFO、WARN、ERROR、FATAL，本质上通过宏来快速获得对应的日志输出流，取代std::cout，实现一个便捷的接口。
 
-~~~cpp
+```cpp
 #define LOG_DEBUG if (Logger::logLevel() <= Logger::DEBUG) \
     Logger(__FILE__, __LINE__, Logger::DEBUG, __func__).stream()
 #define LOG_INFO if (Logger::logLevel() <= Logger::INFO) \
@@ -474,7 +478,7 @@ inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
 #define LOG_WARN Logger(__FILE__, __LINE__, Logger::WARN).stream()
 #define LOG_ERROR Logger(__FILE__, __LINE__, Logger::ERROR).stream()
 #define LOG_FATAL Logger(__FILE__, __LINE__, Logger::FATAL).stream()
-~~~
+```
 
 ### 异步日志
 
@@ -486,12 +490,11 @@ inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
 
 1、异步接口与同步接口一致，都是在主线程中通过宏获取日志输出流Logger::Impl::LogStream，将单条日志写入LogStream的小型缓冲区。
 
-2、LogStream缓冲区内的小型日志会在Logger::~Logger()调用g_output，将data,length写入到目标位置，FATAL级别调用g_flush输出 
+2、LogStream缓冲区内的小型日志会在Logger::~Logger()调用g_output，将data,length写入到目标位置，FATAL级别调用g_flush输出
 
 3、对于同步来说，直接写到stdout就好，主线程自己生产自己输出；但对于异步来说，则是将日志写入大型缓冲区，通过判断大型缓冲区是否满了，满了则调用调用LogFile输出到文件中。
 
 4、具体而言，主线程写入大型缓冲区，判断是否满了，满了则丢到从线程的处理队列，给条件变量发信号，唤醒从线程。从线程处理队列，将日志写入文件。这种异步日志假设只有主线程在写入日志，在多线程的情况下，有线程安全问题。
-
 
 ## day25 Muduo的高性能缓冲区
 
@@ -506,3 +509,25 @@ inline LogStream & operator<<(LogStream& s, const Fmt& fmt){
 进一步还优化了增量式的HTTP请求解析，将HTTP请求解析的过程放在了缓冲区中，而不是在每次读取消息时都进行全文解析，且针对于Http1.0，close，chunked等情况进行了处理。
 
 day26的写事件也顺手做了，主要就是通过关注写缓存的是否为空，空则不关注写事件，不空则关注写事件。
+
+## day26 封装文件处理与文件服务器功能
+
+完全的独立内容！
+
+1、对接高性能Buffer的文件处理类。功能包括：文件读取（二进制-图片视频与文本-HTML、CSS、JSON）；文件写入；文件判断（存在、权限、大小、修改相关）；文件管理；异常管理(?)。具体到实现上则涵盖有路径-文件名转换、目录创建、文件类型检测等额外内容。
+
+2、文件服务器类，主要是响应了对应的要求进行文件的处理，包含下载，上传，删除与查询。
+
+标准服务器下载响应：
+
+~~~yaml
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 12345
+Last-Modified: Wed, 12 Jan 2025 08:30:00 GMT
+Content-Disposition: attachment; filename="example.txt"  # 下载文件
+Cache-Control: no-cache
+~~~
+
+3、断点续传，其实就是处理请求中的Range字段，通过文件大小与Range字段来确定下载的文件范围。
+

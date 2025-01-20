@@ -14,6 +14,7 @@
 #include <string.h>
 #include <string>
 #include <vector>
+#include <iostream>
 #include "common.h"
 
 static const int kPrePendIndex = 8; // prependindex长度
@@ -31,7 +32,7 @@ class Buffer{
         const char *begin() const;
 
         char *beginread();
-        const char *beginread() const;
+        const char *beginread() const; 
 
         char *beginwrite();
         const char *beginwrite() const;
@@ -45,6 +46,8 @@ class Buffer{
         void Append(const char *_str);
         void Append(const char *_str, int _size);
         void Append(const std::string &_str);
+        void Append(std::istream &in);
+        void Append(std::istream &in, size_t size);
 
         // 缓冲区阅读接口
         const char *Peek() const;

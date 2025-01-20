@@ -10,11 +10,14 @@ public:
         kUnknown = 1,
         k100Continue = 100,
         k200OK = 200,
+        k201Created = 201,
+        k206PartialContent = 206,
         k301MovedPermanently = 301,
         k302MovedTemporarily = 302,
         k400BadRequest = 400,
         k403Forbidden = 403,
         k404NotFound = 404,
+        k409Conflict = 409,
         k500InternalServerError = 500,
     };
 
@@ -33,7 +36,7 @@ public:
     void SetCloseConnection(bool on) { close_connection_ = on;}; 
 
     void SetContentType(const std::string &content_type) { AddHeader("Content-Type", content_type); };
-    void SetContentLength(int length) { AddHeader("Content-Length", std::to_string(length)); content_length_ = length; };
+    void SetContentLength(size_t length) { AddHeader("Content-Length", std::to_string(length)); content_length_ = length; };
     int GetContentLength() const { return content_length_;};
 
     void AddHeader(const std::string &key, const std::string &value) { headers_[key] = value; };
